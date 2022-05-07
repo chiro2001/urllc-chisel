@@ -1,7 +1,9 @@
-package DDC
-import scala.math._
+package modules
+
 import chisel3._
-import chisel3.util._
+import modules.DDCMode.DDC_200M
+
+import scala.math._
 
 object DDCMode {
   val DDC_60M = 0
@@ -13,8 +15,7 @@ object DDCOffset {
   val Offset200M = 0
 }
 
-import DDCMode._
-import DDCOffset._
+import modules.DDCMode._
 
 class DDC(mode: Int = DDC_200M) extends Module {
   val io = IO(new Bundle {

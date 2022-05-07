@@ -1,10 +1,12 @@
-import DDC.DDC
-import _root_.DDC.DDCMode.DDC_60M
+import modules.DDCMode._
+import modules.DUCMode._
 import chisel3.stage.ChiselGeneratorAnnotation
+import modules.{DDC, DUCWrapper}
 
 object Generate extends App {
   val targets = Map(
-    "DDC" -> (() => new DDC(mode = DDC_60M))
+    "DDC" -> (() => new DDC(mode = DDC_60M)),
+    "DUC" -> (() => new DUCWrapper(mode = DUC_120M)),
   )
   targets.foreach(item => {
     println(s"generating: ${item._1}")

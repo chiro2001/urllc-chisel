@@ -1,7 +1,6 @@
 package modules
 
 import chisel3._
-import modules.DDCMode.DDC_200M
 
 import scala.math._
 

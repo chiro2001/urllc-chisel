@@ -3,7 +3,6 @@ package modules
 import scala.math._
 import chisel3._
 import chisel3.util._
-import chisel3.experimental.chiselName
 
 object DUCMode {
   val DUC_120M = 0
@@ -23,7 +22,6 @@ class DUCOut extends Bundle {
   val sync = Bool()
 }
 
-@chiselName
 class DUC(mode: Int = DUC_120M) extends Module {
   val io = IO(new Bundle {
     val in = Input(new Bundle {
@@ -66,7 +64,6 @@ class DUC(mode: Int = DUC_120M) extends Module {
   io.out.sync := io.in.sync
 }
 
-@chiselName
 class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends RawModule {
   val io = IO(new Bundle {
     val in = Input(new Bundle {

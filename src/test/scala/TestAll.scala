@@ -20,12 +20,12 @@ class TestAll
 
   it should "test ADCRead" in {
     test(new ADCRead(width = 8)).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
-      c.io.sync.poke(true.B)
+      c.io.in.sync.poke(true.B)
       var lastNum = -1
 
       def testOnce(num: Int, index: Int = 0) = {
         var value = 0
-        c.io.data.poke(num.U)
+        c.io.in.data.poke(num.U)
         for (i <- 0 until 8) {
           val bit = c.io.bit.peek().litToBoolean
           value += (if (bit) 1 else 0) << i
@@ -45,7 +45,7 @@ class TestAll
       }
 
       for {i <- 0 until 1000} yield testOnce(new Random().nextInt(120), index = i)
-      for {i <- 0 until 3} yield testOnce(45)
+      for {_ <- 0 until 3} yield testOnce(45)
     }
   }
 

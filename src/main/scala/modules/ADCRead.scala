@@ -5,8 +5,7 @@ import chisel3.util._
 
 class ADCRead(width: Int = 8) extends Module {
   val io = IO(new Bundle() {
-    val sync = Input(Bool())
-    val data = Input(UInt(width.W))
+    val in = Input(new DataWithSync(width = width))
     val clkOut = Output(Bool())
     val bit = Output(Bool())
   })
@@ -14,7 +13,7 @@ class ADCRead(width: Int = 8) extends Module {
   val data = RegInit(0.U(width.W))
   val clkOut = RegInit(false.B)
   io.clkOut := clkOut
-  when(!io.sync) {
+  when(!io.in.sync) {
     io.bit := false.B
     io.clkOut := false.B
     cnt := 0.U
@@ -23,7 +22,7 @@ class ADCRead(width: Int = 8) extends Module {
       clkOut := true.B
     }
     when(cnt === (width - 2).U) {
-      data := io.data
+      data := io.in.data
     }
     when(cnt === (width - 1).U) {
       cnt := 0.U

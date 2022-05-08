@@ -11,18 +11,18 @@ object DUCMode {
 
 import DUCMode._
 
-class DUCPort extends Bundle {
-  val data = UInt(8.W)
+class DataWithSync(width: Int = 8) extends Bundle {
+  val data = UInt(width.W)
   val sync = Bool()
 }
 
-class DUCPortWrapper extends Bundle {
-  val in = Input(new DUCPort)
-  val out = Output(new DUCPort)
+class DataWithSyncWrapper(width: Int = 8) extends Bundle {
+  val in = Input(new DataWithSync(width = width))
+  val out = Output(new DataWithSync(width = width))
 }
 
 class DUC(mode: Int = DUC_120M) extends Module {
-  val io = IO(new DUCPortWrapper)
+  val io = IO(new DataWithSyncWrapper)
   val sampleCountMap = Map(
     DUC_120M -> 6,
     DUC_125M -> 25
@@ -51,7 +51,7 @@ class DUC(mode: Int = DUC_120M) extends Module {
     io.out.data := IndexedData(0.U)
     run := true.B
     cnt := 0.U
-    data := io.in.data
+    data := io.in.data(0)
   }
   when(run) {
     when(cnt === (sampleCount - 1).U) {
@@ -71,12 +71,12 @@ class DUC(mode: Int = DUC_120M) extends Module {
  * @param cachedLen 缓存大小
  */
 class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends Module {
-  val io = IO(new DUCPortWrapper)
+  val io = IO(new DataWithSyncWrapper)
 
   val module = Module(new DUC(mode = mode))
   module.io.in <> io.in
 
-  val buffer = Reg(Vec(cachedLen + 1, new DUCPort))
+  val buffer = Reg(Vec(cachedLen + 1, new DataWithSync))
 
   val sIdle :: sCounting :: sOK :: Nil = Enum(3)
   val state = RegInit(sIdle)

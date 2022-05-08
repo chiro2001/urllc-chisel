@@ -21,12 +21,10 @@ class ADCRead(width: Int = 8) extends Module {
     when (cnt === (width / 2 - 1).U) {
       clkOut := true.B
     }
-    when(cnt === (width - 2).U) {
-      data := io.in.data
-    }
     when(cnt === (width - 1).U) {
       cnt := 0.U
       clkOut := false.B
+      data := io.in.data
     }.otherwise {
       cnt := cnt + 1.U
     }

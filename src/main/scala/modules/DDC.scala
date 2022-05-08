@@ -61,7 +61,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
   io.out.sum := sum
 
   def calc(out: Bool) = {
-    when(sum > 0.S) {
+    when(sum <= 0.S) {
       out := true.B
     }.otherwise {
       out := false.B

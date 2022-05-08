@@ -1,7 +1,7 @@
 import chisel3._
 import chisel3.stage.PrintFullStackTraceAnnotation
 import chiseltest._
-import modules.{ADCRead, DACWrite, DDC, DDCMode}
+import modules.{ADCRead, DACWrite, DDC, DDCMode, DUC}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 import top.{Connect, Receiver, Sender}
@@ -131,12 +131,45 @@ class TestAll
     }
   }
 
+  it should "test DUC" in {
+    test(new DUC).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.clock.setTimeout(0)
+      c.io.in.data.poke(0x1.U)
+      c.io.in.sync.poke(false.B)
+      c.clock.step(720)
+      c.io.in.sync.poke(true.B)
+      c.clock.step(720)
+
+      def runOnce(bit: Int) = {
+        c.io.in.data.poke(bit.U)
+        c.clock.step(90)
+      }
+
+      c.io.in.sync.poke(false.B)
+      c.clock.step(90)
+      c.io.in.sync.poke(true.B)
+      c.clock.step(90)
+      for (i <- 0 until 16)
+        runOnce(i & 0x01)
+    }
+  }
+
   it should "pass connect test" in {
     test(new Connect).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
-      c.io.in.sync.poke(true.B)
-      c.io.in.data.poke(0xaa.U)
       c.clock.setTimeout(0)
-      c.clock.step(10000)
+      c.io.in.sync.poke(false.B)
+      c.io.in.data.poke(0x07)
+      c.clock.step(720)
+      c.io.in.sync.poke(true.B)
+      // c.io.in.data.poke(0x7f)
+      c.io.in.data.poke(0xf0)
+      c.clock.step(720)
+      c.io.in.data.poke(0x07)
+      c.clock.step(720)
+      for (i <- 0 until 10) {
+        c.io.in.data.poke((0xff * (math.sin(i.toDouble) + 1) / 2).toInt.U)
+        c.clock.step(90 * 8)
+      }
     }
   }
 }

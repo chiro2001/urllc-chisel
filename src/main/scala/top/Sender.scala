@@ -8,10 +8,25 @@ class Sender(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val slowerClock = Wire(Bool())
   val cnt = RegInit(0.U(log2Ceil(div + 1).W))
-  when (cnt === (div - 1).U) {
+  val jump = RegInit(0.U(8.W))
+  val jumpFirstByte = RegInit(false.B)
+  val cntStarted = RegInit(false.B)
+  when(io.in.sync) {
+    cntStarted := true.B
+  }
+  //noinspection DuplicatedCode
+  when(cnt === (div - 1).U) {
     cnt := 0.U
-  } .otherwise {
-    cnt := cnt + 1.U
+    when(!jumpFirstByte) {
+      jump := jump + 1.U
+      when(jump === 7.U) {
+        jumpFirstByte := true.B
+      }
+    }
+  }.otherwise {
+    when(cntStarted) {
+      cnt := cnt + 1.U
+    }
   }
   slowerClock := cnt >= (div / 2).U
   val duc = Module(new DUC)
@@ -20,6 +35,6 @@ class Sender(div: Int = 90) extends Module {
     adcRead.io.in := io.in
     duc.io.in.data := Cat(0.U(7.W), adcRead.io.bit)
   }
-  duc.io.in.sync := io.in.sync
+  duc.io.in.sync := io.in.sync && jumpFirstByte
   io.out := duc.io.out
 }

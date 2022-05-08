@@ -70,7 +70,7 @@ class DUC(mode: Int = DUC_120M) extends Module {
  * @param mode 频率模式
  * @param cachedLen 缓存大小
  */
-class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends RawModule {
+class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends Module {
   val io = IO(new DUCPortWrapper)
 
   val module = Module(new DUC(mode = mode))

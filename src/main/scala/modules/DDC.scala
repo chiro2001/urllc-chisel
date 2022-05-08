@@ -76,7 +76,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
     (io.out.readData * yListRefer(index).asTypeOf(SInt(8.W)))
       .asTypeOf(SInt(16.W))
 
-  when(io.in.sync) {
+  when(!io.in.sync) {
     yListMul(0.U) := IndexedRefer(0.U)
     cnt := 1.U
   }.otherwise {

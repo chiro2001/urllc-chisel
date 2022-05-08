@@ -2,7 +2,7 @@ package top
 
 import chisel3._
 import chisel3.util._
-import modules.{ADCRead, DUC, DUCWrapper, DataWithSyncWrapper}
+import modules.{ADCRead, DUC, DataWithSyncWrapper}
 
 class Sender(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)

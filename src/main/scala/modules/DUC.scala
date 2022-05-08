@@ -39,7 +39,7 @@ class DUC(mode: Int = DUC_120M) extends Module {
     (sin(x * xMap(mode) * Pi / sampleCount) * 0x7f).toInt.S
   )
   val yList = VecInit(yListData)
-  // println(s"xList: $xList, yList: $yListData")
+  println(s"xList: $xList, yList: $yListData")
   val data = RegInit(false.B)
 
   def IndexedData(index: UInt) =

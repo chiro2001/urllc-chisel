@@ -4,7 +4,7 @@ import chiseltest._
 import modules.{ADCRead, DACWrite, DDC, DDCMode}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import top.Sender
+import top.{Receiver, Sender}
 
 import java.util.Random
 
@@ -53,6 +53,7 @@ class TestAll
   it should "test DACWriter" in {
     test(new DACWrite(width = 8)).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
       c.io.sync.poke(true.B)
+
       def testOnce(num: Int) = {
         for (i <- 0 until 8) {
           c.io.bit.poke(if (((num >> i) & 0x01) != 0) true.B else false.B)
@@ -60,6 +61,7 @@ class TestAll
         }
         c.io.data.expect(num.U)
       }
+
       for {i <- 0 until 1000} yield testOnce(new Random().nextInt(255))
     }
   }
@@ -76,15 +78,48 @@ class TestAll
     test(new Sender).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
       c.io.in.sync.poke(true.B)
       c.clock.setTimeout(0)
+
       def testOnce(num: Int) = {
         c.io.in.data.poke(num.U)
         c.clock.step(6 * 8 * 15)
       }
+
       for {i <- 1 until 4} yield testOnce(i)
       for {i <- 0 until 4} yield testOnce(0)
       for {i <- 0 until 4} yield testOnce(0xff)
       for {i <- 0 until 4} yield testOnce(0x55)
       for {i <- 0 until 4} yield testOnce(if (i % 2 == 0) 0 else 0xff)
+    }
+  }
+
+  it should "test Receiver" in {
+    test(new Receiver).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      // xList: NumericRange 0 until 7,
+      // yList: Vector(SInt<1>(0), SInt<8>(109), SInt<8>(109), SInt<1>(0), SInt<8>(-109), SInt<8>(-109), SInt<1>(0))
+      val yList = Seq("x7f", "x6d", "x6d", "x7f", "x93", "x93").map(_.U)
+      val yListN = Seq("x7f", "x93", "x93", "x7f", "x6d", "x6d").map(_.U)
+      c.io.in.sync.poke(true.B)
+      c.io.in.data.poke(0x55.U)
+      var cnt = 0
+
+      def testOneBit(bit: Boolean) = {
+        // println(s"cnt: ${cnt}, bit: ${bit}")
+        for (_ <- 0 until 90) {
+          c.io.in.data.poke((if (bit) yList else yListN) (cnt % yList.size))
+          cnt = cnt + 1
+          c.clock.step()
+        }
+      }
+
+      def testOneByte(num: Int) = {
+        for (i <- 0 until 8) {
+          testOneBit(((num >> i) & 0x01) > 0)
+        }
+      }
+
+      for (_ <- 0 until 32) {
+        testOneByte(0x55)
+      }
     }
   }
 }

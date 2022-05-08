@@ -98,8 +98,10 @@ class TestAll
       // yList: Vector(SInt<1>(0), SInt<8>(109), SInt<8>(109), SInt<1>(0), SInt<8>(-109), SInt<8>(-109), SInt<1>(0))
       val yList = Seq("x7f", "x6d", "x6d", "x7f", "x93", "x93").map(_.U)
       val yListN = Seq("x7f", "x93", "x93", "x7f", "x6d", "x6d").map(_.U)
+      c.io.in.sync.poke(false.B)
+      c.io.in.data.poke(0x7f.U)
+      c.clock.step(90 * 8)
       c.io.in.sync.poke(true.B)
-      c.io.in.data.poke(0x55.U)
       var cnt = 0
 
       def testOneBit(bit: Boolean) = {
@@ -117,9 +119,11 @@ class TestAll
         }
       }
 
-      for (_ <- 0 until 32) {
-        testOneByte(0x55)
-      }
+      // for (i <- 0x20 until 0x30) {
+      //   testOneByte(i)
+      // }
+      Seq(0x1, 0x3, 0x7, 0xf).foreach(testOneByte)
+      c.clock.step(90 * 8)
     }
   }
 }

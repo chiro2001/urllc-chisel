@@ -5,7 +5,7 @@ import chisel3._
 import chisel3.util._
 
 object DUCMode {
-  val DUC_120M = 0
+  val DUC_60M = 0
   val DUC_125M = 1
 }
 
@@ -21,15 +21,15 @@ class DataWithSyncWrapper(width: Int = 8) extends Bundle {
   val out = Output(new DataWithSync(width = width))
 }
 
-class DUC(mode: Int = DUC_120M) extends Module {
+class DUC(mode: Int = DUC_60M) extends Module {
   val io = IO(new DataWithSyncWrapper)
   // 一个正弦波周期多少个采样点
   val sampleCountMap = Map(
-    DUC_120M -> 6,
+    DUC_60M -> 6,
     DUC_125M -> 25
   )
   val xMap = Map(
-    DUC_120M -> 2,
+    DUC_60M -> 2,
     DUC_125M -> 8
   )
 
@@ -71,7 +71,7 @@ class DUC(mode: Int = DUC_120M) extends Module {
  * @param mode 频率模式
  * @param cachedLen 缓存大小
  */
-class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends Module {
+class DUCWrapper(mode: Int = DUC_60M, cachedLen: Int = 18) extends Module {
   val io = IO(new DataWithSyncWrapper)
 
   val module = Module(new DUC(mode = mode))

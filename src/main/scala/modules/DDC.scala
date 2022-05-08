@@ -13,7 +13,7 @@ import DDCMode._
 
 class DDC(mode: Int = DDC_60M) extends Module {
   val sampleCountMap = Map(
-    DDC_60M -> 3,
+    DDC_60M -> 6,
     DDC_200M -> 10
   )
   val waveCountMap = Map(
@@ -30,6 +30,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
       val update = Bool()
       val readData = SInt(8.W)
       val ave = SInt(8.W)
+      val mul = SInt(8.W)
     })
   })
 
@@ -41,13 +42,12 @@ class DDC(mode: Int = DDC_60M) extends Module {
     }
   }
 
-  // 对多少个 Sample 进行滤波操作
   val sampleCount = sampleCountMap(mode)
   // 一个 bit 数据被多少个波表示
   val waveCount = waveCountMap(mode)
   val xListRefer = Seq.range(0, sampleCount + 1)
   val yListRefer = VecInit(
-    xListRefer.map(x => (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt.S)
+    xListRefer.map(x => (sin(x * Pi / sampleCount) * 0x7f).toInt.S)
   )
   val yListMul = RegInit(VecInit(for {
     a <- 0 to (sampleCount + 1)
@@ -59,7 +59,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
   io.out.ave := ave
 
   def calc(out: Bool) = {
-    when(ave > 0.S) {
+    when(ave <= 0.S) {
       out := true.B
     }.otherwise {
       out := false.B
@@ -68,6 +68,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
 
   val out = RegInit(false.B)
   val update = RegInit(false.B)
+  val updateShift = RegInit(false.B)
 
   io.out.readData := 0.S
   io.out.update := update
@@ -76,22 +77,31 @@ class DDC(mode: Int = DDC_60M) extends Module {
     (io.out.readData * yListRefer(index).asTypeOf(SInt(8.W)))
       .asTypeOf(SInt(16.W))
 
+  io.out.mul := 0.S
   when(!io.in.sync) {
     yListMul(0.U) := IndexedRefer(0.U)
     cnt := 1.U
   }.otherwise {
     // 15 or 50 波/bit
+    when (cnt === ((waveCount * sampleCount / 2) - 1).U) {
+      when (updateShift) {
+        update := false.B
+      }
+    }
     when(cnt === ((waveCount * sampleCount) - 1).U) {
       cnt := 0.U
-      // 等得 sync_start 脉冲
       calc(out)
-      update := ~update
+      when (updateShift) {
+        update := true.B
+      }
+      updateShift := true.B
     }.otherwise {
       cnt := cnt + 1.U
     }
     decode(io.in.data, io.out.readData)
-    val mul = IndexedRefer(cnt)
-    yListMul(cnt) := mul
+    val mul = IndexedRefer(cnt % sampleCount.U)
+    io.out.mul := mul
+    yListMul(cnt % sampleCount.U) := mul
   }
 
   io.out.data := out

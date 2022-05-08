@@ -4,6 +4,7 @@ import chiseltest._
 import modules.{ADCRead, DACWrite, DDC, DDCMode}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
+import top.Sender
 
 import java.util.Random
 
@@ -68,6 +69,22 @@ class TestAll
       c.io.in.sync.poke(true.B)
       c.io.in.data.poke(0x7f.U)
       c.clock.step(128)
+    }
+  }
+
+  it should "test Sender" in {
+    test(new Sender).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.io.in.sync.poke(true.B)
+      c.clock.setTimeout(0)
+      def testOnce(num: Int) = {
+        c.io.in.data.poke(num.U)
+        c.clock.step(6 * 8 * 15)
+      }
+      for {i <- 1 until 4} yield testOnce(i)
+      for {i <- 0 until 4} yield testOnce(0)
+      for {i <- 0 until 4} yield testOnce(0xff)
+      for {i <- 0 until 4} yield testOnce(0x55)
+      for {i <- 0 until 4} yield testOnce(if (i % 2 == 0) 0 else 0xff)
     }
   }
 }

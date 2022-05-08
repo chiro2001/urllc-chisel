@@ -23,6 +23,7 @@ class DataWithSyncWrapper(width: Int = 8) extends Bundle {
 
 class DUC(mode: Int = DUC_120M) extends Module {
   val io = IO(new DataWithSyncWrapper)
+  // 一个正弦波周期多少个采样点
   val sampleCountMap = Map(
     DUC_120M -> 6,
     DUC_125M -> 25
@@ -34,11 +35,11 @@ class DUC(mode: Int = DUC_120M) extends Module {
 
   val sampleCount = sampleCountMap(mode)
   val xList = Seq.range(0, sampleCount + 1)
-  val yList = VecInit(
-    xList.map(x =>
-      (sin(x * xMap(mode) * Pi / 6) * 0x7f).toInt.S
-    )
+  val yListData = xList.map(x =>
+    (sin(x * xMap(mode) * Pi / sampleCount) * 0x7f).toInt.S
   )
+  val yList = VecInit(yListData)
+  // println(s"xList: $xList, yList: $yListData")
   val data = RegInit(false.B)
 
   def IndexedData(index: UInt) =

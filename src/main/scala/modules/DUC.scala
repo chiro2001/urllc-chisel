@@ -9,33 +9,34 @@ object DUCMode {
   val DUC_125M = 1
 }
 
-object DUCOffset {
-  val Offset120M = 0
-  val Offset125M = 0
-}
-
 import DUCMode._
-import DUCOffset._
 
-class DUCOut extends Bundle {
-  val dac = UInt(8.W)
+class DUCPort extends Bundle {
+  val data = UInt(8.W)
   val sync = Bool()
 }
 
-class DUC(mode: Int = DUC_120M) extends Module {
-  val io = IO(new Bundle {
-    val in = Input(new Bundle {
-      val data = Bool()
-      val sync = Bool()
-    })
-    val out = Output(new DUCOut)
-  })
+class DUCPortWrapper extends Bundle {
+  val in = Input(new DUCPort)
+  val out = Output(new DUCPort)
+}
 
-  val sampleCount = if (mode == DUC_120M) 6 else 25
+class DUC(mode: Int = DUC_120M) extends Module {
+  val io = IO(new DUCPortWrapper)
+  val sampleCountMap = Map(
+    DUC_120M -> 6,
+    DUC_125M -> 25
+  )
+  val xMap = Map(
+    DUC_120M -> 2,
+    DUC_125M -> 8
+  )
+
+  val sampleCount = sampleCountMap(mode)
   val xList = Seq.range(0, sampleCount + 1)
   val yList = VecInit(
     xList.map(x =>
-      (sin(x * (if (mode == DUC_120M) 2 else 8) * Pi / 6) * 0x7f).toInt.S
+      (sin(x * xMap(mode) * Pi / 6) * 0x7f).toInt.S
     )
   )
   val data = RegInit(false.B)
@@ -45,9 +46,9 @@ class DUC(mode: Int = DUC_120M) extends Module {
 
   val run = RegInit(false.B)
   val cnt = RegInit(0.U(8.W))
-  io.out.dac := 0.U + 127.U
+  io.out.data := 0.U + 127.U
   when(io.in.sync) {
-    io.out.dac := IndexedData(0.U)
+    io.out.data := IndexedData(0.U)
     run := true.B
     cnt := 0.U
     data := io.in.data
@@ -59,81 +60,76 @@ class DUC(mode: Int = DUC_120M) extends Module {
     }.otherwise {
       cnt := cnt + 1.U
     }
-    io.out.dac := IndexedData(cnt)
+    io.out.data := IndexedData(cnt)
   }
   io.out.sync := io.in.sync
 }
 
+/**
+ * 在 DUC 外面再加一层缓存延迟
+ * @param mode 频率模式
+ * @param cachedLen 缓存大小
+ */
 class DUCWrapper(mode: Int = DUC_120M, cachedLen: Int = 18) extends RawModule {
-  val io = IO(new Bundle {
-    val in = Input(new Bundle {
-      val data = Bool()
-      val sync = Bool()
-    })
-    val out = Output(new DUCOut)
-    val clock = Input(Clock())
-    val reset = Input(Bool())
-  })
+  val io = IO(new DUCPortWrapper)
 
-  withClockAndReset(io.clock, io.reset) {
-    val module = Module(new DUC(mode = mode))
-    module.io.in <> io.in
-    // module.io.out <> now
+  val module = Module(new DUC(mode = mode))
+  module.io.in <> io.in
 
-    val buffer = Reg(Vec(cachedLen + 1, new DUCOut))
+  val buffer = Reg(Vec(cachedLen + 1, new DUCPort))
 
-    val sIdle :: sCounting :: sOK :: Nil = Enum(3)
-    val state = RegInit(sIdle)
-    val now = module.io.out
-    val cnt = RegInit(0.U(8.W))
-    val current = buffer(cachedLen - 1)
+  val sIdle :: sCounting :: sOK :: Nil = Enum(3)
+  val state = RegInit(sIdle)
+  val now = module.io.out
+  val cnt = RegInit(0.U(8.W))
+  val current = buffer(cachedLen - 1)
 
-    def clearBuffer() = {
-      for (i <- 0 to cachedLen) {
-        buffer(i).dac := 0.U
-        buffer(i).sync := 0.U
-      }
+  def clearBuffer() = {
+    for (i <- 0 to cachedLen) {
+      buffer(i).data := 0.U
+      buffer(i).sync := 0.U
     }
+  }
 
-    def updateBuffer() = {
-      for (i <- 0 until cachedLen) {
-        buffer(i + 1) := buffer(i)
-      }
-      buffer(0) := now
+  def updateBuffer() = {
+    for (i <- 0 until cachedLen) {
+      buffer(i + 1) := buffer(i)
+
     }
+    buffer(0) := now
+  }
 
-    switch(state) {
-      is(sIdle) {
-        when(io.in.sync) {
-          state := sCounting
-          cnt := 0.U
-        }
-        clearBuffer()
+  switch(state) {
+    is(sIdle) {
+      when(io.in.sync) {
+        state := sCounting
+        cnt := 0.U
       }
-      is(sCounting) {
-        when(cnt =/= cachedLen.U) {
-          when(io.in.data =/= 0.U) {
-            state := sOK
-          }.otherwise {
-            cnt := cnt + 1.U
-          }
+      clearBuffer()
+    }
+    is(sCounting) {
+      when(cnt =/= cachedLen.U) {
+        when(io.in.data =/= 0.U) {
+          state := sOK
         }.otherwise {
-          state := Mux(io.in.sync, sOK, sIdle)
+          cnt := cnt + 1.U
         }
-        updateBuffer()
+      }.otherwise {
+        state := Mux(io.in.sync, sOK, sIdle)
       }
-      is(sOK) {
-        when(current.sync === 0.U) {
-          state := sIdle
-        }
-        updateBuffer()
-      }
+      updateBuffer()
     }
+    is(sOK) {
+      when(current.sync === 0.U) {
+        state := sIdle
+      }
+      updateBuffer()
+    }
+  }
 
-    io.out.dac := 0.U
-    io.out.sync := false.B
-    when(state === sOK) {
-      io.out := current
-    }
+  io.out.data := 0.U
+  io.out.sync := false.B
+  when(state === sOK) {
+    io.out := current
   }
 }

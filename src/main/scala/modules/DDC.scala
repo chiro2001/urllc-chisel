@@ -20,6 +20,10 @@ class DDC(mode: Int = DDC_60M) extends Module {
     DDC_60M -> 15,
     DDC_200M -> 50
   )
+  val waveOffset = Map(
+    DDC_60M -> 1,
+    DDC_200M -> 0
+  )
   val io = IO(new Bundle {
     val in = Input(new Bundle {
       val data = UInt(8.W)
@@ -31,6 +35,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
       val readData = SInt(8.W)
       val sum = SInt(32.W)
       val mul = SInt(8.W)
+      val refData = SInt(8.W)
     })
   })
 
@@ -46,9 +51,9 @@ class DDC(mode: Int = DDC_60M) extends Module {
   // 一个 bit 数据被多少个波表示
   val waveCount = waveCountMap(mode)
   val xListRefer = Seq.range(0, sampleCount + 1)
-  val yListRefer = VecInit(
-    xListRefer.map(x => (sin(x * Pi / sampleCount) * 0x7f).toInt.S)
-  )
+  val yListData = xListRefer.map(x => (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt.S)
+  val yListRefer = VecInit(yListData)
+  println(s"yListRefer: $yListData")
 
   val cnt = RegInit(0.U(16.W))
   val sum = RegInit(0.S(32.W))
@@ -56,7 +61,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
   io.out.sum := sum
 
   def calc(out: Bool) = {
-    when(sum <= 0.S) {
+    when(sum > 0.S) {
       out := true.B
     }.otherwise {
       out := false.B
@@ -66,25 +71,24 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val out = RegInit(false.B)
   val update = RegInit(false.B)
   val updateShift = RegInit(false.B)
+  val readDataReg = RegInit(0.S(8.W))
 
-  io.out.readData := 0.S
-  io.out.update := update
+  val refData = yListRefer((cnt + waveOffset(mode).U) % sampleCount.U)
+  io.out.refData := refData
 
-  def IndexedRefer(index: UInt) =
-    (io.out.readData * yListRefer(index).asTypeOf(SInt(8.W)))
-      .asTypeOf(SInt(16.W))
+  def getMul = (readDataReg * refData.asTypeOf(SInt(8.W))).asTypeOf(SInt(16.W))
 
   io.out.mul := 0.S
   when(!io.in.sync) {
     sum := 0.S
     cnt := 1.U
   }.otherwise {
-    decode(io.in.data, io.out.readData)
-    val mul = IndexedRefer(cnt % sampleCount.U)
+    decode(io.in.data, readDataReg)
+    val mul = getMul
     io.out.mul := mul
     // 15 or 50 波/bit
-    when (cnt === ((waveCount * sampleCount / 2) - 1).U) {
-      when (updateShift) {
+    when(cnt === ((waveCount * sampleCount / 2) - 1).U) {
+      when(updateShift) {
         update := false.B
       }
     }
@@ -92,7 +96,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
       cnt := 0.U
       sum := 0.S
       calc(out)
-      when (updateShift) {
+      when(updateShift) {
         update := true.B
       }
       updateShift := true.B
@@ -103,4 +107,6 @@ class DDC(mode: Int = DDC_60M) extends Module {
   }
 
   io.out.data := out
+  io.out.readData := readDataReg
+  io.out.update := update
 }

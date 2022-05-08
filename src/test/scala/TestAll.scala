@@ -1,7 +1,7 @@
 import chisel3._
 import chisel3.stage.PrintFullStackTraceAnnotation
 import chiseltest._
-import modules.{ADCRead, DDC, DDCMode}
+import modules.{ADCRead, DACWrite, DDC, DDCMode}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 
@@ -46,6 +46,20 @@ class TestAll
 
       for {i <- 0 until 1000} yield testOnce(new Random().nextInt(120), index = i)
       for {i <- 0 until 3} yield testOnce(45)
+    }
+  }
+
+  it should "test DACWriter" in {
+    test(new DACWrite(width = 8)).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.io.sync.poke(true.B)
+      def testOnce(num: Int) = {
+        for (i <- 0 until 8) {
+          c.io.bit.poke(if (((num >> i) & 0x01) != 0) true.B else false.B)
+          c.clock.step()
+        }
+        c.io.data.expect(num.U)
+      }
+      for {i <- 0 until 1000} yield testOnce(new Random().nextInt(255))
     }
   }
 

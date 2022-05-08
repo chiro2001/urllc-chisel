@@ -4,7 +4,7 @@ import chiseltest._
 import modules.{ADCRead, DACWrite, DDC, DDCMode}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import top.{Receiver, Sender}
+import top.{Connect, Receiver, Sender}
 
 import java.util.Random
 
@@ -128,6 +128,15 @@ class TestAll
       }
       Seq(0x1, 0x3, 0x7, 0xf).foreach(testOneByte)
       c.clock.step(90 * 8 + 120)
+    }
+  }
+
+  it should "pass connect test" in {
+    test(new Connect).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.io.in.sync.poke(true.B)
+      c.io.in.data.poke(0xaa.U)
+      c.clock.setTimeout(0)
+      c.clock.step(10000)
     }
   }
 }

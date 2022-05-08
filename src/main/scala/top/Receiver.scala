@@ -1,7 +1,6 @@
 package top
 
 import chisel3._
-import chisel3.util._
 import modules.{DACWrite, DDC, DataWithSyncWrapper}
 
 class Receiver(div: Int = 90) extends Module {

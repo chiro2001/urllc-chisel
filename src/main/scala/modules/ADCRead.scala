@@ -13,15 +13,13 @@ class ADCRead(width: Int = 8) extends Module {
   val cnt = RegInit(0.U(log2Ceil(width).W))
   val data = RegInit(0.U(width.W))
   val clkOut = RegInit(false.B)
-  val bit = RegInit(false.B)
   io.clkOut := clkOut
-  io.bit := bit
-  when(io.sync) {
+  when(!io.sync) {
     io.bit := false.B
     io.clkOut := false.B
     cnt := 0.U
   }.otherwise {
-    when (cnt === (width / 2).U) {
+    when (cnt === (width / 2 - 1).U) {
       clkOut := true.B
     }
     when(cnt === (width - 2).U) {
@@ -33,5 +31,6 @@ class ADCRead(width: Int = 8) extends Module {
     }.otherwise {
       cnt := cnt + 1.U
     }
+    io.bit := (data >> cnt)(0)
   }
 }

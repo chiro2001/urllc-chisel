@@ -106,7 +106,7 @@ class TestAll
 
       def testOneBit(bit: Boolean) = {
         for (_ <- 0 until 90) {
-          c.io.in.data.poke((if (bit) yList else yListN) (cnt % yList.size))
+          c.io.in.data.poke((if (bit) yListN else yList) (cnt % yList.size))
           cnt = cnt + 1
           c.clock.step()
         }

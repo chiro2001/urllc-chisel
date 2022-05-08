@@ -29,7 +29,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
       val data = Bool()
       val update = Bool()
       val readData = SInt(8.W)
-      val ave = SInt(8.W)
+      val sum = SInt(64.W)
       val mul = SInt(8.W)
     })
   })
@@ -49,17 +49,14 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val yListRefer = VecInit(
     xListRefer.map(x => (sin(x * Pi / sampleCount) * 0x7f).toInt.S)
   )
-  val yListMul = RegInit(VecInit(for {
-    a <- 0 to (sampleCount + 1)
-  } yield 0.S(16.W)))
 
   val cnt = RegInit(0.U(16.W))
-  val ave = yListMul.reduce(_ + _)
+  val sum = RegInit(0.S(64.W))
 
-  io.out.ave := ave
+  io.out.sum := sum
 
   def calc(out: Bool) = {
-    when(ave <= 0.S) {
+    when(sum <= 0.S) {
       out := true.B
     }.otherwise {
       out := false.B
@@ -79,9 +76,12 @@ class DDC(mode: Int = DDC_60M) extends Module {
 
   io.out.mul := 0.S
   when(!io.in.sync) {
-    yListMul(0.U) := IndexedRefer(0.U)
+    sum := 0.S
     cnt := 1.U
   }.otherwise {
+    decode(io.in.data, io.out.readData)
+    val mul = IndexedRefer(cnt % sampleCount.U)
+    io.out.mul := mul
     // 15 or 50 波/bit
     when (cnt === ((waveCount * sampleCount / 2) - 1).U) {
       when (updateShift) {
@@ -90,6 +90,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
     }
     when(cnt === ((waveCount * sampleCount) - 1).U) {
       cnt := 0.U
+      sum := 0.S
       calc(out)
       when (updateShift) {
         update := true.B
@@ -97,11 +98,8 @@ class DDC(mode: Int = DDC_60M) extends Module {
       updateShift := true.B
     }.otherwise {
       cnt := cnt + 1.U
+      sum := sum + mul
     }
-    decode(io.in.data, io.out.readData)
-    val mul = IndexedRefer(cnt % sampleCount.U)
-    io.out.mul := mul
-    yListMul(cnt % sampleCount.U) := mul
   }
 
   io.out.data := out

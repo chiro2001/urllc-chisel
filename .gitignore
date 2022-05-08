@@ -344,3 +344,8 @@ hs_err_pid*
 
 ## Mis tab
 generated/
+
+*.jou
+*.log
+
+vivado-project/

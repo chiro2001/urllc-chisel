@@ -1,7 +1,4 @@
-import modules.DDCMode._
-import modules.DUCMode._
 import chisel3.stage.ChiselGeneratorAnnotation
-import modules.{DDC, DUCWrapper}
 
 object Generate extends App {
   Targets.targets.foreach(item => {

@@ -94,6 +94,7 @@ class TestAll
 
   it should "test Receiver" in {
     test(new Receiver).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.clock.setTimeout(0)
       // xList: NumericRange 0 until 7,
       // yList: Vector(SInt<1>(0), SInt<8>(109), SInt<8>(109), SInt<1>(0), SInt<8>(-109), SInt<8>(-109), SInt<1>(0))
       val yList = Seq("x7f", "x6d", "x6d", "x7f", "x93", "x93").map(_.U)
@@ -118,8 +119,10 @@ class TestAll
         for (i <- 0 until 8) {
           testOneBit(((num >> i) & 0x01) > 0)
         }
-        if (lastTestByte >= 0)
+        if (lastTestByte >= 0) {
           c.io.out.data.expect(lastTestByte.U)
+          // println(s"expect: ${lastTestByte}, now: ${c.io.out.data.peekInt()}")
+        }
         lastTestByte = num
       }
 
@@ -127,7 +130,8 @@ class TestAll
         testOneByte(i)
       }
       Seq(0x1, 0x3, 0x7, 0xf).foreach(testOneByte)
-      c.clock.step(90 * 8 + 120)
+      c.io.in.data.poke(0x7f.U)
+      c.clock.step(90 * 8 * 3)
     }
   }
 

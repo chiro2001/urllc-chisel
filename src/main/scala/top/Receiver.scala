@@ -3,16 +3,15 @@ package top
 import chisel3._
 import modules.{DACWrite, DDC, DataWithSyncWrapper}
 
-class Receiver(useEnergyTrigger: Boolean = false) extends Module {
+class Receiver(useEnergyTrigger: Boolean = true) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))
   // 暂时给两个波的时间
-  val dataBuffer = VecInit(Seq.fill(12)(0.U(8.W)))
+  val dataBuffer = RegInit(VecInit(Seq.fill(12)(0.U(8.W))))
   val dataBufferIndex = RegInit(0.U(4.W))
   dataBufferIndex := Mux(dataBufferIndex === 11.U, 0.U, dataBufferIndex + 1.U)
   val dataBufferNow = dataBuffer(dataBufferIndex)
-  dataBufferNow := io.in.data
 
   val started = RegInit(false.B)
 
@@ -33,16 +32,19 @@ class Receiver(useEnergyTrigger: Boolean = false) extends Module {
   val syncReg = RegNext(io.in.sync)
   val energyNow = Wire(UInt(8.W))
   getStandardValue(io.in.data, energyNow)
+
+  when(started) {
+    dataBufferNow := RegNext(energyNow)
+  }
+
   withClockAndReset(ddc.io.out.update.asClock, reset) {
     val dacWrite = Module(new DACWrite)
     dacWrite.io.bit := ddc.io.out.data
-    // dacWrite.io.sync := io.in.sync
-    // dacWrite.io.sync := syncReg
     dacWrite.io.sync := started
     io.out.data := dacWrite.io.data
   }
 
-  val threshold = (0.2 * 0x7f).toInt.U
+  val threshold = (0.05 * 0x7f).toInt.U
 
   def resetStart(): Unit = {
     when(energy < threshold) {

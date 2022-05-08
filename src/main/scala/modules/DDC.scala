@@ -81,7 +81,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
     cnt := 1.U
   }.otherwise {
     // 15 or 50 波/bit
-    when(cnt === (waveCount - 1).U) {
+    when(cnt === ((waveCount * sampleCount) - 1).U) {
       cnt := 0.U
       // 等得 sync_start 脉冲
       calc(out)

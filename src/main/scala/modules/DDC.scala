@@ -9,14 +9,17 @@ object DDCMode {
   val DDC_200M = 1
 }
 
-object DDCOffset {
-  val Offset60M = 0
-  val Offset200M = 0
-}
+import DDCMode._
 
-import modules.DDCMode._
-
-class DDC(mode: Int = DDC_200M) extends Module {
+class DDC(mode: Int = DDC_60M) extends Module {
+  val sampleCountMap = Map(
+    DDC_60M -> 3,
+    DDC_200M -> 10
+  )
+  val waveCountMap = Map(
+    DDC_60M -> 15,
+    DDC_200M -> 50
+  )
   val io = IO(new Bundle {
     val in = Input(new Bundle {
       val data = UInt(8.W)
@@ -38,8 +41,10 @@ class DDC(mode: Int = DDC_200M) extends Module {
     }
   }
 
-  val sampleCount = if (mode == DDC_60M) 3 else 10
-  val waveCount = if (mode == DDC_60M) 15 else 50
+  // 对多少个 Sample 进行滤波操作
+  val sampleCount = sampleCountMap(mode)
+  // 一个 bit 数据被多少个波表示
+  val waveCount = waveCountMap(mode)
   val xListRefer = Seq.range(0, sampleCount + 1)
   val yListRefer = VecInit(
     xListRefer.map(x => (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt.S)
@@ -49,7 +54,6 @@ class DDC(mode: Int = DDC_200M) extends Module {
   } yield 0.S(16.W)))
 
   val cnt = RegInit(0.U(16.W))
-  // val run = RegInit(false.B)
   val ave = yListMul.reduce(_ + _)
 
   io.out.ave := ave
@@ -65,7 +69,6 @@ class DDC(mode: Int = DDC_200M) extends Module {
   val out = RegInit(false.B)
   val update = RegInit(false.B)
 
-  // io.out.value := 0.U
   io.out.readData := 0.S
   io.out.update := update
 
@@ -76,14 +79,11 @@ class DDC(mode: Int = DDC_200M) extends Module {
   when(io.in.sync) {
     yListMul(0.U) := IndexedRefer(0.U)
     cnt := 1.U
-    // run := true.B
   }.otherwise {
-    // when (run) {
     // 15 or 50 波/bit
     when(cnt === (waveCount - 1).U) {
       cnt := 0.U
       // 等得 sync_start 脉冲
-      // run := io.in.sync
       calc(out)
       update := ~update
     }.otherwise {
@@ -92,8 +92,6 @@ class DDC(mode: Int = DDC_200M) extends Module {
     decode(io.in.data, io.out.readData)
     val mul = IndexedRefer(cnt)
     yListMul(cnt) := mul
-    // io.out.value := mul.asTypeOf(UInt(16.W))
-    // }
   }
 
   io.out.data := out

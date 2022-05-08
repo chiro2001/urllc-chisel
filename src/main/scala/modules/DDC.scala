@@ -29,7 +29,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
       val data = Bool()
       val update = Bool()
       val readData = SInt(8.W)
-      val sum = SInt(64.W)
+      val sum = SInt(32.W)
       val mul = SInt(8.W)
     })
   })
@@ -51,7 +51,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
   )
 
   val cnt = RegInit(0.U(16.W))
-  val sum = RegInit(0.S(64.W))
+  val sum = RegInit(0.S(32.W))
 
   io.out.sum := sum
 

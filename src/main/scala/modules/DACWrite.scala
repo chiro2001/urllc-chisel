@@ -3,7 +3,6 @@ package modules
 import chisel3._
 import chisel3.util.log2Ceil
 
-//noinspection DuplicatedCode
 class DACWrite(width: Int = 8) extends Module {
   val io = IO(new Bundle() {
     val sync = Input(Bool())

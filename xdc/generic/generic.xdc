@@ -1,0 +1,15 @@
+set_property PACKAGE_PIN K17 [get_ports clock]
+set_property PACKAGE_PIN M19 [get_ports resetN]
+set_property IOSTANDARD LVCMOS33 [get_ports clock]
+set_property IOSTANDARD LVCMOS33 [get_ports resetN]
+set_property SLEW FAST [get_ports {clock}]
+
+set_property PACKAGE_PIN U15 [get_ports {sender_sync_in}]
+set_property IOSTANDARD LVCMOS33 [get_ports {sender_sync_in}]
+set_property PACKAGE_PIN P15 [get_ports {sender_sync_out}]
+set_property IOSTANDARD LVCMOS33 [get_ports {sender_sync_out}]
+
+set_property PACKAGE_PIN U14 [get_ports {receiver_sync_in}]
+set_property IOSTANDARD LVCMOS33 [get_ports {receiver_sync_in}]
+set_property PACKAGE_PIN N17 [get_ports {receiver_sync_out}]
+set_property IOSTANDARD LVCMOS33 [get_ports {receiver_sync_out}]

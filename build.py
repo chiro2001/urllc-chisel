@@ -1,10 +1,18 @@
 import os
 import argparse
+from multiprocessing import Process
 from shutil import copyfile
 
 
-def build_one(module: str):
-    pass
+def build_one(module: str, root_dir: str, create_only: bool = True):
+    executable = 'create_project' if create_only else 'run_project'
+    os.chdir(root_dir)
+    if not os.path.exists(f"tmp/{module}"):
+        os.mkdir(f"tmp/{module}")
+    os.chdir(f"tmp/{module}")
+    [copyfile(os.path.join("../../tcl", filename), filename)
+     for filename in os.listdir("../../tcl") if filename.endswith(".tcl")]
+    os.system(f"..\\..\\tcl\\{executable} {module}")
 
 
 available_modules = [
@@ -15,22 +23,20 @@ available_modules = [
 def main(*modules, create_only: bool = True):
     if not os.path.exists("tmp"):
         os.mkdir("tmp")
-    executable = 'create_project' if create_only else 'run_project'
     root_dir = os.getcwd()
     modules = modules if len(modules) > 0 else available_modules
     modules = [module for module in modules if module in available_modules]
     try:
-        for module in modules:
-            os.chdir(root_dir)
-            if not os.path.exists(f"tmp/{module}"):
-                os.mkdir(f"tmp/{module}")
-            os.chdir(f"tmp/{module}")
-            [copyfile(os.path.join("../../tcl", filename), filename) for filename in os.listdir("../../tcl") if filename.endswith(".tcl")]
-            os.system(f"..\\..\\tcl\\{executable} {module}")
+        # build_one(module, root_dir, create_only=create_only)
+        processes = [Process(target=build_one, args=(module, root_dir), kwargs={
+                             "create_only": create_only}) for module in modules]
+        [process.start() for process in processes]
+        [process.join() for process in processes]
     except Exception as e:
         raise e
     finally:
-        [os.remove(filename) for filename in os.listdir(".") if filename.endswith(".tcls") or 'backup' in filename]
+        [os.remove(filename) for filename in os.listdir(".")
+         if filename.endswith(".tcls") or 'backup' in filename]
         os.chdir(root_dir)
 
 

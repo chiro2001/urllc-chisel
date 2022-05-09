@@ -11,26 +11,25 @@ class Sender(div: Int = 90) extends Module {
   val cnt = RegInit(0.U(log2Ceil(div + 1).W))
   val jump = RegInit(0.U(8.W))
   val jumpFirstByte = RegInit(false.B)
-  val cntStarted = RegInit(false.B)
+  val started = RegInit(false.B)
   when(io.in.sync) {
-    cntStarted := true.B
+    started := true.B
   }
   //noinspection DuplicatedCode
   when(cnt === (div - 1).U) {
     cnt := 0.U
-    when(!jumpFirstByte) {
+    when(!jumpFirstByte && started) {
       jump := jump + 1.U
       when(jump === 7.U) {
         jumpFirstByte := true.B
       }
     }
   }.otherwise {
-    when(cntStarted) {
-      cnt := cnt + 1.U
-    }
+    cnt := cnt + 1.U
   }
   slowerClock := cnt >= (div / 2).U
-  when(slowerClock || io.in.sync) {
+  val slowerClockReg = RegNext(slowerClock)
+  when((!slowerClock && slowerClockReg) || (io.in.sync && cnt >= (div / 2).U)) {
     slowerReset := false.B
   }
   val duc = Module(new DUC)

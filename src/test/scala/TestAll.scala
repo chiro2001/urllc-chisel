@@ -170,7 +170,7 @@ class TestAll
       c.io.in.data.poke(0x07)
       c.clock.step(720)
       var lastValues = List[Int]()
-      for (i <- 0 until 100) {
+      for (i <- 0 until 10) {
         val testNow = (0xff * (math.sin(i.toDouble) + 1) / 2).toInt
         c.io.in.data.poke(testNow.U)
         c.clock.step(90 * 8)

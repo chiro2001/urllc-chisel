@@ -18,6 +18,6 @@ class ConnectWrapper extends RawModule {
   receiver_da := connect.out.data
   receiver_sync_out := connect.out.sync
   withClockAndReset(clock, !resetN) {
-    connect <> Module(new Connect()).io
+    connect <> Module(new Connect).io
   }
 }

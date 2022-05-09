@@ -1,7 +1,7 @@
 package wrapper
 
 import chisel3._
-import top.Connect
+import top.{Connect, Receiver}
 
 //noinspection DuplicatedCode
 class ReceiverWrapper extends RawModule {
@@ -13,7 +13,7 @@ class ReceiverWrapper extends RawModule {
   val receiver_sync_out = IO(Output(Bool()))
 
   withClockAndReset(clock, !resetN) {
-    val receiverPort = Module(new Connect()).io
+    val receiverPort = Module(new Receiver).io
     receiverPort.in.data := receiver_ad
     receiverPort.in.sync := receiver_sync_in
     receiver_da := receiverPort.out.data

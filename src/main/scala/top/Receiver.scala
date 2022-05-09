@@ -41,17 +41,19 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
 
   val cnt = RegInit(0.U(log2Ceil(div + 1).W))
   val slowerClock = Wire(Bool())
+  val slowerClockReg = RegNext(slowerClock)
   val cntStarted = RegInit(false.B)
   Utils.counter(cnt, div)
   slowerClock := cnt >= (div / 2).U
   val slowerReset = RegInit(true.B)
-  when(slowerClock) {
+  //noinspection DuplicatedCode
+  when((!slowerClock && slowerClockReg) || (io.in.sync && cnt >= (div / 2).U)) {
     slowerReset := false.B
   }
 
   val useReset = slowerReset && !started
 
-  withClockAndReset(ddc.io.out.update.asClock, useReset) {
+  withClockAndReset(Mux(started, ddc.io.out.update, slowerClock).asClock, useReset) {
     val dacWrite = Module(new DACWrite)
     dacWrite.io.bit := ddc.io.out.data
     dacWrite.io.sync := started

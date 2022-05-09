@@ -11,7 +11,7 @@ module ConnectTestbench();
 
     initial begin
 		#6 reset_n <= 1;
-		sender_sync_in <= 1;
+		#(720 + 67) sender_sync_in <= 1;
     end
 
     ConnectWrapper

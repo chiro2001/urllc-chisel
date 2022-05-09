@@ -7,6 +7,7 @@ import modules.{ADCRead, DUC, DataWithSyncWrapper}
 class Sender(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val slowerClock = Wire(Bool())
+  val slowerReset = RegInit(true.B)
   val cnt = RegInit(0.U(log2Ceil(div + 1).W))
   val jump = RegInit(0.U(8.W))
   val jumpFirstByte = RegInit(false.B)
@@ -29,8 +30,11 @@ class Sender(div: Int = 90) extends Module {
     }
   }
   slowerClock := cnt >= (div / 2).U
+  when(slowerClock) {
+    slowerReset := false.B
+  }
   val duc = Module(new DUC)
-  withClockAndReset(slowerClock.asClock, reset) {
+  withClockAndReset(slowerClock.asClock, slowerReset) {
     val adcRead = Module(new ADCRead)
     adcRead.io.in := io.in
     duc.io.in.data := Cat(0.U(7.W), adcRead.io.bit)

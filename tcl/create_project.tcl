@@ -14,8 +14,10 @@ set_property top ${top}Wrapper [current_fileset]
 set_property top_file {$top_file} [current_fileset]
 update_compile_order -fileset sources_1
 
-# import_files -fileset constrs_1 -force -norecurse [ glob ../xdc/generic/*.xdc ]
-# import_files -fileset constrs_1 -force -norecurse ../xdc/${top}.xdc
+# can auto select the first module in sim file
+add_files -fileset sim_1 $top_sim_file
+update_compile_order -fileset sim_1
+
 add_files -fileset constrs_1 [ glob ../xdc/generic/*.xdc ]
 add_files -fileset constrs_1 ../xdc/${top}.xdc
 

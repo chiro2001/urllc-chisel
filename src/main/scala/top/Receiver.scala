@@ -37,7 +37,11 @@ class Receiver(useEnergyTrigger: Boolean = true) extends Module {
     dataBufferNow := RegNext(energyNow)
   }
 
-  withClockAndReset(ddc.io.out.update.asClock, reset) {
+  val slowerReset = RegInit(true.B)
+  when(ddc.io.out.update) {
+    slowerReset := false.B
+  }
+  withClockAndReset(ddc.io.out.update.asClock, slowerReset) {
     val dacWrite = Module(new DACWrite)
     dacWrite.io.bit := ddc.io.out.data
     dacWrite.io.sync := started

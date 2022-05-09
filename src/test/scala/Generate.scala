@@ -1,12 +1,16 @@
+import chisel3.RawModule
 import chisel3.stage.ChiselGeneratorAnnotation
 
 object Generate extends App {
-  Targets.targets.foreach(item => {
-    println(s"generating: ${item._1}")
-    (new chisel3.stage.ChiselStage).execute(Array("-td", s"generated/inner/${item._1}"), Seq(ChiselGeneratorAnnotation(item._2)))
-  })
-  Targets.targetWrappers.foreach(item => {
-    println(s"generating wrapper: ${item._1}")
-    (new chisel3.stage.ChiselStage).execute(Array("-td", s"generated/${item._1}"), Seq(ChiselGeneratorAnnotation(item._2)))
-  })
+  def generateTargetItem[T <: RawModule](item: (String, () => T), path: String = "") = {
+    println(s"generating $path: ${item._1}")
+    (new chisel3.stage.ChiselStage).execute(Array("-td", s"generated${if (path.isEmpty) "" else "/" + path}/${item._1}"), Seq(ChiselGeneratorAnnotation(item._2)))
+  }
+
+  def generateTarget[T <: RawModule](targets: Map[String, () => T], path: String = "") = {
+    targets.foreach(item => generateTargetItem(item, path = path))
+  }
+
+  generateTarget(Targets.targets, path = "inner")
+  generateTarget(Targets.targetWrappers)
 }

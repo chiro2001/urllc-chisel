@@ -3,6 +3,7 @@ package wrapper
 import chisel3._
 import top.Connect
 
+//noinspection DuplicatedCode
 class SenderWrapper extends RawModule {
   val clock = IO(Input(Clock()))
   val resetN = IO(Input(Bool()))

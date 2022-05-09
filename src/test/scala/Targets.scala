@@ -2,7 +2,7 @@ import modules.DDCMode.DDC_60M
 import modules.DUCMode.DUC_60M
 import modules.{DDC, DUC}
 import top.{Connect, Receiver, Sender}
-import wrapper.{ConnectWrapper, SenderWrapper}
+import wrapper.{ConnectWrapper, ReceiverWrapper, SenderWrapper}
 
 object Targets {
   val targets = Map(
@@ -15,5 +15,6 @@ object Targets {
   val targetWrappers = Map(
     "Connect" -> (() => new ConnectWrapper),
     "Sender" -> (() => new SenderWrapper),
+    "Receiver" -> (() => new ReceiverWrapper),
   )
 }

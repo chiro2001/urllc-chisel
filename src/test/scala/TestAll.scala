@@ -163,7 +163,7 @@ class TestAll
       c.clock.setTimeout(0)
       c.io.in.sync.poke(false.B)
       c.io.in.data.poke(0x07)
-      c.clock.step(720)
+      c.clock.step(720 + 129)
       c.io.in.sync.poke(true.B)
       c.io.in.data.poke(0x7f)
       c.clock.step(720)

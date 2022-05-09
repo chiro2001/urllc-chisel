@@ -13,6 +13,8 @@ available_modules = [
 
 
 def main(*modules, create_only: bool = True):
+    if not os.path.exists("tmp"):
+        os.mkdir("tmp")
     executable = 'create_project' if create_only else 'run_project'
     root_dir = os.getcwd()
     modules = modules if len(modules) > 0 else available_modules

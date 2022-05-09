@@ -49,8 +49,7 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
     slowerReset := false.B
   }
 
-  // val useReset = slowerReset && !started
-  val useReset = reset
+  val useReset = slowerReset && !started
 
   withClockAndReset(ddc.io.out.update.asClock, useReset) {
     val dacWrite = Module(new DACWrite)

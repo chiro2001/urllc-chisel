@@ -30,7 +30,7 @@ class Sender(div: Int = 90) extends Module {
     }
   }
   slowerClock := cnt >= (div / 2).U
-  when(slowerClock) {
+  when(slowerClock || io.in.sync) {
     slowerReset := false.B
   }
   val duc = Module(new DUC)

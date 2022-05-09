@@ -169,16 +169,16 @@ class TestAll
       c.clock.step(720)
       c.io.in.data.poke(0x07)
       c.clock.step(720)
-      var lastTwoValue = List[Int]()
+      var lastValues = List[Int]()
       for (i <- 0 until 100) {
         val testNow = (0xff * (math.sin(i.toDouble) + 1) / 2).toInt
         c.io.in.data.poke(testNow.U)
         c.clock.step(90 * 8)
-        lastTwoValue = List(testNow) ++ lastTwoValue
+        lastValues = List(testNow) ++ lastValues
         val testLast = c.io.out.data.peekInt()
-        println(s"input: $testNow, output: $testLast, lastTwoValue: $lastTwoValue, head: ${lastTwoValue.head}")
-        if (lastTwoValue.size > 2) {
-          c.io.out.data.expect(lastTwoValue(2))
+        println(s"input: $testNow, output: $testLast, lastValues: $lastValues, head: ${lastValues.head}")
+        if (lastValues.size > 2) {
+          c.io.out.data.expect(lastValues(2))
         }
       }
     }

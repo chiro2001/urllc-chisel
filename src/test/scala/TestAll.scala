@@ -176,7 +176,7 @@ class TestAll
         c.clock.step(90 * 8)
         lastTwoValue = List(testNow) ++ lastTwoValue
         val testLast = c.io.out.data.peekInt()
-        // println(s"input: ${testNow}, output: ${testLast}, lastTwoValue: ${lastTwoValue}, head: ${lastTwoValue.head}")
+        println(s"input: $testNow, output: $testLast, lastTwoValue: $lastTwoValue, head: ${lastTwoValue.head}")
         if (lastTwoValue.size > 2) {
           c.io.out.data.expect(lastTwoValue(2))
         }

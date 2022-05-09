@@ -3,6 +3,7 @@ package modules
 import scala.math._
 import chisel3._
 import chisel3.util._
+import utils.Utils
 
 object DUCMode {
   val DUC_60M = 0
@@ -51,12 +52,7 @@ class DUC(mode: Int = DUC_60M) extends Module {
     io.out.data := 0x7f.U
     cnt := 0.U
   }.otherwise {
-    //noinspection DuplicatedCode
-    when(cnt === (sampleCount - 1).U) {
-      cnt := 0.U
-    }.otherwise {
-      cnt := cnt + 1.U
-    }
+    Utils.counter(cnt, sampleCount)
     io.out.data := IndexedData(cnt % sampleCount.U)
   }
   io.out.sync := io.in.sync

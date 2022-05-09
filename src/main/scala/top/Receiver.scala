@@ -1,9 +1,11 @@
 package top
 
 import chisel3._
+import chisel3.util.log2Ceil
 import modules.{DACWrite, DDC, DataWithSyncWrapper}
+import utils.Utils
 
-class Receiver(useEnergyTrigger: Boolean = true) extends Module {
+class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))
@@ -37,11 +39,20 @@ class Receiver(useEnergyTrigger: Boolean = true) extends Module {
     dataBufferNow := RegNext(energyNow)
   }
 
+  val cnt = RegInit(0.U(log2Ceil(div + 1).W))
+  val slowerClock = Wire(Bool())
+  val cntStarted = RegInit(false.B)
+  Utils.counter(cnt, div)
+  slowerClock := cnt >= (div / 2).U
   val slowerReset = RegInit(true.B)
-  when(ddc.io.out.update) {
+  when(slowerClock) {
     slowerReset := false.B
   }
-  withClockAndReset(ddc.io.out.update.asClock, slowerReset) {
+
+  // val useReset = slowerReset && !started
+  val useReset = reset
+
+  withClockAndReset(ddc.io.out.update.asClock, useReset) {
     val dacWrite = Module(new DACWrite)
     dacWrite.io.bit := ddc.io.out.data
     dacWrite.io.sync := started

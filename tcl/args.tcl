@@ -5,10 +5,10 @@ if {$argc > 0} {
   set top Sender
 }
 
-set top_file ../generated/$top/${top}Wrapper.v
-set top_sim_file ../sim/${top}Testbench.v
+set top_file ../../generated/$top/${top}Wrapper.v
+set top_sim_file ../../sim/${top}Testbench.v
 
-set work_dir ../vivado-project
+set work_dir ../../vivado-project
 cd $work_dir
 set project_name $top
 

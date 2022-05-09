@@ -1,8 +1,8 @@
 package wrapper
 
 import chisel3._
-import modules.DataWithSyncWrapper
 import top.Connect
+import utils.DataWithSyncWrapper
 
 class ConnectWrapper extends RawModule {
   val clock = IO(Input(Clock()))

@@ -2,8 +2,8 @@ package top
 
 import chisel3._
 import chisel3.util.log2Ceil
-import modules.{DACWrite, DDC, DataWithSyncWrapper}
-import utils.Utils
+import modules.{DACWrite, DDC}
+import utils.{DataWithSyncWrapper, Utils}
 
 class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   val io = IO(new DataWithSyncWrapper)

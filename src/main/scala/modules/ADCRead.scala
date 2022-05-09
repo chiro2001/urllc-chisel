@@ -2,6 +2,7 @@ package modules
 
 import chisel3._
 import chisel3.util._
+import utils.DataWithSync
 
 class ADCRead(width: Int = 8) extends Module {
   val io = IO(new Bundle() {

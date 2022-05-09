@@ -3,6 +3,7 @@ set_property PACKAGE_PIN M19 [get_ports resetN]
 set_property IOSTANDARD LVCMOS33 [get_ports clock]
 set_property IOSTANDARD LVCMOS33 [get_ports resetN]
 set_property SLEW FAST [get_ports {clock}]
+create_clock -period 20 [get_ports clock]
 
 set_property PACKAGE_PIN U15 [get_ports {sender_sync_in}]
 set_property IOSTANDARD LVCMOS33 [get_ports {sender_sync_in}]

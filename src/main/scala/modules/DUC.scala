@@ -1,29 +1,19 @@
 package modules
 
-import scala.math._
 import chisel3._
-import chisel3.util._
-import utils.Utils
+import utils.{DataWithSyncWrapper, Utils}
+
+import scala.math._
 
 object DUCMode {
   val DUC_60M = 0
   val DUC_125M = 1
 }
 
-import DUCMode._
-
-class DataWithSync(width: Int = 8) extends Bundle {
-  val data = UInt(width.W)
-  val sync = Bool()
-}
-
-class DataWithSyncWrapper(width: Int = 8) extends Bundle {
-  val in = Input(new DataWithSync(width = width))
-  val out = Output(new DataWithSync(width = width))
-}
+import modules.DUCMode._
 
 class DUC(mode: Int = DUC_60M) extends Module {
-  val io = IO(new DataWithSyncWrapper)
+  val io = IO(new DataWithSyncWrapper(widthIn = 1))
   // 一个正弦波周期多少个采样点
   val sampleCountMap = Map(
     DUC_60M -> 6,
@@ -41,7 +31,6 @@ class DUC(mode: Int = DUC_60M) extends Module {
   )
   val yList = VecInit(yListData)
   println(s"xList: $xList, yList: $yListData")
-  // val data = RegInit(false.B)
   val data = io.in.data(0)
 
   def IndexedData(index: UInt) =

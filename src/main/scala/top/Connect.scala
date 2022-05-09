@@ -1,7 +1,7 @@
 package top
 
 import chisel3._
-import modules.DataWithSyncWrapper
+import utils.DataWithSyncWrapper
 
 class Connect extends Module {
   val sender = Module(new Sender)

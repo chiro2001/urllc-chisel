@@ -2,7 +2,8 @@ package top
 
 import chisel3._
 import chisel3.util._
-import modules.{ADCRead, DUC, DataWithSyncWrapper}
+import modules.{ADCRead, DUC}
+import utils.DataWithSyncWrapper
 
 class Sender(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
@@ -29,6 +30,7 @@ class Sender(div: Int = 90) extends Module {
   }
   slowerClock := cnt >= (div / 2).U
   val slowerClockReg = RegNext(slowerClock)
+  //noinspection DuplicatedCode
   when((!slowerClock && slowerClockReg) || (io.in.sync && cnt >= (div / 2).U)) {
     slowerReset := false.B
   }
@@ -36,7 +38,7 @@ class Sender(div: Int = 90) extends Module {
   withClockAndReset(slowerClock.asClock, slowerReset) {
     val adcRead = Module(new ADCRead)
     adcRead.io.in := io.in
-    duc.io.in.data := Cat(0.U(7.W), adcRead.io.bit)
+    duc.io.in.data := adcRead.io.bit
   }
   duc.io.in.sync := io.in.sync && jumpFirstByte
   io.out := duc.io.out

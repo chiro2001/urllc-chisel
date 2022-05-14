@@ -1,6 +1,7 @@
 package modules
 
 import chisel3._
+import chisel3.util.log2Ceil
 
 import scala.math._
 
@@ -55,6 +56,8 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val yListRefer = VecInit(yListData)
   println(s"yListRefer: $yListData")
 
+  val started = RegInit(false.B)
+
   val cnt = RegInit(0.U(16.W))
   val sum = RegInit(0.S(32.W))
 
@@ -91,43 +94,55 @@ class DDC(mode: Int = DDC_60M) extends Module {
       update := true.B
     }
   }
-  val lastSync = RegNext(io.in.sync)
-  when(!io.in.sync && lastSync) {
-    update := false.B
-    updateShift := false.B
-    cnt := 1.U
-  }
 
-  when(!io.in.sync) {
+  when(!started) {
     sum := 0.S
     cnt := 1.U
-    out := false.B
-    // update := false.B
-    // updateShift := false.B
     readDataReg := 0.S
   }.otherwise {
     decode(io.in.data, readDataReg)
     val mul = getMul
     io.out.mul := mul
     // 15 or 50 波/bit
-    // when(cnt === ((waveCount * sampleCount / 2) - 1).U) {
-    //   when(updateShift) {
-    //     update := false.B
-    //   }
-    // }
     when(cnt === ((waveCount * sampleCount) - 1).U) {
-      // cnt := 0.U
       sum := 0.S
       calc(out)
-      // when(updateShift) {
-      //   update := true.B
-      // }
       when(io.in.sync) {
         updateShift := true.B
       }
     }.otherwise {
-      // cnt := cnt + 1.U
       sum := sum + mul
+    }
+  }
+
+  val lastSync = RegNext(io.in.sync)
+  val exiting = RegInit(false.B)
+  val exitTime = 811
+  val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
+
+  def stop() = {
+    update := false.B
+    updateShift := false.B
+    out := false.B
+    cnt := 1.U
+    exiting := false.B
+    started := false.B
+  }
+
+  when(!io.in.sync && lastSync) {
+    exiting := true.B
+  }
+  when(io.in.sync && !lastSync) {
+    started := true.B
+  }
+  when(io.in.sync) {
+    exiting := false.B
+  }
+  when(exiting) {
+    when(exitCnt === exitTime.U) {
+      stop()
+    }.otherwise {
+      exitCnt := exitCnt + 1.U
     }
   }
 

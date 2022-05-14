@@ -62,20 +62,27 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
 
   val threshold = (0.05 * 0x7f).toInt.U
 
-  def resetStart(): Unit = {
-    when(energy < threshold) {
-      started := false.B
-    }
+  val lastStarted = RegNext(started)
+  when(started && !lastStarted) {
+    cnt := 0.U
   }
 
-  val lastStarted = RegNext(started)
-  when (started && !lastStarted) {
-    cnt := 0.U
+  val exiting = RegInit(false.B)
+
+  val launched = RegInit(false.B)
+  def resetStart(): Unit = {
+    when(energy < threshold) {
+      when (launched && started) {
+        exiting := true.B
+      }
+    }
   }
 
   if (useEnergyTrigger) {
     when(energyNow > threshold) {
       started := true.B
+      launched := true.B
+      exiting := false.B
     }.otherwise {
       resetStart()
     }
@@ -87,7 +94,22 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
     }
   }
 
-  ddc.io.in := io.in
+  val lastSync = RegNext(io.in.sync)
+  val exitTime = 720 + 20
+  val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
+  when(exiting) {
+    when(exitCnt === exitTime.U) {
+      started := false.B
+      exiting := false.B
+      exitCnt := 0.U
+    }.otherwise {
+      exitCnt := exitCnt + 1.U
+    }
+  }
+
+  ddc.io.in.data := io.in.data
+  ddc.io.in.sync := io.in.sync
+  ddc.io.in.enable := started
   io.out.sync := ddc.io.out.update
   refData := ddc.io.out.refData
 }

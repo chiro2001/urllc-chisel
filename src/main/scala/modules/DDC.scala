@@ -29,6 +29,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
     val in = Input(new Bundle {
       val data = UInt(8.W)
       val sync = Bool()
+      val enable = Bool()
     })
     val out = Output(new Bundle {
       val data = Bool()
@@ -55,8 +56,6 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val yListData = xListRefer.map(x => (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt.S)
   val yListRefer = VecInit(yListData)
   println(s"yListRefer: $yListData")
-
-  val started = RegInit(false.B)
 
   val cnt = RegInit(0.U(16.W))
   val sum = RegInit(0.S(32.W))
@@ -95,10 +94,15 @@ class DDC(mode: Int = DDC_60M) extends Module {
     }
   }
 
-  when(!started) {
+  when(!io.in.sync && !io.in.enable) {
     sum := 0.S
     cnt := 1.U
     readDataReg := 0.S
+
+    update := false.B
+    updateShift := false.B
+    out := false.B
+    cnt := 1.U
   }.otherwise {
     decode(io.in.data, readDataReg)
     val mul = getMul
@@ -112,37 +116,6 @@ class DDC(mode: Int = DDC_60M) extends Module {
       }
     }.otherwise {
       sum := sum + mul
-    }
-  }
-
-  val lastSync = RegNext(io.in.sync)
-  val exiting = RegInit(false.B)
-  val exitTime = 811
-  val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
-
-  def stop() = {
-    update := false.B
-    updateShift := false.B
-    out := false.B
-    cnt := 1.U
-    exiting := false.B
-    started := false.B
-  }
-
-  when(!io.in.sync && lastSync) {
-    exiting := true.B
-  }
-  when(io.in.sync && !lastSync) {
-    started := true.B
-  }
-  when(io.in.sync) {
-    exiting := false.B
-  }
-  when(exiting) {
-    when(exitCnt === exitTime.U) {
-      stop()
-    }.otherwise {
-      exitCnt := exitCnt + 1.U
     }
   }
 

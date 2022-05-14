@@ -31,8 +31,23 @@ class Sender(div: Int = 90) extends Module {
     started := true.B
     cnt := 0.U
   }
+  val exiting = RegInit(false.B)
+  val exitTime = 720
+  val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
+  when(exiting) {
+    when(exitCnt === exitTime.U) {
+      started := false.B
+      exiting := false.B
+      exitCnt := 0.U
+
+      jump := 0.U
+      jumpFirstByte := false.B
+    }.otherwise {
+      exitCnt := exitCnt + 1.U
+    }
+  }
   when (lastSync && !io.in.sync) {
-    started := false.B
+    exiting := true.B
   }
 
   slowerClock := cnt >= (div / 2).U
@@ -41,16 +56,14 @@ class Sender(div: Int = 90) extends Module {
   when((!slowerClock && slowerClockReg) || (io.in.sync && cnt >= (div / 2).U)) {
     slowerReset := false.B
   }
-  when (!io.in.sync) {
-    jump := 0.U
-    jumpFirstByte := false.B
-  }
+
   val duc = Module(new DUC)
   withClockAndReset(slowerClock.asClock, slowerReset) {
     val adcRead = Module(new ADCRead)
-    adcRead.io.in := io.in
+    adcRead.io.in.data := io.in.data
+    adcRead.io.in.sync := started
     duc.io.in.data := adcRead.io.bit
   }
-  duc.io.in.sync := io.in.sync && jumpFirstByte
+  duc.io.in.sync := started && jumpFirstByte
   io.out := duc.io.out
 }

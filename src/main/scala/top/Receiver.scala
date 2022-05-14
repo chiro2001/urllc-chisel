@@ -11,23 +11,26 @@ class Receiver(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))
+  val sampleCount = sampleCountMap(DDC_60M)
   // 暂时给两个波的时间
-  val dataBuffer = RegInit(VecInit(Seq.fill(12)(0.U(8.W))))
+  val dataBuffer = RegInit(VecInit(Seq.fill(sampleCount * 2)(0.U(8.W))))
   val dataBufferIndex = RegInit(0.U(4.W))
   dataBufferIndex := Mux(dataBufferIndex === 11.U, 0.U, dataBufferIndex + 1.U)
   val dataBufferNow = dataBuffer(dataBufferIndex)
 
   val offsetNow = RegInit(0.U(3.W))
 
-  val sampleCount = sampleCountMap(DDC_60M)
   val waveCalcTime = 24
   val waveReferenceListData = for {i <- 0 until sampleCount} yield Seq.range(0, waveCalcTime + 1).map(x => waveGenerate(x + i, sampleCount))
   val waveReference = waveReferenceListData.map(list => VecInit(list.map(_.S(16.W))))
-  // val waveBuffer = Reg(VecInit(Seq.fill(sampleCount)(0.S(32.W))))
-  // val waveBuffer = VecInit(Seq.fill(sampleCount)(RegInit(0.S(32.W))))
-  val waveBuffer = VecInit(for {i <- 0 until sampleCount} yield RegInit(0.S(32.W)))
+  val waveBuffer = RegInit(VecInit(Seq.fill(sampleCount)(0.S(32.W))))
 
+  val started = RegInit(false.B)
   val startTime = RegInit(0.U(32.W))
+  when(started) {
+    startTime := startTime + 1.U
+  }
+
   val readData = RegInit(0.S(8.W))
   Utils.decode(io.in.data, readData)
 
@@ -35,7 +38,8 @@ class Receiver(div: Int = 90) extends Module {
 
   when(startTime < waveCalcTime.U) {
     for (i <- 0 until sampleCount) {
-      waveBuffer(i) := RegNext(waveBuffer(i) + readData * waveReference(i)(startTime))
+      // waveBuffer(i) := RegNext(waveBuffer(i) + readData * waveReference(i)(startTime))
+      waveBuffer(i) := waveBuffer(i) + readData * waveReference(i)(startTime)
     }
   }
 
@@ -43,28 +47,30 @@ class Receiver(div: Int = 90) extends Module {
     calibrating := true.B
   }
 
-  val offsetOffset = 1
+  val offsetOffset = 0
 
   val calibrateIndex = RegInit(0.U(4.W))
   val calibrateResult = RegInit("b1111".U(4.W))
   val calibrateMaxValue = RegInit("x80000000".U(32.W).asTypeOf(SInt(32.W)))
+
+  val calibratingValue = Wire(SInt(32.W))
+  calibratingValue := waveBuffer(calibrateIndex)
   when(calibrating) {
     when(calibrateIndex === sampleCount.U) {
-      printf("calibrate result: %d\n", calibrateIndex)
+      printf("calibrate result: %d\n", calibrateResult)
       calibrating := false.B
-      calibrateResult := (calibrateIndex + offsetOffset.U) % sampleCount.U
+      calibrateResult := (calibrateResult + offsetOffset.U) % sampleCount.U
       calibrateIndex := 0.U
     }.otherwise {
       calibrateIndex := calibrateIndex + 1.U
-      when(waveBuffer(calibrateIndex) > calibrateMaxValue) {
-        calibrateMaxValue := waveBuffer(calibrateIndex)
+      printf("calibratingValue = %d\n", calibratingValue)
+      when(calibratingValue > calibrateMaxValue) {
+        calibrateMaxValue := calibratingValue
+        calibrateResult := calibrateIndex
+      } .otherwise {
+        calibrateMaxValue := calibrateMaxValue
       }
     }
-  }
-
-  val started = RegInit(false.B)
-  when(started) {
-    startTime := startTime + 1.U
   }
 
   def getStandardValue(value: UInt, outPort: UInt): UInt = {

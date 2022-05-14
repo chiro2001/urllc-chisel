@@ -65,5 +65,8 @@ class Sender(div: Int = 90) extends Module {
     duc.io.in.data := adcRead.io.bit
   }
   duc.io.in.sync := started && jumpFirstByte
-  io.out := duc.io.out
+  io.out.data := Mux(jump === 1.U, duc.calibration, duc.io.out.data)
+  duc.calibrationEnable := jump === 1.U
+
+  io.out.sync := duc.io.out.sync
 }

@@ -76,8 +76,9 @@ class TestAll
 
   it should "test Sender" in {
     test(new Sender).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
-      c.io.in.sync.poke(true.B)
       c.clock.setTimeout(0)
+      c.clock.step(100)
+      c.io.in.sync.poke(true.B)
 
       def testOnce(num: Int) = {
         c.io.in.data.poke(num.U)
@@ -89,6 +90,11 @@ class TestAll
       for {i <- 0 until 4} yield testOnce(0xff)
       for {i <- 0 until 4} yield testOnce(0x55)
       for {i <- 0 until 4} yield testOnce(if (i % 2 == 0) 0 else 0xff)
+
+      c.io.in.sync.poke(false.B)
+      c.clock.step(1000)
+      c.io.in.sync.poke(true.B)
+      c.clock.step(1000)
     }
   }
 
@@ -164,11 +170,14 @@ class TestAll
       c.io.in.sync.poke(false.B)
       c.io.in.data.poke(0x07)
       c.clock.step(720 + 129)
-      c.io.in.sync.poke(true.B)
-      c.io.in.data.poke(0x7f)
+      // c.io.in.sync.poke(true.B)
+      // c.io.in.data.poke(0x7f)
+      c.io.in.data.poke(0)
       c.clock.step(720)
+      // c.io.in.sync.poke(true.B)
       c.io.in.data.poke(0x07)
       c.clock.step(720)
+      c.io.in.sync.poke(true.B)
       var lastValues = List[Int]()
       for (i <- 0 until 10) {
         val testNow = (0xff * (math.sin(i.toDouble) + 1) / 2).toInt
@@ -179,6 +188,25 @@ class TestAll
         println(s"input: $testNow, output: $testLast, lastValues: $lastValues, head: ${lastValues.head}")
         if (lastValues.size > 2) {
           c.io.out.data.expect(lastValues(2))
+        }
+      }
+      c.io.in.sync.poke(false.B)
+      // c.clock.step(3000)
+      c.clock.step(720 * 8)
+      // c.io.in.data.poke(0x07)
+      c.io.in.data.poke(0)
+      c.clock.step(720)
+      c.io.in.sync.poke(true.B)
+      lastValues = List()
+      for (i <- 0 until 10) {
+        val testNow = (0xff * (math.sin(i.toDouble) + 1) / 2).toInt
+        c.io.in.data.poke(testNow.U)
+        c.clock.step(90 * 8)
+        lastValues = List(testNow) ++ lastValues
+        val testLast = c.io.out.data.peekInt()
+        println(s"input: $testNow, output: $testLast, lastValues: $lastValues, head: ${lastValues.head}")
+        if (lastValues.size > 2) {
+          // c.io.out.data.expect(lastValues(2))
         }
       }
     }

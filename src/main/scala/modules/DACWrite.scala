@@ -21,6 +21,7 @@ class DACWrite(width: Int = 8) extends Module {
     dataReg := 0x7f.U
     io.clkOut := false.B
     cnt := 0.U
+    data := 0.U
   }.otherwise {
     data := data + (bit << cnt)
     when(cnt === (width / 2 - 1).U) {

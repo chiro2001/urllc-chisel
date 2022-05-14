@@ -82,6 +82,10 @@ class DDC(mode: Int = DDC_60M) extends Module {
   when(!io.in.sync) {
     sum := 0.S
     cnt := 1.U
+    out := false.B
+    update := false.B
+    updateShift := false.B
+    readDataReg := 0.S
   }.otherwise {
     decode(io.in.data, readDataReg)
     val mul = getMul

@@ -34,6 +34,10 @@ class Sender(div: Int = 90) extends Module {
   when((!slowerClock && slowerClockReg) || (io.in.sync && cnt >= (div / 2).U)) {
     slowerReset := false.B
   }
+  when (!io.in.sync) {
+    jump := 0.U
+    jumpFirstByte := false.B
+  }
   val duc = Module(new DUC)
   withClockAndReset(slowerClock.asClock, slowerReset) {
     val adcRead = Module(new ADCRead)

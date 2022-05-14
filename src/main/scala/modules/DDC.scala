@@ -79,9 +79,21 @@ class DDC(mode: Int = DDC_60M) extends Module {
   def getMul = (readDataReg * refData.asTypeOf(SInt(8.W))).asTypeOf(SInt(16.W))
 
   io.out.mul := 0.S
+  cnt := cnt + 1.U
+  when(cnt === ((waveCount * sampleCount / 2) - 1).U) {
+    when(updateShift) {
+      update := false.B
+    }
+  }
+  when(cnt === ((waveCount * sampleCount) - 1).U) {
+    cnt := 0.U
+    when(updateShift) {
+      update := true.B
+    }
+  }
   when(!io.in.sync) {
     sum := 0.S
-    cnt := 1.U
+    // cnt := 1.U
     out := false.B
     update := false.B
     updateShift := false.B
@@ -91,21 +103,21 @@ class DDC(mode: Int = DDC_60M) extends Module {
     val mul = getMul
     io.out.mul := mul
     // 15 or 50 波/bit
-    when(cnt === ((waveCount * sampleCount / 2) - 1).U) {
-      when(updateShift) {
-        update := false.B
-      }
-    }
+    // when(cnt === ((waveCount * sampleCount / 2) - 1).U) {
+    //   when(updateShift) {
+    //     update := false.B
+    //   }
+    // }
     when(cnt === ((waveCount * sampleCount) - 1).U) {
-      cnt := 0.U
+      // cnt := 0.U
       sum := 0.S
       calc(out)
-      when(updateShift) {
-        update := true.B
-      }
+      // when(updateShift) {
+      //   update := true.B
+      // }
       updateShift := true.B
     }.otherwise {
-      cnt := cnt + 1.U
+      // cnt := cnt + 1.U
       sum := sum + mul
     }
   }

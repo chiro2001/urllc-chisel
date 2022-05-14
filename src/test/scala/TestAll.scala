@@ -192,7 +192,7 @@ class TestAll
       }
       c.io.in.sync.poke(false.B)
       // c.clock.step(3000)
-      c.clock.step(720 * 8)
+      c.clock.step(720 * 8 + 45)
       // c.io.in.data.poke(0x07)
       c.io.in.data.poke(0)
       c.clock.step(720)

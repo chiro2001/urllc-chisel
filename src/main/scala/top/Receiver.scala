@@ -2,10 +2,12 @@ package top
 
 import chisel3._
 import chisel3.util.log2Ceil
+import modules.DDCMode.DDC_60M
 import modules.{DACWrite, DDC}
+import utils.Utils.{sampleCountMap, waveCountMap, waveGenerate}
 import utils.{DataWithSyncWrapper, Utils}
 
-class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
+class Receiver(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))
@@ -15,7 +17,55 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   dataBufferIndex := Mux(dataBufferIndex === 11.U, 0.U, dataBufferIndex + 1.U)
   val dataBufferNow = dataBuffer(dataBufferIndex)
 
+  val offsetNow = RegInit(0.U(3.W))
+
+  val sampleCount = sampleCountMap(DDC_60M)
+  val waveCalcTime = 24
+  val waveReferenceListData = for {i <- 0 until sampleCount} yield Seq.range(0, waveCalcTime + 1).map(x => waveGenerate(x + i, sampleCount))
+  val waveReference = waveReferenceListData.map(list => VecInit(list.map(_.S(16.W))))
+  // val waveBuffer = Reg(VecInit(Seq.fill(sampleCount)(0.S(32.W))))
+  // val waveBuffer = VecInit(Seq.fill(sampleCount)(RegInit(0.S(32.W))))
+  val waveBuffer = VecInit(for {i <- 0 until sampleCount} yield RegInit(0.S(32.W)))
+
+  val startTime = RegInit(0.U(32.W))
+  val readData = RegInit(0.S(8.W))
+  Utils.decode(io.in.data, readData)
+
+  val calibrating = RegInit(false.B)
+
+  when(startTime < waveCalcTime.U) {
+    for (i <- 0 until sampleCount) {
+      waveBuffer(i) := RegNext(waveBuffer(i) + readData * waveReference(i)(startTime))
+    }
+  }
+
+  when(startTime === waveCalcTime.U) {
+    calibrating := true.B
+  }
+
+  val offsetOffset = 1
+
+  val calibrateIndex = RegInit(0.U(4.W))
+  val calibrateResult = RegInit("b1111".U(4.W))
+  val calibrateMaxValue = RegInit("x80000000".U(32.W).asTypeOf(SInt(32.W)))
+  when(calibrating) {
+    when(calibrateIndex === sampleCount.U) {
+      printf("calibrate result: %d\n", calibrateIndex)
+      calibrating := false.B
+      calibrateResult := (calibrateIndex + offsetOffset.U) % sampleCount.U
+      calibrateIndex := 0.U
+    }.otherwise {
+      calibrateIndex := calibrateIndex + 1.U
+      when(waveBuffer(calibrateIndex) > calibrateMaxValue) {
+        calibrateMaxValue := waveBuffer(calibrateIndex)
+      }
+    }
+  }
+
   val started = RegInit(false.B)
+  when(started) {
+    startTime := startTime + 1.U
+  }
 
   def getStandardValue(value: UInt, outPort: UInt): UInt = {
     when(value === 0.U || value === 0xFF.U) {
@@ -70,28 +120,30 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   val exiting = RegInit(false.B)
 
   val launched = RegInit(false.B)
+
   def resetStart(): Unit = {
     when(energy < threshold) {
-      when (launched && started) {
-        exiting := true.B
+      when(startTime > 45.U && startTime <= (90 * 2).U) {
+        when(calibrateResult =/= "b1111".U) {
+          printf("calibrated!\n")
+          offsetNow := calibrateResult
+        }
+        startTime := 0.U
+        started := false.B
+      }.otherwise {
+        when(launched && started) {
+          exiting := true.B
+        }
       }
     }
   }
 
-  if (useEnergyTrigger) {
-    when(energyNow > threshold) {
-      started := true.B
-      launched := true.B
-      exiting := false.B
-    }.otherwise {
-      resetStart()
-    }
-  } else {
-    when(io.in.sync) {
-      started := true.B
-    }.otherwise {
-      resetStart()
-    }
+  when(energyNow > threshold) {
+    started := true.B
+    launched := true.B
+    exiting := false.B
+  }.otherwise {
+    resetStart()
   }
 
   val lastSync = RegNext(io.in.sync)
@@ -99,6 +151,7 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
   when(exiting) {
     when(exitCnt === exitTime.U) {
+      startTime := 0.U
       started := false.B
       exiting := false.B
       exitCnt := 0.U
@@ -112,4 +165,5 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
   ddc.io.in.enable := started
   io.out.sync := ddc.io.out.update
   refData := ddc.io.out.refData
+  ddc.io.in.offset := offsetNow
 }

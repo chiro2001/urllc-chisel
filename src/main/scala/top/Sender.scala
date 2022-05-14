@@ -39,7 +39,6 @@ class Sender(div: Int = 90) extends Module {
       started := false.B
       exiting := false.B
       exitCnt := 0.U
-
       jump := 0.U
       jumpFirstByte := false.B
     }.otherwise {

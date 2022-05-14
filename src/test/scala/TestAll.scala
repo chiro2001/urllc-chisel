@@ -214,4 +214,20 @@ class TestAll
       c.clock.step(3000)
     }
   }
+
+  it should "pass calibrate test" in {
+    test(new Connect).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.clock.setTimeout(0)
+      c.io.in.sync.poke(false.B)
+      c.io.in.data.poke(0x07)
+      c.clock.step(720 + 129)
+      c.io.in.sync.poke(true.B)
+      c.io.in.data.poke(0)
+      c.clock.step(720)
+      c.io.in.data.poke(0x07)
+      c.clock.step(720)
+      c.io.in.sync.poke(false.B)
+      c.clock.step(720 * 4)
+    }
+  }
 }

@@ -1,7 +1,8 @@
 package modules
 
 import chisel3._
-import chisel3.util.log2Ceil
+import utils.Utils
+import utils.Utils.{sampleCountMap, waveCountMap, waveGenerate}
 
 import scala.math._
 
@@ -10,26 +11,15 @@ object DDCMode {
   val DDC_200M = 1
 }
 
-import DDCMode._
+import modules.DDCMode._
 
 class DDC(mode: Int = DDC_60M) extends Module {
-  val sampleCountMap = Map(
-    DDC_60M -> 6,
-    DDC_200M -> 10
-  )
-  val waveCountMap = Map(
-    DDC_60M -> 15,
-    DDC_200M -> 50
-  )
-  val waveOffset = Map(
-    DDC_60M -> 1,
-    DDC_200M -> 0
-  )
   val io = IO(new Bundle {
     val in = Input(new Bundle {
       val data = UInt(8.W)
       val sync = Bool()
       val enable = Bool()
+      val offset = UInt(4.W)
     })
     val out = Output(new Bundle {
       val data = Bool()
@@ -41,19 +31,11 @@ class DDC(mode: Int = DDC_60M) extends Module {
     })
   })
 
-  def decode(v: UInt, outPort: SInt) = {
-    when(v > 0x7f.U) {
-      outPort := (v - 0x7f.U).asTypeOf(SInt(outPort.getWidth.W))
-    }.otherwise {
-      outPort := -(0x7f.U - v).asTypeOf(SInt(outPort.getWidth.W))
-    }
-  }
-
   val sampleCount = sampleCountMap(mode)
   // 一个 bit 数据被多少个波表示
   val waveCount = waveCountMap(mode)
   val xListRefer = Seq.range(0, sampleCount + 1)
-  val yListData = xListRefer.map(x => (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt.S)
+  val yListData = xListRefer.map(x => waveGenerate(x, sampleCount).S)
   val yListRefer = VecInit(yListData)
   println(s"yListRefer: $yListData")
 
@@ -75,7 +57,8 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val updateShift = RegInit(false.B)
   val readDataReg = RegInit(0.S(8.W))
 
-  val refData = yListRefer((cnt + waveOffset(mode).U) % sampleCount.U)
+  // val refData = yListRefer((cnt + waveOffset(mode).U) % sampleCount.U)
+  val refData = yListRefer((cnt + io.in.offset) % sampleCount.U)
   io.out.refData := refData
 
   def getMul = (readDataReg * refData.asTypeOf(SInt(8.W))).asTypeOf(SInt(16.W))
@@ -104,7 +87,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
     out := false.B
     cnt := 1.U
   }.otherwise {
-    decode(io.in.data, readDataReg)
+    Utils.decode(io.in.data, readDataReg)
     val mul = getMul
     io.out.mul := mul
     // 15 or 50 波/bit

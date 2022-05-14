@@ -68,6 +68,11 @@ class Receiver(div: Int = 90, useEnergyTrigger: Boolean = true) extends Module {
     }
   }
 
+  val lastStarted = RegNext(started)
+  when (started && !lastStarted) {
+    cnt := 0.U
+  }
+
   if (useEnergyTrigger) {
     when(energyNow > threshold) {
       started := true.B

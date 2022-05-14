@@ -91,12 +91,19 @@ class DDC(mode: Int = DDC_60M) extends Module {
       update := true.B
     }
   }
-  when(!io.in.sync) {
-    sum := 0.S
-    // cnt := 1.U
-    out := false.B
+  val lastSync = RegNext(io.in.sync)
+  when(!io.in.sync && lastSync) {
     update := false.B
     updateShift := false.B
+    cnt := 1.U
+  }
+
+  when(!io.in.sync) {
+    sum := 0.S
+    cnt := 1.U
+    out := false.B
+    // update := false.B
+    // updateShift := false.B
     readDataReg := 0.S
   }.otherwise {
     decode(io.in.data, readDataReg)
@@ -115,7 +122,9 @@ class DDC(mode: Int = DDC_60M) extends Module {
       // when(updateShift) {
       //   update := true.B
       // }
-      updateShift := true.B
+      when(io.in.sync) {
+        updateShift := true.B
+      }
     }.otherwise {
       // cnt := cnt + 1.U
       sum := sum + mul

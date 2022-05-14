@@ -13,9 +13,7 @@ class Sender(div: Int = 90) extends Module {
   val jump = RegInit(0.U(8.W))
   val jumpFirstByte = RegInit(false.B)
   val started = RegInit(false.B)
-  when(io.in.sync) {
-    started := true.B
-  }
+
   //noinspection DuplicatedCode
   when(cnt === (div - 1).U) {
     cnt := 0.U
@@ -28,6 +26,15 @@ class Sender(div: Int = 90) extends Module {
   }.otherwise {
     cnt := cnt + 1.U
   }
+  val lastSync = RegNext(io.in.sync)
+  when(io.in.sync && !lastSync) {
+    started := true.B
+    cnt := 0.U
+  }
+  when (lastSync && !io.in.sync) {
+    started := false.B
+  }
+
   slowerClock := cnt >= (div / 2).U
   val slowerClockReg = RegNext(slowerClock)
   //noinspection DuplicatedCode

@@ -8,7 +8,15 @@ object Generate extends App {
   }
 
   def generateTarget[T <: RawModule](targets: Map[String, () => T], path: String = "") = {
-    targets.foreach(item => generateTargetItem(item, path = path))
+    targets.foreach(item => {
+      try {
+        generateTargetItem(item, path = path)
+      } catch {
+        case e: Throwable =>
+          e.printStackTrace()
+          println(s"module error $item: $e")
+      }
+    })
   }
 
   generateTarget(Targets.targets, path = "inner")

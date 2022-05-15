@@ -8,6 +8,7 @@ import utils.DataWithSyncWrapper
 class Sender(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val slowerClock = Wire(Bool())
+  val dacClockOut = IO(Output(Bool()))
   val slowerReset = RegInit(true.B)
   val cnt = RegInit(0.U(log2Ceil(div + 1).W))
   val jump = RegInit(0.U(8.W))
@@ -68,4 +69,6 @@ class Sender(div: Int = 90) extends Module {
   duc.calibrationEnable := jump === 1.U
 
   io.out.sync := duc.io.out.sync
+
+  dacClockOut := slowerClock
 }

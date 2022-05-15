@@ -131,7 +131,7 @@ class Receiver(div: Int = 90) extends Module {
     when(energy < threshold) {
       when(startTime > 45.U && startTime <= (90 * 2).U) {
         when(calibrateResult =/= "b1111".U) {
-          printf("calibrated!\n")
+          printf("calibrated to: %d!\n", calibrateResult)
           offsetNow := calibrateResult
         }
         startTime := 0.U

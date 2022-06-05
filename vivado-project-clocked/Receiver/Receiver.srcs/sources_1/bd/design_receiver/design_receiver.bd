@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x9719B93AB944A952",
+      "boundary_crc": "0x551DE12D5CABAEEF",
       "device": "xc7z020clg400-2",
       "name": "design_receiver",
       "synth_flow_mode": "Hierarchical",
@@ -77,6 +77,40 @@
       },
       "receiver_sync_out": {
         "direction": "O"
+      },
+      "receiver_ad_clk": {
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_receiver_ReceiverWrapper_0_0_receiver_ad_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default_prop"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default_prop"
+          }
+        }
+      },
+      "receiver_da_clk": {
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_receiver_ReceiverWrapper_0_0_receiver_da_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default_prop"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default_prop"
+          }
+        }
       }
     },
     "components": {
@@ -85,19 +119,19 @@
         "xci_name": "design_receiver_clk_wiz_0_0",
         "parameters": {
           "CLKOUT1_JITTER": {
-            "value": "156.886"
+            "value": "180.523"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "160.484"
+            "value": "162.874"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "120.000"
+            "value": "60.000"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "19.500"
+            "value": "20.250"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "8.125"
+            "value": "16.875"
           },
           "MMCM_DIVCLK_DIVIDE": {
             "value": "1"
@@ -123,16 +157,12 @@
             "type": "clk",
             "direction": "I",
             "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "resetN",
-                "value_src": "constant"
-              },
               "CLK_DOMAIN": {
                 "value": "/clk_wiz_0_clk_out1",
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "120000000",
+                "value": "60000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -150,6 +180,14 @@
                 "value_src": "constant"
               }
             }
+          },
+          "receiver_ad_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "receiver_da_clk": {
+            "type": "clk",
+            "direction": "O"
           },
           "receiver_ad": {
             "direction": "I",
@@ -223,6 +261,18 @@
         "ports": [
           "ReceiverWrapper_0/receiver_sync_out",
           "receiver_sync_out"
+        ]
+      },
+      "ReceiverWrapper_0_receiver_ad_clk": {
+        "ports": [
+          "ReceiverWrapper_0/receiver_ad_clk",
+          "receiver_ad_clk"
+        ]
+      },
+      "ReceiverWrapper_0_receiver_da_clk": {
+        "ports": [
+          "ReceiverWrapper_0/receiver_da_clk",
+          "receiver_da_clk"
         ]
       }
     }

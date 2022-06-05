@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sun Jun  5 16:58:24 2022
+| Date         : Sun Jun  5 18:04:28 2022
 | Host         : Chiro running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_sender_SenderWrapper_0_0_utilization_synth.rpt -pb design_sender_SenderWrapper_0_0_utilization_synth.pb
 | Design       : design_sender_SenderWrapper_0_0
@@ -151,7 +151,7 @@ Table of Contents
 | LUT6     |   31 |                 LUT |
 | LUT4     |   21 |                 LUT |
 | LUT3     |   21 |                 LUT |
-| LUT2     |   13 |                 LUT |
+| LUT2     |   14 |                 LUT |
 | LUT1     |    3 |                 LUT |
 | CARRY4   |    2 |          CarryLogic |
 +----------+------+---------------------+

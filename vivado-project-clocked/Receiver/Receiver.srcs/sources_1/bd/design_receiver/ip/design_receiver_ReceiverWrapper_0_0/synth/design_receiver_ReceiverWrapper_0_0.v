@@ -61,10 +61,12 @@ module design_receiver_ReceiverWrapper_0_0 (
   receiver_ad,
   receiver_sync_in,
   receiver_da,
-  receiver_sync_out
+  receiver_sync_out,
+  receiver_ad_clk,
+  receiver_da_clk
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clock, ASSOCIATED_RESET resetN, FREQ_HZ 120000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clock, FREQ_HZ 60000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clock CLK" *)
 input wire clock;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME resetN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -74,6 +76,12 @@ input wire [7 : 0] receiver_ad;
 input wire receiver_sync_in;
 output wire [7 : 0] receiver_da;
 output wire receiver_sync_out;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME receiver_ad_clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_receiver_ReceiverWrapper_0_0_receiver_ad_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 receiver_ad_clk CLK" *)
+output wire receiver_ad_clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME receiver_da_clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_receiver_ReceiverWrapper_0_0_receiver_da_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 receiver_da_clk CLK" *)
+output wire receiver_da_clk;
 
   ReceiverWrapper inst (
     .clock(clock),
@@ -81,6 +89,8 @@ output wire receiver_sync_out;
     .receiver_ad(receiver_ad),
     .receiver_sync_in(receiver_sync_in),
     .receiver_da(receiver_da),
-    .receiver_sync_out(receiver_sync_out)
+    .receiver_sync_out(receiver_sync_out),
+    .receiver_ad_clk(receiver_ad_clk),
+    .receiver_da_clk(receiver_da_clk)
   );
 endmodule

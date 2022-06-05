@@ -4,14 +4,14 @@ import chisel3._
 import chisel3.util.log2Ceil
 import modules.DDCMode.DDC_60M
 import modules.{DACWrite, DDC}
-import utils.Utils.{fakeMul, sampleCountMap, waveCountMap, waveGenerate}
+import utils.Utils.{fakeMul, sampleCountMapDDC, waveGenerate}
 import utils.{DataWithSyncWrapper, Utils}
 
 class Receiver(div: Int = 90) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))
-  val sampleCount = sampleCountMap(DDC_60M)
+  val sampleCount = sampleCountMapDDC(DDC_60M)
   // 暂时给两个波的时间
   val dataBuffer = RegInit(VecInit(Seq.fill(sampleCount * 2)(0.U(8.W))))
   val dataBufferIndex = RegInit(0.U(4.W))

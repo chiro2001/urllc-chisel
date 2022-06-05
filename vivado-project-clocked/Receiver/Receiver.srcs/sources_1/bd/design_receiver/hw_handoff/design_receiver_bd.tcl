@@ -169,7 +169,9 @@ proc create_root_design { parentCell } {
    CONFIG.FREQ_HZ {50000000} \
  ] $clock_in
   set receiver_ad [ create_bd_port -dir I -from 7 -to 0 -type data receiver_ad ]
+  set receiver_ad_clk [ create_bd_port -dir O receiver_ad_clk ]
   set receiver_da [ create_bd_port -dir O -from 7 -to 0 -type data receiver_da ]
+  set receiver_da_clk [ create_bd_port -dir O receiver_da_clk ]
   set receiver_sync_in [ create_bd_port -dir I receiver_sync_in ]
   set receiver_sync_out [ create_bd_port -dir O receiver_sync_out ]
   set resetN [ create_bd_port -dir I -type rst resetN ]
@@ -188,18 +190,20 @@ proc create_root_design { parentCell } {
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [ list \
-   CONFIG.CLKOUT1_JITTER {156.886} \
-   CONFIG.CLKOUT1_PHASE_ERROR {160.484} \
-   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {120.000} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {19.500} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {8.125} \
+   CONFIG.CLKOUT1_JITTER {180.523} \
+   CONFIG.CLKOUT1_PHASE_ERROR {162.874} \
+   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {60.000} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {20.250} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {16.875} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.RESET_PORT {resetn} \
    CONFIG.RESET_TYPE {ACTIVE_LOW} \
  ] $clk_wiz_0
 
   # Create port connections
+  connect_bd_net -net ReceiverWrapper_0_receiver_ad_clk [get_bd_ports receiver_ad_clk] [get_bd_pins ReceiverWrapper_0/receiver_ad_clk]
   connect_bd_net -net ReceiverWrapper_0_receiver_da [get_bd_ports receiver_da] [get_bd_pins ReceiverWrapper_0/receiver_da]
+  connect_bd_net -net ReceiverWrapper_0_receiver_da_clk [get_bd_ports receiver_da_clk] [get_bd_pins ReceiverWrapper_0/receiver_da_clk]
   connect_bd_net -net ReceiverWrapper_0_receiver_sync_out [get_bd_ports receiver_sync_out] [get_bd_pins ReceiverWrapper_0/receiver_sync_out]
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins ReceiverWrapper_0/clock] [get_bd_pins clk_wiz_0/clk_out1]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins ReceiverWrapper_0/resetN] [get_bd_pins clk_wiz_0/locked]

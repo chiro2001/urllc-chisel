@@ -14,16 +14,16 @@ object Utils {
     }
   }
 
-  val sampleCountMap = Map(
-    DDC_60M -> 6,
+  val sampleCountMapDDC = Map(
+    DDC_60M -> 3,
     DDC_200M -> 10
   )
-  val waveCountMap = Map(
+  val waveCountMapDDC = Map(
     DDC_60M -> 15,
     DDC_200M -> 50
   )
 
-  def waveGenerate(x: Int, sampleCount: Int): Int = (sin(x * 2 * Pi / sampleCount) * 0x7f).toInt
+  def waveGenerate(x: Int, sampleCount: Int, scale: Double = 1): Int = ((sin(x * 2 * Pi / sampleCount) * scale) * 0x7f).toInt
 
   def decode(v: UInt, outPort: SInt) = {
     when(v > 0x7f.U) {

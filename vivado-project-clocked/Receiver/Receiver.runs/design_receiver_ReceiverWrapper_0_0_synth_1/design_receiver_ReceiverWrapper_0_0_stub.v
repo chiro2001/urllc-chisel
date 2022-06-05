@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Jun  5 16:49:46 2022
+// Date        : Sun Jun  5 18:06:55 2022
 // Host        : Chiro running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 //               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_receiver_ReceiverWrapper_0_0_stub.v
@@ -15,12 +15,14 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "ReceiverWrapper,Vivado 2018.3" *)
 module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix(clock, resetN, receiver_ad, receiver_sync_in, 
-  receiver_da, receiver_sync_out)
-/* synthesis syn_black_box black_box_pad_pin="clock,resetN,receiver_ad[7:0],receiver_sync_in,receiver_da[7:0],receiver_sync_out" */;
+  receiver_da, receiver_sync_out, receiver_ad_clk, receiver_da_clk)
+/* synthesis syn_black_box black_box_pad_pin="clock,resetN,receiver_ad[7:0],receiver_sync_in,receiver_da[7:0],receiver_sync_out,receiver_ad_clk,receiver_da_clk" */;
   input clock;
   input resetN;
   input [7:0]receiver_ad;
   input receiver_sync_in;
   output [7:0]receiver_da;
   output receiver_sync_out;
+  output receiver_ad_clk;
+  output receiver_da_clk;
 endmodule

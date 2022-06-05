@@ -27,7 +27,9 @@ class Sender(div: Int = 90) extends Module {
   }.otherwise {
     cnt := cnt + 1.U
   }
-  val lastSync = RegNext(io.in.sync)
+  // val lastSync = RegNext(io.in.sync)
+  val lastSync = RegInit(false.B)
+  lastSync := io.in.sync
   when(io.in.sync && !lastSync) {
     started := true.B
     cnt := 0.U

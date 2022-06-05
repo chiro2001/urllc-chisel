@@ -43,3 +43,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports {receiver_ad[3]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {receiver_ad[2]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {receiver_ad[1]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {receiver_ad[0]}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {receiver_da_clk}]
+set_property PACKAGE_PIN U19 [get_ports {receiver_da_clk}]
+set_property IOSTANDARD LVCMOS33 [get_ports {receiver_ad_clk}]
+set_property PACKAGE_PIN P16 [get_ports {receiver_ad_clk}]

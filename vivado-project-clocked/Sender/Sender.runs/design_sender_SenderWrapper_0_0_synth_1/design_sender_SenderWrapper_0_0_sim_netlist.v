@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Jun  5 16:58:24 2022
+// Date        : Sun Jun  5 18:04:28 2022
 // Host        : Chiro running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 //               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ design_sender_SenderWrapper_0_0_sim_netlist.v
@@ -1072,6 +1072,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
   wire \jump[7]_i_4_n_0 ;
   wire [7:0]jump_reg__0;
   wire lastSync;
+  wire lastSync_i_1_n_0;
   wire resetN;
   wire [7:0]sender_ad;
   wire [7:0]sender_da;
@@ -1112,7 +1113,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
     \cnt[0]_i_1__0 
        (.I0(\cnt_reg_n_0_[0] ),
         .O(cnt[0]));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT5 #(
     .INIT(32'h00FFF700)) 
     \cnt[1]_i_1__0 
@@ -1122,7 +1123,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I3(\cnt_reg_n_0_[0] ),
         .I4(\cnt_reg_n_0_[1] ),
         .O(cnt[1]));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT3 #(
     .INIT(8'hFD)) 
     \cnt[1]_i_2 
@@ -1169,7 +1170,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I3(\cnt_reg_n_0_[2] ),
         .I4(\cnt_reg_n_0_[6] ),
         .O(\cnt[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT4 #(
     .INIT(16'hAA6A)) 
     \cnt[5]_i_1__0 
@@ -1195,7 +1196,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I3(\cnt_reg_n_0_[5] ),
         .I4(\cnt_reg_n_0_[6] ),
         .O(cnt[6]));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \cnt[6]_i_3 
@@ -1264,7 +1265,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .\sender_da[7]_1 (\sender_da[7]_INST_0_i_1_n_0 ),
         .sender_da_0_sp_1(jumpFirstByte_reg_n_0),
         .sender_da_2_sp_1(\sender_da[2]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
     .INIT(8'h32)) 
     \exitCnt[0]_i_1 
@@ -1354,7 +1355,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I4(exitCnt[4]),
         .I5(exitCnt[5]),
         .O(exitCnt_0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \exitCnt[6]_i_2 
@@ -1473,6 +1474,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .D(exitCnt_0[9]),
         .Q(exitCnt[9]),
         .R(sender_reset));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT5 #(
     .INIT(32'hF2220000)) 
     exiting_i_1
@@ -1504,20 +1506,20 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .D(_GEN_0),
         .Q(jumpFirstByte_reg_n_0),
         .R(started));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \jump[0]_i_1 
        (.I0(jump_reg__0[0]),
         .O(_jump_T_1[0]));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \jump[1]_i_1 
        (.I0(jump_reg__0[0]),
         .I1(jump_reg__0[1]),
         .O(_jump_T_1[1]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \jump[2]_i_1 
@@ -1587,7 +1589,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I4(jump_reg__0[5]),
         .I5(jump_reg__0[7]),
         .O(_jump_T_1[7]));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \jump[7]_i_4 
@@ -1643,10 +1645,17 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .D(_jump_T_1[7]),
         .Q(jump_reg__0[7]),
         .R(started));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    lastSync_i_1
+       (.I0(sender_sync_in),
+        .I1(resetN),
+        .O(lastSync_i_1_n_0));
   FDRE lastSync_reg
        (.C(clock),
         .CE(1'b1),
-        .D(sender_sync_in),
+        .D(lastSync_i_1_n_0),
         .Q(lastSync),
         .R(1'b0));
   LUT2 #(
@@ -1655,7 +1664,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
        (.I0(started_reg_n_0),
         .I1(jumpFirstByte_reg_n_0),
         .O(\sender_da[2]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \sender_da[7]_INST_0_i_1 
@@ -1663,7 +1672,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_Sender
         .I1(jumpFirstByte_reg_n_0),
         .I2(started_reg_n_0),
         .O(\sender_da[7]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT2 #(
     .INIT(4'h8)) 
     sender_sync_out_INST_0

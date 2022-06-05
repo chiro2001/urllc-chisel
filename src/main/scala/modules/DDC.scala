@@ -2,7 +2,7 @@ package modules
 
 import chisel3._
 import utils.Utils
-import utils.Utils.{fakeMul, sampleCountMap, waveCountMap, waveGenerate}
+import utils.Utils.{fakeMul, sampleCountMapDDC, waveCountMapDDC, waveGenerate}
 
 object DDCMode {
   val DDC_60M = 0
@@ -29,9 +29,9 @@ class DDC(mode: Int = DDC_60M) extends Module {
     })
   })
 
-  val sampleCount = sampleCountMap(mode)
+  val sampleCount = sampleCountMapDDC(mode)
   // 一个 bit 数据被多少个波表示
-  val waveCount = waveCountMap(mode)
+  val waveCount = waveCountMapDDC(mode)
   val xListRefer = Seq.range(0, sampleCount + 1)
   val yListData = xListRefer.map(x => waveGenerate(x, sampleCount).S)
   val yListRefer = VecInit(yListData)

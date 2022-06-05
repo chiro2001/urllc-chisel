@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="design_connect" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1654413533"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1654413533"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1654413533"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1654413533"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1654417890"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1654417890"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1654417890"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1654417890"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_connect_ConnectWrapper_0_0\design_connect_ConnectWrapper_0_0.xci" Type="IP">
         <Instance HierarchyPath="ConnectWrapper_0"/>

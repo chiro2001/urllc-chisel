@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sun Jun  5 15:20:43 2022
+| Date         : Sun Jun  5 16:36:58 2022
 | Host         : Chiro running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file design_connect_wrapper_control_sets_placed.rpt
 | Design       : design_connect_wrapper
@@ -23,7 +23,7 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    33 |
+| Number of unique control sets                            |    34 |
 | Unused register locations in slices containing registers |    51 |
 +----------------------------------------------------------+-------+
 
@@ -41,8 +41,7 @@ Table of Contents
 |      8 |           18 |
 |      9 |            1 |
 |     10 |            2 |
-|     12 |            1 |
-|    16+ |            4 |
+|    16+ |            6 |
 +--------+--------------+
 
 
@@ -54,10 +53,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |              12 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             108 |           38 |
+| No           | Yes                   | No                     |             116 |           47 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             221 |           63 |
+| Yes          | Yes                   | No                     |             413 |          115 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -69,37 +68,38 @@ Table of Contents
 +--------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+------------------+----------------+
 |  design_connect_i/ConnectWrapper_0/inst/Connect/sender/adcRead/CLK |                                                                                     |                                                                                     |                2 |              3 |
 |  design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/CLK   |                                                                                     |                                                                                     |                1 |              3 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrateResult             | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              4 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrating                 | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                1 |              4 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrating                 | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                1 |              4 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrateResult             | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              4 |
 |  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     |                                                                                     |                5 |              6 |
 |  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/cnt[6]_i_1__2_n_0           |                3 |              7 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/cnt[6]_i_1__1_n_0             |                3 |              7 |
-|  design_connect_i/ConnectWrapper_0/inst/Connect/sender/adcRead/CLK | design_connect_i/ConnectWrapper_0/inst/Connect/sender/adcRead/data_0                | design_connect_i/ConnectWrapper_0/inst/Connect/sender/slowerReset                   |                1 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/cnt[6]_i_1__1_n_0             |                4 |              7 |
+|  design_connect_i/ConnectWrapper_0/inst/Connect/sender/adcRead/CLK | design_connect_i/ConnectWrapper_0/inst/Connect/sender/adcRead/data_0                | design_connect_i/ConnectWrapper_0/inst/Connect/sender/slowerReset                   |                2 |              8 |
 |  design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/CLK   |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite/data[7]_i_1__0_n_0 |                2 |              8 |
 |  design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/CLK   | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite/dataReg[7]_i_2_n_0 | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite/dataReg            |                3 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/cnt[7]_i_1_n_0            |                4 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/jumpFirstByte_reg_3[0]    |                4 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_0                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                1 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_1                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_10               | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_11               | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_4                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_2                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                4 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_7                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_5                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_6                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                1 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_3                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_8                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                3 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_9                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc_calibrationEnable         | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/cnt2[7]_i_1_n_0           |                2 |              8 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/jumpFirstByte0                | design_connect_i/ConnectWrapper_0/inst/Connect/sender/jump[7]_i_1_n_0               |                2 |              9 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/exiting_reg_n_0             | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                6 |             10 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/exiting                       | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                4 |             10 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |                6 |             12 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/started_reg_2[0]              |                8 |             26 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/RSTP                    |                8 |             32 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrateMaxValue           | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/resetN_0[0]             |               10 |             32 |
-|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/startTime[31]_i_2_n_0       | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/startTime[31]_i_1_n_0       |                7 |             32 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/cnt2_reg[2]_1[0]          |                4 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/cnt[7]_i_1_n_0            |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_10               | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_1                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_0                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_6                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_4                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_11               | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_3                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_5                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_2                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_9                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_7                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dataBuffer_8                | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                2 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc_calibrationEnable         | design_connect_i/ConnectWrapper_0/inst/Connect/sender/duc/cnt2[7]_i_1_n_0           |                3 |              8 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/jumpFirstByte0                | design_connect_i/ConnectWrapper_0/inst/Connect/sender/jump[7]_i_1_n_0               |                3 |              9 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/exiting_reg_n_0             | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                4 |             10 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/sender/exiting                       | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                4 |             10 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |               10 |             20 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/sender/started_reg_2                 |               13 |             26 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          |                                                                                     | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/sum[0]_i_1_n_0          |                8 |             32 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/calibrateMaxValue           | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |                8 |             32 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/startTime[31]_i_2_n_0       | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/startTime[31]_i_1_n_0       |                9 |             32 |
+|  design_connect_i/clk_wiz_0/inst/clk_out1                          | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/sel                         | design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc/SR[0]                   |               48 |            192 |
 +--------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+------------------+----------------+
 
 

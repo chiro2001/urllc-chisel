@@ -4,7 +4,7 @@ import chisel3._
 import chisel3.util.log2Ceil
 import modules.DDCMode.DDC_60M
 import modules.{DACWrite, DDC}
-import utils.Utils.{sampleCountMap, waveCountMap, waveGenerate}
+import utils.Utils.{fakeMul, sampleCountMap, waveCountMap, waveGenerate}
 import utils.{DataWithSyncWrapper, Utils}
 
 class Receiver(div: Int = 90) extends Module {
@@ -39,7 +39,8 @@ class Receiver(div: Int = 90) extends Module {
   when(startTime < waveCalcTime.U) {
     for (i <- 0 until sampleCount) {
       // waveBuffer(i) := RegNext(waveBuffer(i) + readData * waveReference(i)(startTime))
-      waveBuffer(i) := waveBuffer(i) + readData * waveReference(i)(startTime)
+      // waveBuffer(i) := waveBuffer(i) + readData * waveReference(i)(startTime)
+      waveBuffer(i) := waveBuffer(i) + fakeMul(readData, waveReference(i)(startTime))
     }
   }
 

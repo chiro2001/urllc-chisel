@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Sun Jun  5 15:21:07 2022
+| Date             : Sun Jun  5 16:38:34 2022
 | Host             : Chiro running 64-bit major release  (build 9200)
 | Command          : report_power -file design_connect_wrapper_power_routed.rpt -pb design_connect_wrapper_power_summary_routed.pb -rpx design_connect_wrapper_power_routed.rpx
 | Design           : design_connect_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.248        |
+| Total On-Chip Power (W)  | 0.252        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.140        |
+| Dynamic (W)              | 0.144        |
 | Device Static (W)        | 0.108        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 82.1         |
@@ -52,18 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.003 |        5 |       --- |             --- |
-| Slice Logic    |     0.004 |     1094 |       --- |             --- |
-|   LUT as Logic |     0.004 |      533 |     53200 |            1.00 |
-|   CARRY4       |    <0.001 |       66 |     13300 |            0.50 |
-|   Register     |    <0.001 |      341 |    106400 |            0.32 |
-|   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |     0.005 |     1078 |       --- |             --- |
+| Clocks         |     0.004 |        5 |       --- |             --- |
+| Slice Logic    |     0.009 |     1777 |       --- |             --- |
+|   LUT as Logic |     0.008 |      879 |     53200 |            1.65 |
+|   CARRY4       |    <0.001 |      174 |     13300 |            1.31 |
+|   Register     |    <0.001 |      541 |    106400 |            0.51 |
+|   Others       |     0.000 |       14 |       --- |             --- |
+| Signals        |     0.007 |     1356 |       --- |             --- |
 | MMCM           |     0.120 |        1 |         4 |           25.00 |
-| DSPs           |     0.007 |        6 |       220 |            2.73 |
-| I/O            |    <0.001 |       20 |       125 |           16.00 |
+| I/O            |     0.004 |       20 |       125 |           16.00 |
 | Static Power   |     0.108 |          |           |                 |
-| Total          |     0.248 |          |           |                 |
+| Total          |     0.252 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.027 |       0.019 |      0.008 |
+| Vccint    |       1.000 |     0.028 |       0.020 |      0.008 |
 | Vccaux    |       1.800 |     0.077 |       0.067 |      0.011 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -151,10 +150,10 @@ Table of Contents
 +------------------------+-----------+
 | Name                   | Power (W) |
 +------------------------+-----------+
-| design_connect_wrapper |     0.140 |
-|   design_connect_i     |     0.139 |
-|     ConnectWrapper_0   |     0.018 |
-|       inst             |     0.018 |
+| design_connect_wrapper |     0.144 |
+|   design_connect_i     |     0.140 |
+|     ConnectWrapper_0   |     0.019 |
+|       inst             |     0.019 |
 |     clk_wiz_0          |     0.121 |
 |       inst             |     0.121 |
 +------------------------+-----------+

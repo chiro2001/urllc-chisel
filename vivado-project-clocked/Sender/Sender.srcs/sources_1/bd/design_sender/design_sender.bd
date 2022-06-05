@@ -9,8 +9,8 @@
       "validated": "true"
     },
     "design_tree": {
-      "SenderWrapper_0": "",
-      "clk_wiz_0": ""
+      "clk_wiz_0": "",
+      "SenderWrapper_0": ""
     },
     "ports": {
       "clock_in": {
@@ -128,6 +128,36 @@
       }
     },
     "components": {
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_sender_clk_wiz_0_0",
+        "parameters": {
+          "CLKOUT1_JITTER": {
+            "value": "156.886"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "160.484"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "120.000"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "19.500"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "8.125"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      },
       "SenderWrapper_0": {
         "vlnv": "xilinx.com:module_ref:SenderWrapper:1.0",
         "xci_name": "design_sender_SenderWrapper_0_0",
@@ -200,36 +230,6 @@
           },
           "sender_sync_out": {
             "direction": "O"
-          }
-        }
-      },
-      "clk_wiz_0": {
-        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "xci_name": "design_sender_clk_wiz_0_0",
-        "parameters": {
-          "CLKOUT1_JITTER": {
-            "value": "156.886"
-          },
-          "CLKOUT1_PHASE_ERROR": {
-            "value": "160.484"
-          },
-          "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "120.000"
-          },
-          "MMCM_CLKFBOUT_MULT_F": {
-            "value": "19.500"
-          },
-          "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "8.125"
-          },
-          "MMCM_DIVCLK_DIVIDE": {
-            "value": "1"
-          },
-          "RESET_PORT": {
-            "value": "resetn"
-          },
-          "RESET_TYPE": {
-            "value": "ACTIVE_LOW"
           }
         }
       }

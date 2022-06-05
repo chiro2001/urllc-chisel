@@ -32,6 +32,34 @@ object Utils {
       outPort := -(0x7f.U - v).asTypeOf(SInt(outPort.getWidth.W))
     }
   }
+
+  def absSInt(a: SInt, o: SInt) = when(a > 0.S) {
+    o := a
+  }.otherwise {
+    o := -a
+  }
+
+  def fakeMul(a: SInt, b: SInt) = {
+    val absA = Wire(SInt(8.W))
+    val absB = Wire(SInt(8.W))
+    val result = Wire(SInt(16.W))
+    val aBiggerThan0 = Wire(Bool())
+    val bBiggerThan0 = Wire(Bool())
+    aBiggerThan0 := a > 0.S
+    bBiggerThan0 := b > 0.S
+    absSInt(a, absA)
+    absSInt(b, absB)
+    when (a === 0.S || b === 0.S) {
+      result := 0.S
+    }.otherwise {
+      when((aBiggerThan0 && bBiggerThan0) || (!aBiggerThan0 && !bBiggerThan0)) {
+        result := absA.asTypeOf(SInt(16.W)) + absB
+      }.otherwise {
+        result := -(absA.asTypeOf(SInt(16.W)) + absB)
+      }
+    }
+    result
+  }
 }
 
 class DataWithSync(width: Int = 8) extends Bundle {

@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Sun Jun  5 14:26:44 2022
-# Process ID: 7892
+# Start of session at: Sun Jun  5 16:48:15 2022
+# Process ID: 13412
 # Current directory: D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/design_receiver_ReceiverWrapper_0_0_synth_1
 # Command line: vivado.exe -log design_receiver_ReceiverWrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_receiver_ReceiverWrapper_0_0.tcl
 # Log file: D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/design_receiver_ReceiverWrapper_0_0_synth_1/design_receiver_ReceiverWrapper_0_0.vds
@@ -15,22 +15,22 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 13532 
+INFO: Helper process launched with PID 25284 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 467.012 ; gain = 103.176
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 466.824 ; gain = 103.344
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_receiver_ReceiverWrapper_0_0' [d:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ReceiverWrapper_0_0/synth/design_receiver_ReceiverWrapper_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'ReceiverWrapper' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:988]
-INFO: [Synth 8-6157] synthesizing module 'Receiver' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:254]
+INFO: [Synth 8-6157] synthesizing module 'ReceiverWrapper' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:1064]
+INFO: [Synth 8-6157] synthesizing module 'Receiver' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:266]
 INFO: [Synth 8-6157] synthesizing module 'DDC' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'DDC' (1#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:1]
-INFO: [Synth 8-6157] synthesizing module 'DACWrite' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:157]
-INFO: [Synth 8-6155] done synthesizing module 'DACWrite' (2#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:157]
-INFO: [Synth 8-6155] done synthesizing module 'Receiver' (3#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:254]
-INFO: [Synth 8-6155] done synthesizing module 'ReceiverWrapper' (4#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:988]
+INFO: [Synth 8-6157] synthesizing module 'DACWrite' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:169]
+INFO: [Synth 8-6155] done synthesizing module 'DACWrite' (2#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:169]
+INFO: [Synth 8-6155] done synthesizing module 'Receiver' (3#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:266]
+INFO: [Synth 8-6155] done synthesizing module 'ReceiverWrapper' (4#1) [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:1064]
 INFO: [Synth 8-6155] done synthesizing module 'design_receiver_ReceiverWrapper_0_0' (5#1) [d:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ReceiverWrapper_0_0/synth/design_receiver_ReceiverWrapper_0_0.v:58]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 522.672 ; gain = 158.836
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 522.543 ; gain = 159.062
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -43,10 +43,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 522.672 ; gain = 158.836
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 522.543 ; gain = 159.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 522.672 ; gain = 158.836
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 522.543 ; gain = 159.062
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -55,29 +55,29 @@ Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 877.512 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 879.164 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 877.512 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 879.164 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 879.969 ; gain = 2.457
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.162 . Memory (MB): peak = 882.004 ; gain = 2.840
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 879.969 ; gain = 516.133
+Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 879.969 ; gain = 516.133
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 879.969 ; gain = 516.133
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "data" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_0" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -93,11 +93,11 @@ INFO: [Synth 8-5544] ROM "dataBuffer_9" won't be mapped to Block RAM because add
 INFO: [Synth 8-5544] ROM "dataBuffer_10" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_11" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "_GEN_3" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "_GEN_29" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "_GEN_53" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "_GEN_33" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "_GEN_61" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "started" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 879.969 ; gain = 516.133
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -111,10 +111,10 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
-	   2 Input     16 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 22    
 	  12 Input     12 Bit       Adders := 1     
 	   2 Input     10 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 8     
+	   2 Input      8 Bit       Adders := 11    
 	   2 Input      7 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 2     
 	   2 Input      3 Bit       Adders := 1     
@@ -122,7 +122,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
 	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 22    
+	                8 Bit    Registers := 17    
 	                7 Bit    Registers := 1     
 	                4 Bit    Registers := 3     
 	                3 Bit    Registers := 2     
@@ -130,12 +130,12 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 2     
 	   3 Input     16 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 21    
 	  25 Input     16 Bit        Muxes := 2     
 	  24 Input     16 Bit        Muxes := 3     
 	  23 Input     16 Bit        Muxes := 1     
 	   7 Input      8 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 7     
 	   2 Input      7 Bit        Muxes := 3     
 	   2 Input      4 Bit        Muxes := 3     
 	   2 Input      3 Bit        Muxes := 4     
@@ -150,17 +150,17 @@ Hierarchical RTL Component report
 Module DDC 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     16 Bit       Adders := 2     
-	   2 Input      8 Bit       Adders := 3     
+	   2 Input     16 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 5     
 +---Registers : 
 	               16 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
 	   3 Input     16 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 3     
 	   7 Input      8 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 3     
 	   2 Input      1 Bit        Muxes := 6     
 Module DACWrite 
 Detailed RTL Component Info : 
@@ -177,15 +177,16 @@ Module Receiver
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 18    
 	  12 Input     12 Bit       Adders := 1     
 	   2 Input     10 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 3     
+	   2 Input      8 Bit       Adders := 4     
 	   2 Input      7 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 2     
 +---Registers : 
 	               32 Bit    Registers := 1     
 	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 19    
+	                8 Bit    Registers := 14    
 	                7 Bit    Registers := 1     
 	                4 Bit    Registers := 3     
 	                3 Bit    Registers := 1     
@@ -193,9 +194,10 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 2     
 	  25 Input     16 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 18    
 	  24 Input     16 Bit        Muxes := 3     
 	  23 Input     16 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 4     
 	   2 Input      7 Bit        Muxes := 3     
 	   2 Input      4 Bit        Muxes := 3     
 	   2 Input      3 Bit        Muxes := 3     
@@ -217,11 +219,6 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 INFO: [Synth 8-5544] ROM "data" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-4471] merging register 'readData_reg[7:0]' into 'readData_reg[7:0]' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:369]
-INFO: [Synth 8-4471] merging register 'readData_reg[7:0]' into 'readData_reg[7:0]' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:369]
-INFO: [Synth 8-4471] merging register 'readData_reg[7:0]' into 'readData_reg[7:0]' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:369]
-INFO: [Synth 8-4471] merging register 'readData_reg[7:0]' into 'readData_reg[7:0]' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:369]
-INFO: [Synth 8-4471] merging register 'readData_reg[7:0]' into 'readData_reg[7:0]' [D:/Programs/urllc-chisel/generated/Receiver/ReceiverWrapper.v:369]
 INFO: [Synth 8-5544] ROM "dataBuffer_1" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_2" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_3" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -234,42 +231,12 @@ INFO: [Synth 8-5544] ROM "dataBuffer_9" won't be mapped to Block RAM because add
 INFO: [Synth 8-5544] ROM "dataBuffer_10" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_11" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "dataBuffer_0" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "_GEN_53" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "_GEN_29" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "_GEN_61" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "_GEN_33" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "_GEN_3" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "started" won't be mapped to RAM because it is too sparse
-DSP Report: Generating DSP waveBuffer_5_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_5_reg.
-DSP Report: register waveBuffer_5_reg is absorbed into DSP waveBuffer_5_reg.
-DSP Report: operator _waveBuffer_5_T_4 is absorbed into DSP waveBuffer_5_reg.
-DSP Report: operator _waveBuffer_5_T_1 is absorbed into DSP waveBuffer_5_reg.
-DSP Report: Generating DSP waveBuffer_4_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_4_reg.
-DSP Report: register waveBuffer_4_reg is absorbed into DSP waveBuffer_4_reg.
-DSP Report: operator _waveBuffer_4_T_4 is absorbed into DSP waveBuffer_4_reg.
-DSP Report: operator _waveBuffer_4_T_1 is absorbed into DSP waveBuffer_4_reg.
-DSP Report: Generating DSP waveBuffer_3_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_3_reg.
-DSP Report: register waveBuffer_3_reg is absorbed into DSP waveBuffer_3_reg.
-DSP Report: operator _waveBuffer_3_T_4 is absorbed into DSP waveBuffer_3_reg.
-DSP Report: operator _waveBuffer_3_T_1 is absorbed into DSP waveBuffer_3_reg.
-DSP Report: Generating DSP waveBuffer_2_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_2_reg.
-DSP Report: register waveBuffer_2_reg is absorbed into DSP waveBuffer_2_reg.
-DSP Report: operator _waveBuffer_2_T_4 is absorbed into DSP waveBuffer_2_reg.
-DSP Report: operator _waveBuffer_2_T_1 is absorbed into DSP waveBuffer_2_reg.
-DSP Report: Generating DSP waveBuffer_1_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_1_reg.
-DSP Report: register waveBuffer_1_reg is absorbed into DSP waveBuffer_1_reg.
-DSP Report: operator _waveBuffer_1_T_4 is absorbed into DSP waveBuffer_1_reg.
-DSP Report: operator _waveBuffer_1_T_1 is absorbed into DSP waveBuffer_1_reg.
-DSP Report: Generating DSP waveBuffer_0_reg, operation Mode is: (P+A*B2)'.
-DSP Report: register readData_reg is absorbed into DSP waveBuffer_0_reg.
-DSP Report: register waveBuffer_0_reg is absorbed into DSP waveBuffer_0_reg.
-DSP Report: operator _waveBuffer_0_T_4 is absorbed into DSP waveBuffer_0_reg.
-DSP Report: operator _waveBuffer_0_T_1 is absorbed into DSP waveBuffer_0_reg.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 879.969 ; gain = 516.133
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -284,20 +251,6 @@ ROM:
 |Receiver    | p_0_out    | 32x16         | LUT            | 
 +------------+------------+---------------+----------------+
 
-
-DSP: Preliminary Mapping  Report (see note below)
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-|Receiver    | (P+A*B2)'   | 16     | 8      | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
-+------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-
-Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
@@ -311,13 +264,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 920.812 ; gain = 556.977
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:05 ; elapsed = 00:01:08 . Memory (MB): peak = 882.004 ; gain = 518.523
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 921.555 ; gain = 557.719
+Finished Timing Optimization : Time (s): cpu = 00:01:05 ; elapsed = 00:01:09 . Memory (MB): peak = 882.391 ; gain = 518.910
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -329,7 +282,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -349,12 +302,11 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6064] Net n_0_537 is driving 66 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -367,7 +319,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -379,25 +331,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -410,58 +362,58 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+--------+------+
-|      |Cell    |Count |
-+------+--------+------+
-|1     |CARRY4  |    64|
-|2     |DSP48E1 |     6|
-|3     |LUT1    |     5|
-|4     |LUT2    |   133|
-|5     |LUT3    |    92|
-|6     |LUT4    |   122|
-|7     |LUT5    |    81|
-|8     |LUT6    |   131|
-|9     |FDRE    |   271|
-|10    |FDSE    |    12|
-+------+--------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |   168|
+|2     |LUT1   |   100|
+|3     |LUT2   |   100|
+|4     |LUT3   |    89|
+|5     |LUT4   |   157|
+|6     |LUT5   |   141|
+|7     |LUT6   |   344|
+|8     |FDRE   |   459|
+|9     |FDSE   |    12|
++------+-------+------+
 
 Report Instance Areas: 
 +------+---------------+----------------+------+
 |      |Instance       |Module          |Cells |
 +------+---------------+----------------+------+
-|1     |top            |                |   917|
-|2     |  inst         |ReceiverWrapper |   917|
-|3     |    Receiver   |Receiver        |   917|
+|1     |top            |                |  1570|
+|2     |  inst         |ReceiverWrapper |  1570|
+|3     |    Receiver   |Receiver        |  1570|
 |4     |      dacWrite |DACWrite        |    47|
-|5     |      ddc      |DDC             |   271|
+|5     |      ddc      |DDC             |   186|
 +------+---------------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:09 ; elapsed = 00:01:12 . Memory (MB): peak = 911.535 ; gain = 548.055
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 948.172 ; gain = 227.039
-Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 948.172 ; gain = 584.336
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:00:58 . Memory (MB): peak = 911.535 ; gain = 188.594
+Synthesis Optimization Complete : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 911.535 ; gain = 548.055
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 70 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'design_receiver_ReceiverWrapper_0_0' is not ideal for floorplanning, since the cellview 'Receiver' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 948.172 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 911.535 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-61 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+55 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 948.172 ; gain = 597.555
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 948.172 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:13 ; elapsed = 00:01:17 . Memory (MB): peak = 911.535 ; gain = 561.363
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 911.535 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/design_receiver_ReceiverWrapper_0_0_synth_1/design_receiver_ReceiverWrapper_0_0.dcp' has been generated.
 INFO: [Coretcl 2-1174] Renamed 4 cell refs.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 948.172 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 911.535 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/design_receiver_ReceiverWrapper_0_0_synth_1/design_receiver_ReceiverWrapper_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_receiver_ReceiverWrapper_0_0_utilization_synth.rpt -pb design_receiver_ReceiverWrapper_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jun  5 14:27:16 2022...
+INFO: [Common 17-206] Exiting Vivado at Sun Jun  5 16:49:48 2022...

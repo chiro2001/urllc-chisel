@@ -2,9 +2,7 @@ package modules
 
 import chisel3._
 import utils.Utils
-import utils.Utils.{sampleCountMap, waveCountMap, waveGenerate}
-
-import scala.math._
+import utils.Utils.{fakeMul, sampleCountMap, waveCountMap, waveGenerate}
 
 object DDCMode {
   val DDC_60M = 0
@@ -25,8 +23,8 @@ class DDC(mode: Int = DDC_60M) extends Module {
       val data = Bool()
       val update = Bool()
       val readData = SInt(8.W)
-      val sum = SInt(32.W)
-      val mul = SInt(8.W)
+      val sum = SInt(20.W)
+      val mul = SInt(16.W)
       val refData = SInt(8.W)
     })
   })
@@ -40,7 +38,7 @@ class DDC(mode: Int = DDC_60M) extends Module {
   println(s"yListRefer: $yListData")
 
   val cnt = RegInit(0.U(16.W))
-  val sum = RegInit(0.S(32.W))
+  val sum = RegInit(0.S(20.W))
 
   io.out.sum := sum
 
@@ -88,7 +86,8 @@ class DDC(mode: Int = DDC_60M) extends Module {
     cnt := 1.U
   }.otherwise {
     Utils.decode(io.in.data, readDataReg)
-    val mul = getMul
+    // val mul = getMul
+    val mul = fakeMul(readDataReg, refData.asTypeOf(SInt(8.W)))
     io.out.mul := mul
     // 15 or 50 波/bit
     when(cnt === ((waveCount * sampleCount) - 1).U) {

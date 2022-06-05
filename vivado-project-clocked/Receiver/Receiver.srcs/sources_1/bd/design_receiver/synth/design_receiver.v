@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Sun Jun  5 15:18:13 2022
+//Date        : Sun Jun  5 16:48:05 2022
 //Host        : Chiro running 64-bit major release  (build 9200)
 //Command     : generate_target design_receiver.bd
 //Design      : design_receiver

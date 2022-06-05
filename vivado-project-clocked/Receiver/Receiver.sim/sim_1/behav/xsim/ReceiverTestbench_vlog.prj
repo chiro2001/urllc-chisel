@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Receiver.srcs/sources_1/bd/design_receiver/ipshared/85a3" \
+"../../../../../../generated/Receiver/ReceiverWrapper.v" \
+"../../../../Receiver.ip_user_files/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0_clk_wiz.v" \
+"../../../../Receiver.ip_user_files/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0.v" \
+"../../../../Receiver.ip_user_files/bd/design_receiver/ip/design_receiver_ReceiverWrapper_0_0/sim/design_receiver_ReceiverWrapper_0_0.v" \
+"../../../../Receiver.ip_user_files/bd/design_receiver/sim/design_receiver.v" \
+"../../../../Receiver.srcs/sources_1/bd/design_receiver/hdl/design_receiver_wrapper.v" \
+"../../../../../../sim/ReceiverTestbench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

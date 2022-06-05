@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ReceiverTestbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="ReceiverTestbench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="19210000000fs"></ZoomStartTime>
+      <ZoomEndTime time="134470000001fs"></ZoomEndTime>
+      <Cursor1Time time="115260000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="217"></NameColumnWidth>
+      <ValueColumnWidth column_width="136"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/ReceiverTestbench/receiver_sync_in" type="logic">
+      <obj_property name="ElementShortName">receiver_sync_in</obj_property>
+      <obj_property name="ObjectShortName">receiver_sync_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/receiver_sync_out" type="logic">
+      <obj_property name="ElementShortName">receiver_sync_out</obj_property>
+      <obj_property name="ObjectShortName">receiver_sync_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/receiver_ad" type="array">
+      <obj_property name="ElementShortName">receiver_ad[7:0]</obj_property>
+      <obj_property name="ObjectShortName">receiver_ad[7:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/receiver_da" type="array">
+      <obj_property name="ElementShortName">receiver_da[7:0]</obj_property>
+      <obj_property name="ObjectShortName">receiver_da[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/reset_n" type="logic">
+      <obj_property name="ElementShortName">reset_n</obj_property>
+      <obj_property name="ObjectShortName">reset_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/y_list" type="array">
+      <obj_property name="ElementShortName">y_list[5:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">y_list[5:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/y_list_n" type="array">
+      <obj_property name="ElementShortName">y_list_n[5:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">y_list_n[5:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/data" type="array">
+      <obj_property name="ElementShortName">data[5:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[5:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/j" type="array">
+      <obj_property name="ElementShortName">j[31:0]</obj_property>
+      <obj_property name="ObjectShortName">j[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/k" type="array">
+      <obj_property name="ElementShortName">k[31:0]</obj_property>
+      <obj_property name="ObjectShortName">k[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="Radix">SIGNEDMAGRADIX</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/len" type="array">
+      <obj_property name="ElementShortName">len[31:0]</obj_property>
+      <obj_property name="ObjectShortName">len[31:0]</obj_property>
+   </wvobject>
+</wave_config>

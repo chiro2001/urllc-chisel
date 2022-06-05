@@ -13,7 +13,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {sender_ad_clk}]
 set_property PACKAGE_PIN W20 [get_ports {sender_ad_clk}]
 
 # create_generated_clock -name clock -source [get_ports {clock_in}] -multiply_by 12 -divide_by 5 [get_ports clock]
-create_generated_clock -name clock -source clk_50M -multiply_by 12 -divide_by 5 -verbose [get_ports {clock_in}]
+# create_generated_clock -name clock -source clk_50M -multiply_by 12 -divide_by 5 -verbose [get_ports {clock_in}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports clock]
 

@@ -1,0 +1,230 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x859E4FF04D941B68",
+      "device": "xc7z020clg400-2",
+      "name": "design_connect",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2018.3",
+      "validated": "true"
+    },
+    "design_tree": {
+      "ConnectWrapper_0": "",
+      "clk_wiz_0": ""
+    },
+    "ports": {
+      "clock_in": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_connect_clock_in",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "50000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "resetN": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_ad": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_sync_in": {
+        "direction": "I"
+      },
+      "receiver_da": {
+        "type": "data",
+        "direction": "O",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "receiver_sync_out": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "ConnectWrapper_0": {
+        "vlnv": "xilinx.com:module_ref:ConnectWrapper:1.0",
+        "xci_name": "design_connect_ConnectWrapper_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ConnectWrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "resetN",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              },
+              "FREQ_HZ": {
+                "value": "120000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "resetN": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "sender_ad": {
+            "direction": "I",
+            "left": "7",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "sender_sync_in": {
+            "direction": "I"
+          },
+          "receiver_da": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "receiver_sync_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_connect_clk_wiz_0_0",
+        "parameters": {
+          "CLKOUT1_JITTER": {
+            "value": "156.886"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "160.484"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "120.000"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "19.500"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "8.125"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      }
+    },
+    "nets": {
+      "resetN_1": {
+        "ports": [
+          "resetN",
+          "clk_wiz_0/resetn"
+        ]
+      },
+      "clock_in_1": {
+        "ports": [
+          "clock_in",
+          "clk_wiz_0/clk_in1"
+        ]
+      },
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "ConnectWrapper_0/clock"
+        ]
+      },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "clk_wiz_0/locked",
+          "ConnectWrapper_0/resetN"
+        ]
+      },
+      "sender_ad_1": {
+        "ports": [
+          "sender_ad",
+          "ConnectWrapper_0/sender_ad"
+        ]
+      },
+      "sender_sync_in_1": {
+        "ports": [
+          "sender_sync_in",
+          "ConnectWrapper_0/sender_sync_in"
+        ]
+      },
+      "ConnectWrapper_0_receiver_da": {
+        "ports": [
+          "ConnectWrapper_0/receiver_da",
+          "receiver_da"
+        ]
+      },
+      "ConnectWrapper_0_receiver_sync_out": {
+        "ports": [
+          "ConnectWrapper_0/receiver_sync_out",
+          "receiver_sync_out"
+        ]
+      }
+    }
+  }
+}

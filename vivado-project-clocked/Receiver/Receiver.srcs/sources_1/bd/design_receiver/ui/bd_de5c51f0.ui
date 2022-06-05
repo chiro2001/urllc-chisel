@@ -1,0 +1,24 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port receiver_sync_in -pg 1 -y 160 -defaultsOSRD
+preplace port clock_in -pg 1 -y 80 -defaultsOSRD
+preplace port receiver_sync_out -pg 1 -y 140 -defaultsOSRD
+preplace port resetN -pg 1 -y 60 -defaultsOSRD
+preplace portBus receiver_da -pg 1 -y 120 -defaultsOSRD
+preplace portBus receiver_ad -pg 1 -y 140 -defaultsOSRD
+preplace inst ReceiverWrapper_0 -pg 1 -lvl 2 -y 130 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 70 -defaultsOSRD
+preplace netloc receiver_ad_1 1 0 2 NJ 140 NJ
+preplace netloc ReceiverWrapper_0_receiver_sync_out 1 2 1 NJ
+preplace netloc clk_wiz_0_locked 1 1 1 200
+preplace netloc resetN_1 1 0 1 NJ
+preplace netloc receiver_sync_in_1 1 0 2 NJ 160 NJ
+preplace netloc clk_wiz_0_clk_out1 1 1 1 210
+preplace netloc ReceiverWrapper_0_receiver_da 1 2 1 NJ
+preplace netloc clock_in_1 1 0 1 NJ
+levelinfo -pg 1 0 110 370 550 -top 0 -bot 220
+"
+}
+

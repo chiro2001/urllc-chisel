@@ -1,3 +1,5 @@
+`timescale 10ns / 1ns
+
 module SenderTestbench();
 
     reg sender_sync_in = 0;

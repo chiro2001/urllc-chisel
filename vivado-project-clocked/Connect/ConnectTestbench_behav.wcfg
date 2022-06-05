@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ConnectTestbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="ConnectTestbench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1523000000001fs"></ZoomEndTime>
+      <Cursor1Time time="305470000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="217"></NameColumnWidth>
+      <ValueColumnWidth column_width="135"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="32" />
+   <wvobject fp_name="/ConnectTestbench/sender_sync_in" type="logic">
+      <obj_property name="ElementShortName">sender_sync_in</obj_property>
+      <obj_property name="ObjectShortName">sender_sync_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/receiver_sync_out" type="logic">
+      <obj_property name="ElementShortName">receiver_sync_out</obj_property>
+      <obj_property name="ObjectShortName">receiver_sync_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/sender_ad" type="array">
+      <obj_property name="ElementShortName">sender_ad[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sender_ad[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/receiver_da" type="array">
+      <obj_property name="ElementShortName">receiver_da[7:0]</obj_property>
+      <obj_property name="ObjectShortName">receiver_da[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/reset_n" type="logic">
+      <obj_property name="ElementShortName">reset_n</obj_property>
+      <obj_property name="ObjectShortName">reset_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/i_last" type="array">
+      <obj_property name="ElementShortName">i_last[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_last[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/i_last2" type="array">
+      <obj_property name="ElementShortName">i_last2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_last2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/clk_wiz_0/clk_out1" type="logic">
+      <obj_property name="ElementShortName">clk_out1</obj_property>
+      <obj_property name="ObjectShortName">clk_out1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/clk_wiz_0/resetn" type="logic">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/clk_wiz_0/locked" type="logic">
+      <obj_property name="ElementShortName">locked</obj_property>
+      <obj_property name="ObjectShortName">locked</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/clk_wiz_0/clk_in1" type="logic">
+      <obj_property name="ElementShortName">clk_in1</obj_property>
+      <obj_property name="ObjectShortName">clk_in1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/io_in_data" type="array">
+      <obj_property name="ElementShortName">io_in_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/io_in_sync" type="logic">
+      <obj_property name="ElementShortName">io_in_sync</obj_property>
+      <obj_property name="ObjectShortName">io_in_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/io_out_data" type="array">
+      <obj_property name="ElementShortName">io_out_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/io_out_sync" type="logic">
+      <obj_property name="ElementShortName">io_out_sync</obj_property>
+      <obj_property name="ObjectShortName">io_out_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_clock" type="logic">
+      <obj_property name="ElementShortName">ddc_clock</obj_property>
+      <obj_property name="ObjectShortName">ddc_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_reset" type="logic">
+      <obj_property name="ElementShortName">ddc_reset</obj_property>
+      <obj_property name="ObjectShortName">ddc_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_in_data" type="array">
+      <obj_property name="ElementShortName">ddc_io_in_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_in_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_in_sync" type="logic">
+      <obj_property name="ElementShortName">ddc_io_in_sync</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_in_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_in_enable" type="logic">
+      <obj_property name="ElementShortName">ddc_io_in_enable</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_in_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_in_offset" type="array">
+      <obj_property name="ElementShortName">ddc_io_in_offset[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_in_offset[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_out_data" type="logic">
+      <obj_property name="ElementShortName">ddc_io_out_data</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_out_data</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/ddc_io_out_update" type="logic">
+      <obj_property name="ElementShortName">ddc_io_out_update</obj_property>
+      <obj_property name="ObjectShortName">ddc_io_out_update</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite_clock" type="logic">
+      <obj_property name="ElementShortName">dacWrite_clock</obj_property>
+      <obj_property name="ObjectShortName">dacWrite_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite_reset" type="logic">
+      <obj_property name="ElementShortName">dacWrite_reset</obj_property>
+      <obj_property name="ObjectShortName">dacWrite_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite_io_sync" type="logic">
+      <obj_property name="ElementShortName">dacWrite_io_sync</obj_property>
+      <obj_property name="ObjectShortName">dacWrite_io_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite_io_bit" type="logic">
+      <obj_property name="ElementShortName">dacWrite_io_bit</obj_property>
+      <obj_property name="ObjectShortName">dacWrite_io_bit</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ConnectTestbench/wrapper/design_connect_i/ConnectWrapper_0/inst/Connect/receiver/dacWrite_io_data" type="array">
+      <obj_property name="ElementShortName">dacWrite_io_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dacWrite_io_data[7:0]</obj_property>
+   </wvobject>
+</wave_config>

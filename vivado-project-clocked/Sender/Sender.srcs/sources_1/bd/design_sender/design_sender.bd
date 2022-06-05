@@ -1,0 +1,300 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xD24B82F7B8F4C61B",
+      "device": "xc7z020clg400-2",
+      "name": "design_sender",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2018.3",
+      "validated": "true"
+    },
+    "design_tree": {
+      "SenderWrapper_0": "",
+      "clk_wiz_0": ""
+    },
+    "ports": {
+      "clock_in": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_sender_clock_in",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "50000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "resetN": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_ad": {
+        "type": "data",
+        "direction": "I",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_sync_in": {
+        "type": "data",
+        "direction": "I",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_da": {
+        "type": "data",
+        "direction": "O",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_sync_out": {
+        "type": "data",
+        "direction": "O",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "sender_ad_clk": {
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_sender_SenderWrapper_0_0_sender_ad_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default_prop"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default_prop"
+          }
+        }
+      },
+      "sender_da_clk": {
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_sender_SenderWrapper_0_0_sender_da_clk",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default_prop"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default_prop"
+          }
+        }
+      }
+    },
+    "components": {
+      "SenderWrapper_0": {
+        "vlnv": "xilinx.com:module_ref:SenderWrapper:1.0",
+        "xci_name": "design_sender_SenderWrapper_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "SenderWrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              },
+              "FREQ_HZ": {
+                "value": "120000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "resetN": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "sender_ad_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "sender_da_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "sender_ad": {
+            "direction": "I",
+            "left": "7",
+            "right": "0",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "sender_sync_in": {
+            "direction": "I",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "sender_da": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "sender_sync_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_sender_clk_wiz_0_0",
+        "parameters": {
+          "CLKOUT1_JITTER": {
+            "value": "156.886"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "160.484"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "120.000"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "19.500"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "8.125"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      }
+    },
+    "nets": {
+      "clk_wiz_0_clk_out1": {
+        "ports": [
+          "clk_wiz_0/clk_out1",
+          "SenderWrapper_0/clock"
+        ]
+      },
+      "clock_in_1": {
+        "ports": [
+          "clock_in",
+          "clk_wiz_0/clk_in1"
+        ]
+      },
+      "resetN_1": {
+        "ports": [
+          "resetN",
+          "clk_wiz_0/resetn"
+        ]
+      },
+      "sender_ad_1": {
+        "ports": [
+          "sender_ad",
+          "SenderWrapper_0/sender_ad"
+        ]
+      },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "clk_wiz_0/locked",
+          "SenderWrapper_0/resetN"
+        ]
+      },
+      "sender_sync_in_1": {
+        "ports": [
+          "sender_sync_in",
+          "SenderWrapper_0/sender_sync_in"
+        ]
+      },
+      "SenderWrapper_0_sender_da": {
+        "ports": [
+          "SenderWrapper_0/sender_da",
+          "sender_da"
+        ]
+      },
+      "SenderWrapper_0_sender_sync_out": {
+        "ports": [
+          "SenderWrapper_0/sender_sync_out",
+          "sender_sync_out"
+        ]
+      },
+      "SenderWrapper_0_sender_da_clk": {
+        "ports": [
+          "SenderWrapper_0/sender_da_clk",
+          "sender_da_clk"
+        ]
+      },
+      "SenderWrapper_0_sender_ad_clk": {
+        "ports": [
+          "SenderWrapper_0/sender_ad_clk",
+          "sender_ad_clk"
+        ]
+      }
+    }
+  }
+}

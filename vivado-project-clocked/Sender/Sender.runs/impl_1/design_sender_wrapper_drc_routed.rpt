@@ -1,0 +1,54 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Sun Jun  5 15:20:14 2022
+| Host         : Chiro running 64-bit major release  (build 9200)
+| Command      : report_drc -file design_sender_wrapper_drc_routed.rpt -pb design_sender_wrapper_drc_routed.pb -rpx design_sender_wrapper_drc_routed.rpx
+| Design       : design_sender_wrapper
+| Device       : xc7z020clg400-2
+| Speed File   : -2
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 3
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PDRC-153    | Warning  | Gated clock check                                           | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| ZPS7-1      | Warning  | PS7 block required                                          | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[6] is a gated clock net sourced by a combinational pin design_sender_i/SenderWrapper_0/inst/sender/adcRead/sender_ad_clk_INST_0/O, cell design_sender_i/SenderWrapper_0/inst/sender/adcRead/sender_ad_clk_INST_0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT design_sender_i/SenderWrapper_0/inst/sender/adcRead/sender_ad_clk_INST_0 is driving clock pin of 11 cells. This could lead to large hold time violations. Involved cells are:
+design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[0], design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[1], design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[2], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[0], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[1], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[2], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[3], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[4], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[5], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[6], design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_reg[7]
+Related violations: <none>
+
+ZPS7-1#1 Warning
+PS7 block required  
+The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+Related violations: <none>
+
+

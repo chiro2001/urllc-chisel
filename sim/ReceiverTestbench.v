@@ -1,7 +1,9 @@
+`timescale 10ns / 1ns
+
 module ReceiverTestbench();
 
     reg receiver_sync_in = 0;
-    wire receiver_sync_out = 0;
+    wire receiver_sync_out;
     reg [7:0] receiver_ad = 'h7f;
     wire [7:0] receiver_da;
     reg clock = 0;
@@ -54,9 +56,12 @@ module ReceiverTestbench();
         $finish;
     end
 
-    ReceiverWrapper
+    // ReceiverWrapper
+    design_receiver_wrapper
         wrapper(
-            .clock(clock), .resetN(reset_n),
+            // .clock(clock),
+            .clock_in(clock),
+            .resetN(reset_n),
             .receiver_sync_in(receiver_sync_in),
             .receiver_sync_out(receiver_sync_out),
             .receiver_ad(receiver_ad), .receiver_da(receiver_da)

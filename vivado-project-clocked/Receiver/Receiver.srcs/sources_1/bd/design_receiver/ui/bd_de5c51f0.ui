@@ -1,6 +1,6 @@
 {
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
 preplace port receiver_sync_in -pg 1 -y 160 -defaultsOSRD
 preplace port clock_in -pg 1 -y 80 -defaultsOSRD
@@ -22,7 +22,7 @@ preplace netloc clk_wiz_0_clk_out1 1 1 1 210
 preplace netloc ReceiverWrapper_0_receiver_da 1 2 1 NJ
 preplace netloc ReceiverWrapper_0_receiver_da_clk 1 2 1 NJ
 preplace netloc clock_in_1 1 0 1 NJ
-levelinfo -pg 1 0 110 380 560 -top -20 -bot 220
+levelinfo -pg 1 -10 110 390 580 -top -20 -bot 220
 "
 }
-
+0

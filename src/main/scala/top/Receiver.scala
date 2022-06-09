@@ -130,6 +130,7 @@ class Receiver(div: Int = 45) extends Module {
 
   def resetStart(): Unit = {
     when(energy < threshold) {
+      printf(s"on the fall: startTime = %x (%d), range: (${div / 2}, ${div * 2}]\n", startTime, startTime)
       when(startTime > (div / 2).U && startTime <= (div * 2).U) {
         when(calibrateResult =/= "b1111".U) {
           printf("calibrated to: %d!\n", calibrateResult)

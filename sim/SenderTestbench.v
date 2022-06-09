@@ -3,7 +3,7 @@
 module SenderTestbench();
 
     reg sender_sync_in = 0;
-    wire sender_sync_out = 0;
+    wire sender_sync_out;
     reg [7:0] sender_ad = 0;
     wire [7:0] sender_da;
     reg clock = 0;

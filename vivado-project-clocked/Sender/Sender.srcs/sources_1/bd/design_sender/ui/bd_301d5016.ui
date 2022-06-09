@@ -23,7 +23,7 @@ preplace netloc clk_wiz_0_clk_out1 1 1 1 210
 preplace netloc SenderWrapper_0_sender_sync_out 1 2 1 NJ
 preplace netloc sender_sync_in_1 1 0 2 NJ 160 NJ
 preplace netloc clock_in_1 1 0 1 NJ
-levelinfo -pg 1 0 110 360 530 -top 0 -bot 220
+levelinfo -pg 1 -10 110 370 540 -top 0 -bot 220
 "
 }
-
+0

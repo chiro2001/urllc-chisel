@@ -21,19 +21,19 @@ module ReceiverTestbench();
     always #1 clock <= ~clock;
 
     initial begin
-        y_list[0] = 'h7f;
-        y_list[1] = 'h6d;
-        y_list[2] = 'h6d;
-        y_list[3] = 'h7f;
-        y_list[4] = 'h93;
-        y_list[5] = 'h93;
-
         y_list_n[0] = 'h7f;
-        y_list_n[1] = 'h93;
-        y_list_n[2] = 'h93;
+        y_list_n[1] = 'h6d;
+        y_list_n[2] = 'h6d;
         y_list_n[3] = 'h7f;
-        y_list_n[4] = 'h6d;
-        y_list_n[5] = 'h6d;
+        y_list_n[4] = 'h93;
+        y_list_n[5] = 'h93;
+
+        y_list[0] = 'h7f;
+        y_list[1] = 'h93;
+        y_list[2] = 'h93;
+        y_list[3] = 'h7f;
+        y_list[4] = 'h6d;
+        y_list[5] = 'h6d;
 
         data[0] = 'hff;
         data[1] = 'h00;
@@ -43,16 +43,23 @@ module ReceiverTestbench();
         data[5] = 'h0f;
 
         #6 reset_n <= 1;
-        #(720*2)
+        #720
+        #90
+        // 校准
+        for (k = 0; k < 45; k = k + 1) begin
+            #2 receiver_ad <= y_list[(k * 2) % 6];
+        end
+        receiver_ad <= 'h7f;
+        #(720 - 180)
         receiver_sync_in <= 1;
         for (i = 0; i < 6; i = i + 1) begin
             for (j = 0; j < 8; j = j + 1) begin
-                for (k = 0; k < 90; k = k + 1) begin
-                    #2 receiver_ad <= ((data[i] >> j) & 1) ? y_list_n[k % 6] : y_list[k % 6];
+                for (k = 0; k < 45; k = k + 1) begin
+                    #2 receiver_ad <= ((data[i] >> j) & 1) ? y_list[(k * 2) % 6] : y_list_n[(k * 2) % 6];
                 end
             end
         end
-        #(720*2)
+        #720
         $finish;
     end
 

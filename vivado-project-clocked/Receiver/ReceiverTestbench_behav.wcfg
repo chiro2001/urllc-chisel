@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="19210000000fs"></ZoomStartTime>
-      <ZoomEndTime time="134470000001fs"></ZoomEndTime>
-      <Cursor1Time time="115260000000fs"></Cursor1Time>
+      <ZoomStartTime time="10810000000fs"></ZoomStartTime>
+      <ZoomEndTime time="75670000001fs"></ZoomEndTime>
+      <Cursor1Time time="64860000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="217"></NameColumnWidth>
-      <ValueColumnWidth column_width="136"></ValueColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
+   <WVObjectSize size="19" />
    <wvobject fp_name="/ReceiverTestbench/receiver_sync_in" type="logic">
       <obj_property name="ElementShortName">receiver_sync_in</obj_property>
       <obj_property name="ObjectShortName">receiver_sync_in</obj_property>
@@ -81,5 +81,29 @@
    <wvobject fp_name="/ReceiverTestbench/len" type="array">
       <obj_property name="ElementShortName">len[31:0]</obj_property>
       <obj_property name="ObjectShortName">len[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/calibrating" type="logic">
+      <obj_property name="ElementShortName">calibrating</obj_property>
+      <obj_property name="ObjectShortName">calibrating</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/calibrateResult" type="array">
+      <obj_property name="ElementShortName">calibrateResult[3:0]</obj_property>
+      <obj_property name="ObjectShortName">calibrateResult[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/offsetNow" type="array">
+      <obj_property name="ElementShortName">offsetNow[2:0]</obj_property>
+      <obj_property name="ObjectShortName">offsetNow[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/startTime" type="array">
+      <obj_property name="ElementShortName">startTime[31:0]</obj_property>
+      <obj_property name="ObjectShortName">startTime[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/energy" type="array">
+      <obj_property name="ElementShortName">energy[31:0]</obj_property>
+      <obj_property name="ObjectShortName">energy[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/energyNow" type="array">
+      <obj_property name="ElementShortName">energyNow[7:0]</obj_property>
+      <obj_property name="ObjectShortName">energyNow[7:0]</obj_property>
    </wvobject>
 </wave_config>

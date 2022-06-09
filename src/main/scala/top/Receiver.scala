@@ -7,7 +7,7 @@ import modules.{DACWrite, DDC}
 import utils.Utils.{fakeMul, sampleCountMapDDC, waveGenerate}
 import utils.{DataWithSyncWrapper, Utils}
 
-class Receiver(div: Int = 90) extends Module {
+class Receiver(div: Int = 45) extends Module {
   val io = IO(new DataWithSyncWrapper)
   val ddc = Module(new DDC)
   val refData = IO(Output(SInt(8.W)))

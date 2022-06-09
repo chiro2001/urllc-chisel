@@ -112,7 +112,7 @@ class TestAll
       var cnt = 0
 
       def testOneBit(bit: Boolean) = {
-        for (_ <- 0 until 90) {
+        for (_ <- 0 until 45) {
           c.io.in.data.poke((if (bit) yListN else yList) (cnt % yList.size))
           cnt = cnt + 2
           c.clock.step()
@@ -126,8 +126,8 @@ class TestAll
           testOneBit(((num >> i) & 0x01) > 0)
         }
         if (lastTestByte >= 0) {
-          // c.io.out.data.expect(lastTestByte.U)
-          println(s"expect: ${lastTestByte}, now: ${c.io.out.data.peekInt()}")
+          c.io.out.data.expect(lastTestByte.U)
+          // println(s"expect: ${lastTestByte}, now: ${c.io.out.data.peekInt()}")
         }
         lastTestByte = num
       }

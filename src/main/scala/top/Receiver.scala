@@ -68,7 +68,7 @@ class Receiver(div: Int = 45) extends Module {
       when(calibratingValue > calibrateMaxValue) {
         calibrateMaxValue := calibratingValue
         calibrateResult := calibrateIndex
-      } .otherwise {
+      }.otherwise {
         calibrateMaxValue := calibrateMaxValue
       }
     }
@@ -130,7 +130,7 @@ class Receiver(div: Int = 45) extends Module {
 
   def resetStart(): Unit = {
     when(energy < threshold) {
-      when(startTime > 45.U && startTime <= (90 * 2).U) {
+      when(startTime > (div / 2).U && startTime <= (div * 2).U) {
         when(calibrateResult =/= "b1111".U) {
           printf("calibrated to: %d!\n", calibrateResult)
           offsetNow := calibrateResult
@@ -138,7 +138,7 @@ class Receiver(div: Int = 45) extends Module {
         startTime := 0.U
         started := false.B
       }.otherwise {
-        when(launched && started) {
+        when(launched && started && startTime > div.U) {
           exiting := true.B
         }
       }

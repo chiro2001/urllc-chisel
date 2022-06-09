@@ -154,7 +154,7 @@ class Receiver(div: Int = 45) extends Module {
   }
 
   val lastSync = RegNext(io.in.sync)
-  val exitTime = 720 + 20
+  val exitTime = 8 * div
   val exitCnt = RegInit(0.U(log2Ceil(exitTime).W))
   when(exiting) {
     when(exitCnt === exitTime.U) {

@@ -185,9 +185,10 @@ class TestAll
       def testOnce() = {
         c.io.in.sync.poke(true.B)
         lastValues = List()
-        for (i <- 0 until 3) {
-          val testNow = (0xff * math.sin(i.toDouble + cnt) / 2).toInt
-          cnt = cnt + 0.5
+        val testSize = 3
+        for (i <- 0 until testSize) {
+          val testNow = (0xff * math.abs(math.sin(i.toDouble / 10 + cnt)) / 2).toInt
+          cnt = cnt + 0.3
           c.io.in.data.poke(testNow.U)
           c.clock.step(90 * 8)
           lastValues = List(testNow) ++ lastValues
@@ -197,12 +198,15 @@ class TestAll
             c.io.out.data.expect(lastValues(2))
           }
         }
+        c.io.in.data.poke(0.U)
         c.io.in.sync.poke(false.B)
         for (i <- 0 until 2) {
           c.clock.step(90 * 8)
-          // c.io.out.data.expect(0x7f.U)
-          println(s"data = ${c.io.out.data.peekInt()}")
+          c.io.out.data.expect(lastValues(1 - i))
+          println(s"data = ${c.io.out.data.peekInt()}, lastValues: $lastValues")
         }
+        c.clock.step(90 * 8)
+        c.io.out.data.expect(0x7f.U)
       }
 
       testOnce()

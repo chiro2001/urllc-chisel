@@ -1,0 +1,138 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Jun  9 21:18:13 2022
+| Host         : Chiro running 64-bit major release  (build 9200)
+| Command      : report_methodology -file design_receiver_wrapper_methodology_drc_routed.rpt -pb design_receiver_wrapper_methodology_drc_routed.pb -rpx design_receiver_wrapper_methodology_drc_routed.rpx
+| Design       : design_receiver_wrapper
+| Device       : xc7z020clg400-2
+| Speed File   : -2
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 20
++-----------+----------+--------------------------------------------------------+------------+
+| Rule      | Severity | Description                                            | Violations |
++-----------+----------+--------------------------------------------------------+------------+
+| TIMING-17 | Warning  | Non-clocked sequential cell                            | 19         |
+| XDCC-7    | Warning  | Scoped Clock constraint overwritten on the same source | 1          |
++-----------+----------+--------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-17#1 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#5 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#6 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#13 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#14 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#15 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#16 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#17 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#18 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#19 Warning
+Non-clocked sequential cell  
+The clock pin design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+XDCC-7#1 Warning
+Scoped Clock constraint overwritten on the same source  
+A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 20.000 -name clk_50M [get_ports clock_in] (Source: D:/Programs/urllc-chisel/xdc/generic/generic.xdc (Line: 6))
+Previous: create_clock -period 20.000 [get_ports clock_in] (Source: d:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0.xdc (Line: 56))
+Related violations: <none>
+
+

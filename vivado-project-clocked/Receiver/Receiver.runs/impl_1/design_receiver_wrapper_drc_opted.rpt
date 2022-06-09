@@ -1,0 +1,48 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Jun  9 21:17:51 2022
+| Host         : Chiro running 64-bit major release  (build 9200)
+| Command      : report_drc -file design_receiver_wrapper_drc_opted.rpt -pb design_receiver_wrapper_drc_opted.pb -rpx design_receiver_wrapper_drc_opted.rpx
+| Design       : design_receiver_wrapper
+| Device       : xc7z020clg400-2
+| Speed File   : -2
+| Design State : Synthesized
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 2
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| ZPS7-1      | Warning  | PS7 block required                                          | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT design_receiver_i/ReceiverWrapper_0/inst/Receiver/ddc/dataReg[7]_i_4 is driving clock pin of 19 cells. This could lead to large hold time violations. Involved cells are:
+design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[0], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[1], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/cnt_reg[2], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[0], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[1], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[2], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[3], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[4], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[5], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[6], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/dataReg_reg[7], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[0], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[1], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[2], design_receiver_i/ReceiverWrapper_0/inst/Receiver/dacWrite/data_reg[3] (the first 15 of 19 listed)
+Related violations: <none>
+
+ZPS7-1#1 Warning
+PS7 block required  
+The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+Related violations: <none>
+
+

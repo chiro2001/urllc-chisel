@@ -11,9 +11,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="10810000000fs"></ZoomStartTime>
-      <ZoomEndTime time="75670000001fs"></ZoomEndTime>
-      <Cursor1Time time="64860000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="103400000001fs"></ZoomEndTime>
+      <Cursor1Time time="9229999000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="217"></NameColumnWidth>
@@ -27,12 +27,6 @@
    <wvobject fp_name="/ReceiverTestbench/receiver_sync_out" type="logic">
       <obj_property name="ElementShortName">receiver_sync_out</obj_property>
       <obj_property name="ObjectShortName">receiver_sync_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/ReceiverTestbench/receiver_ad" type="array">
-      <obj_property name="ElementShortName">receiver_ad[7:0]</obj_property>
-      <obj_property name="ObjectShortName">receiver_ad[7:0]</obj_property>
-      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
-      <obj_property name="CellHeight">100</obj_property>
    </wvobject>
    <wvobject fp_name="/ReceiverTestbench/receiver_da" type="array">
       <obj_property name="ElementShortName">receiver_da[7:0]</obj_property>
@@ -101,9 +95,33 @@
    <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/energy" type="array">
       <obj_property name="ElementShortName">energy[31:0]</obj_property>
       <obj_property name="ObjectShortName">energy[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ReceiverTestbench/receiver_ad" type="array">
+      <obj_property name="ElementShortName">receiver_ad[7:0]</obj_property>
+      <obj_property name="ObjectShortName">receiver_ad[7:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
    </wvobject>
    <wvobject fp_name="/ReceiverTestbench/wrapper/design_receiver_i/ReceiverWrapper_0/inst/Receiver/energyNow" type="array">
       <obj_property name="ElementShortName">energyNow[7:0]</obj_property>
       <obj_property name="ObjectShortName">energyNow[7:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
    </wvobject>
 </wave_config>

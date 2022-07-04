@@ -10,8 +10,8 @@
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "ReceiverWrapper_0": "",
-      "ila_0": ""
+      "ila_0": "",
+      "ReceiverWrapper_0": ""
     },
     "ports": {
       "clock_in": {
@@ -154,6 +154,30 @@
           }
         }
       },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_receiver_ila_0_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "8192"
+          },
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "6"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "8"
+          }
+        }
+      },
       "ReceiverWrapper_0": {
         "vlnv": "xilinx.com:module_ref:ReceiverWrapper:1.0",
         "xci_name": "design_receiver_ReceiverWrapper_0_0",
@@ -222,30 +246,6 @@
             "direction": "O"
           }
         }
-      },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "design_receiver_ila_0_0",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "8192"
-          },
-          "C_ENABLE_ILA_AXI_MON": {
-            "value": "false"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "6"
-          },
-          "C_PROBE1_WIDTH": {
-            "value": "8"
-          },
-          "C_PROBE3_WIDTH": {
-            "value": "8"
-          }
-        }
       }
     },
     "nets": {
@@ -264,8 +264,8 @@
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "ReceiverWrapper_0/clock",
-          "ila_0/clk"
+          "ila_0/clk",
+          "ReceiverWrapper_0/clock"
         ]
       },
       "clk_wiz_0_locked": {
@@ -277,15 +277,15 @@
       "receiver_ad_1": {
         "ports": [
           "receiver_ad",
-          "ReceiverWrapper_0/receiver_ad",
-          "ila_0/probe1"
+          "ila_0/probe1",
+          "ReceiverWrapper_0/receiver_ad"
         ]
       },
       "receiver_sync_in_1": {
         "ports": [
           "receiver_sync_in",
-          "ReceiverWrapper_0/receiver_sync_in",
-          "ila_0/probe0"
+          "ila_0/probe0",
+          "ReceiverWrapper_0/receiver_sync_in"
         ]
       },
       "ReceiverWrapper_0_receiver_da": {

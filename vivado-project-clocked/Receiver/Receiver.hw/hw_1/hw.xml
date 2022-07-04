@@ -50,7 +50,7 @@
         <Option Id="COMPARE_VALUE.0" value="neq8&apos;b0111_1111"/>
         <Option Id="DISPLAY_AS_ENUM" value="1"/>
         <Option Id="DISPLAY_HINT" value=""/>
-        <Option Id="DISPLAY_RADIX" value="BINARY"/>
+        <Option Id="DISPLAY_RADIX" value="SIGNED"/>
         <Option Id="DISPLAY_VISIBILITY" value=""/>
         <Option Id="HW_ILA" value="hw_ila_1"/>
         <Option Id="LINK_TO_WAVEFORM" value="1"/>
@@ -59,7 +59,7 @@
         <Option Id="NAME.SELECT" value="Long"/>
         <Option Id="SOURCE" value="netlist"/>
         <Option Id="TRIGGER_COMPARE_VALUE" value="neq8&apos;b0111_1111"/>
-        <Option Id="WAVEFORM_STYLE" value="Digital"/>
+        <Option Id="WAVEFORM_STYLE" value="Analog"/>
       </probeOptions>
       <nets>
         <net name="design_receiver_i/ReceiverWrapper_0_receiver_da[7]"/>

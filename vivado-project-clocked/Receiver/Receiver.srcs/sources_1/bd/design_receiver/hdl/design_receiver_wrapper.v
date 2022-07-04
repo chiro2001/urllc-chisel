@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Mon Jul  4 20:34:08 2022
+//Date        : Mon Jul  4 22:12:19 2022
 //Host        : chiro-pc running 64-bit unknown
 //Command     : generate_target design_receiver_wrapper.bd
 //Design      : design_receiver_wrapper

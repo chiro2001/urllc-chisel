@@ -200,17 +200,28 @@ proc create_root_design { parentCell } {
    CONFIG.RESET_TYPE {ACTIVE_LOW} \
  ] $clk_wiz_0
 
+  # Create instance: ila_0, and set properties
+  set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
+  set_property -dict [ list \
+   CONFIG.C_DATA_DEPTH {8192} \
+   CONFIG.C_ENABLE_ILA_AXI_MON {false} \
+   CONFIG.C_MONITOR_TYPE {Native} \
+   CONFIG.C_NUM_OF_PROBES {6} \
+   CONFIG.C_PROBE1_WIDTH {8} \
+   CONFIG.C_PROBE3_WIDTH {8} \
+ ] $ila_0
+
   # Create port connections
-  connect_bd_net -net SenderWrapper_0_sender_ad_clk [get_bd_ports sender_ad_clk] [get_bd_pins SenderWrapper_0/sender_ad_clk]
-  connect_bd_net -net SenderWrapper_0_sender_da [get_bd_ports sender_da] [get_bd_pins SenderWrapper_0/sender_da]
-  connect_bd_net -net SenderWrapper_0_sender_da_clk [get_bd_ports sender_da_clk] [get_bd_pins SenderWrapper_0/sender_da_clk]
-  connect_bd_net -net SenderWrapper_0_sender_sync_out [get_bd_ports sender_sync_out] [get_bd_pins SenderWrapper_0/sender_sync_out]
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins SenderWrapper_0/clock] [get_bd_pins clk_wiz_0/clk_out1]
+  connect_bd_net -net SenderWrapper_0_sender_ad_clk [get_bd_ports sender_ad_clk] [get_bd_pins SenderWrapper_0/sender_ad_clk] [get_bd_pins ila_0/probe4]
+  connect_bd_net -net SenderWrapper_0_sender_da [get_bd_ports sender_da] [get_bd_pins SenderWrapper_0/sender_da] [get_bd_pins ila_0/probe3]
+  connect_bd_net -net SenderWrapper_0_sender_da_clk [get_bd_ports sender_da_clk] [get_bd_pins SenderWrapper_0/sender_da_clk] [get_bd_pins ila_0/probe5]
+  connect_bd_net -net SenderWrapper_0_sender_sync_out [get_bd_ports sender_sync_out] [get_bd_pins SenderWrapper_0/sender_sync_out] [get_bd_pins ila_0/probe2]
+  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins SenderWrapper_0/clock] [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins ila_0/clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins SenderWrapper_0/resetN] [get_bd_pins clk_wiz_0/locked]
   connect_bd_net -net clock_in_1 [get_bd_ports clock_in] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net resetN_1 [get_bd_ports resetN] [get_bd_pins clk_wiz_0/resetn]
-  connect_bd_net -net sender_ad_1 [get_bd_ports sender_ad] [get_bd_pins SenderWrapper_0/sender_ad]
-  connect_bd_net -net sender_sync_in_1 [get_bd_ports sender_sync_in] [get_bd_pins SenderWrapper_0/sender_sync_in]
+  connect_bd_net -net sender_ad_1 [get_bd_ports sender_ad] [get_bd_pins SenderWrapper_0/sender_ad] [get_bd_pins ila_0/probe1]
+  connect_bd_net -net sender_sync_in_1 [get_bd_ports sender_sync_in] [get_bd_pins SenderWrapper_0/sender_sync_in] [get_bd_pins ila_0/probe0]
 
   # Create address segments
 

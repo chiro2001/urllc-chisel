@@ -48,7 +48,8 @@ class Receiver(div: Int = 45) extends Module {
     calibrating := true.B
   }
 
-  val offsetOffset = 2
+  // val offsetOffset = 2
+  val offsetOffset = 0
 
   val calibrateIndex = RegInit(0.U(4.W))
   val calibrateResult = RegInit("b1111".U(4.W))

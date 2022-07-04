@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Mon Jul  4 19:35:26 2022
+//Date        : Mon Jul  4 22:24:50 2022
 //Host        : chiro-pc running 64-bit unknown
 //Command     : generate_target design_sender.bd
 //Design      : design_sender
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_sender,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_sender,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_sender.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_sender,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_sender,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=3,numReposBlks=3,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_sender.hwdef" *) 
 module design_sender
    (clock_in,
     resetN,
@@ -61,4 +61,12 @@ module design_sender
         .clk_out1(clk_wiz_0_clk_out1),
         .locked(clk_wiz_0_locked),
         .resetn(resetN_1));
+  design_sender_ila_0_0 ila_0
+       (.clk(clk_wiz_0_clk_out1),
+        .probe0(sender_sync_in_1),
+        .probe1(sender_ad_1),
+        .probe2(SenderWrapper_0_sender_sync_out),
+        .probe3(SenderWrapper_0_sender_da),
+        .probe4(SenderWrapper_0_sender_ad_clk),
+        .probe5(SenderWrapper_0_sender_da_clk));
 endmodule

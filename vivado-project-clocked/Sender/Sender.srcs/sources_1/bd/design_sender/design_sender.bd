@@ -10,7 +10,8 @@
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "SenderWrapper_0": ""
+      "SenderWrapper_0": "",
+      "ila_0": ""
     },
     "ports": {
       "clock_in": {
@@ -241,13 +242,38 @@
             "direction": "O"
           }
         }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_sender_ila_0_0",
+        "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "8192"
+          },
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "6"
+          },
+          "C_PROBE1_WIDTH": {
+            "value": "8"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "8"
+          }
+        }
       }
     },
     "nets": {
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "SenderWrapper_0/clock"
+          "SenderWrapper_0/clock",
+          "ila_0/clk"
         ]
       },
       "clock_in_1": {
@@ -265,7 +291,8 @@
       "sender_ad_1": {
         "ports": [
           "sender_ad",
-          "SenderWrapper_0/sender_ad"
+          "SenderWrapper_0/sender_ad",
+          "ila_0/probe1"
         ]
       },
       "clk_wiz_0_locked": {
@@ -277,31 +304,36 @@
       "sender_sync_in_1": {
         "ports": [
           "sender_sync_in",
-          "SenderWrapper_0/sender_sync_in"
+          "SenderWrapper_0/sender_sync_in",
+          "ila_0/probe0"
         ]
       },
       "SenderWrapper_0_sender_da": {
         "ports": [
           "SenderWrapper_0/sender_da",
-          "sender_da"
+          "sender_da",
+          "ila_0/probe3"
         ]
       },
       "SenderWrapper_0_sender_sync_out": {
         "ports": [
           "SenderWrapper_0/sender_sync_out",
-          "sender_sync_out"
+          "sender_sync_out",
+          "ila_0/probe2"
         ]
       },
       "SenderWrapper_0_sender_da_clk": {
         "ports": [
           "SenderWrapper_0/sender_da_clk",
-          "sender_da_clk"
+          "sender_da_clk",
+          "ila_0/probe5"
         ]
       },
       "SenderWrapper_0_sender_ad_clk": {
         "ports": [
           "SenderWrapper_0/sender_ad_clk",
-          "sender_ad_clk"
+          "sender_ad_clk",
+          "ila_0/probe4"
         ]
       }
     }

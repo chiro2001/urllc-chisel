@@ -5,12 +5,12 @@
       "device": "xc7z020clg400-2",
       "name": "design_sender",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2018.3",
+      "tool_version": "2019.2_AR72614",
       "validated": "true"
     },
     "design_tree": {
-      "clk_wiz_0": "",
-      "SenderWrapper_0": ""
+      "SenderWrapper_0": "",
+      "clk_wiz_0": ""
     },
     "ports": {
       "clock_in": {
@@ -128,36 +128,6 @@
       }
     },
     "components": {
-      "clk_wiz_0": {
-        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "xci_name": "design_sender_clk_wiz_0_0",
-        "parameters": {
-          "CLKOUT1_JITTER": {
-            "value": "156.886"
-          },
-          "CLKOUT1_PHASE_ERROR": {
-            "value": "160.484"
-          },
-          "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "120.000"
-          },
-          "MMCM_CLKFBOUT_MULT_F": {
-            "value": "19.500"
-          },
-          "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "8.125"
-          },
-          "MMCM_DIVCLK_DIVIDE": {
-            "value": "1"
-          },
-          "RESET_PORT": {
-            "value": "resetn"
-          },
-          "RESET_TYPE": {
-            "value": "ACTIVE_LOW"
-          }
-        }
-      },
       "SenderWrapper_0": {
         "vlnv": "xilinx.com:module_ref:SenderWrapper:1.0",
         "xci_name": "design_sender_SenderWrapper_0_0",
@@ -195,14 +165,6 @@
               }
             }
           },
-          "sender_ad_clk": {
-            "type": "clk",
-            "direction": "O"
-          },
-          "sender_da_clk": {
-            "type": "clk",
-            "direction": "O"
-          },
           "sender_ad": {
             "direction": "I",
             "left": "7",
@@ -230,6 +192,53 @@
           },
           "sender_sync_out": {
             "direction": "O"
+          },
+          "sender_ad_clk": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "sender_da_clk": {
+            "type": "clk",
+            "direction": "O"
+          }
+        }
+      },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_sender_clk_wiz_0_0",
+        "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "200.0"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "156.886"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "160.484"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "120.000"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "19.500"
+          },
+          "MMCM_CLKIN1_PERIOD": {
+            "value": "20.000"
+          },
+          "MMCM_CLKIN2_PERIOD": {
+            "value": "10.0"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "8.125"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
           }
         }
       }

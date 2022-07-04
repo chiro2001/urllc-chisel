@@ -60,28 +60,28 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {HDL-1065} -limit 10000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param chipscope.maxJobs 5
   create_project -in_memory -part xc7z020clg400-2
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/wt [current_project]
-  set_property parent.project_path D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.xpr [current_project]
-  set_property ip_output_repo D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/wt [current_project]
+  set_property parent.project_path /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.xpr [current_project]
+  set_property ip_output_repo /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
-  add_files -quiet D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/synth_1/design_receiver_wrapper.dcp
+  add_files -quiet /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.runs/synth_1/design_receiver_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files D:/Programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/design_receiver.bd
+  add_files /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/design_receiver.bd
   set_param project.isImplRun false
-  read_xdc D:/Programs/urllc-chisel/xdc/generic/generic.xdc
-  read_xdc D:/Programs/urllc-chisel/xdc/generic/urllc.xdc
-  read_xdc D:/Programs/urllc-chisel/xdc/Receiver.xdc
+  read_xdc /home/chiro/programs/urllc-chisel/xdc/generic/generic.xdc
+  read_xdc /home/chiro/programs/urllc-chisel/xdc/generic/urllc.xdc
+  read_xdc /home/chiro/programs/urllc-chisel/xdc/Receiver.xdc
   set_param project.isImplRun true
   link_design -top design_receiver_wrapper -part xc7z020clg400-2
   set_param project.isImplRun false
@@ -167,7 +167,6 @@ set rc [catch {
   set_property XPM_LIBRARIES XPM_CDC [current_project]
   catch { write_mem_info -force design_receiver_wrapper.mmi }
   write_bitstream -force design_receiver_wrapper.bit 
-  catch { write_sysdef -hwdef design_receiver_wrapper.hwdef -bitfile design_receiver_wrapper.bit -meminfo design_receiver_wrapper.mmi -file design_receiver_wrapper.sysdef }
   catch {write_debug_probes -quiet -force design_receiver_wrapper}
   catch {file copy -force design_receiver_wrapper.ltx debug_nets.ltx}
   close_msg_db -file write_bitstream.pb

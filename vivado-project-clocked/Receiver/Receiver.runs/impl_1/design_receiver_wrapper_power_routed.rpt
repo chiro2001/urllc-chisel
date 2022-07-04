@@ -1,8 +1,8 @@
-Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Thu Jun  9 21:18:13 2022
-| Host             : Chiro running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date             : Mon Jul  4 15:25:06 2022
+| Host             : chiro-pc running 64-bit unknown
 | Command          : report_power -file design_receiver_wrapper_power_routed.rpt -pb design_receiver_wrapper_power_summary_routed.pb -rpx design_receiver_wrapper_power_routed.rpx
 | Design           : design_receiver_wrapper
 | Device           : xc7z020clg400-2
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.245        |
+| Total On-Chip Power (W)  | 0.247        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.138        |
+| Dynamic (W)              | 0.139        |
 | Device Static (W)        | 0.108        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 82.2         |
-| Junction Temperature (C) | 27.8         |
+| Max Ambient (C)          | 82.1         |
+| Junction Temperature (C) | 27.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        5 |       --- |             --- |
-| Slice Logic    |     0.003 |     1134 |       --- |             --- |
-|   LUT as Logic |     0.003 |      553 |     53200 |            1.04 |
+| Slice Logic    |     0.004 |     1136 |       --- |             --- |
+|   LUT as Logic |     0.003 |      537 |     53200 |            1.01 |
 |   CARRY4       |    <0.001 |      116 |     13300 |            0.87 |
 |   Register     |    <0.001 |      325 |    106400 |            0.31 |
 |   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |     0.003 |      881 |       --- |             --- |
+| Signals        |     0.003 |      890 |       --- |             --- |
 | MMCM           |     0.123 |        1 |         4 |           25.00 |
-| I/O            |     0.007 |       22 |       125 |           17.60 |
+| I/O            |     0.009 |       22 |       125 |           17.60 |
 | Static Power   |     0.108 |          |           |                 |
-| Total          |     0.245 |          |           |                 |
+| Total          |     0.247 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -150,7 +150,7 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| design_receiver_wrapper |     0.138 |
+| design_receiver_wrapper |     0.139 |
 |   design_receiver_i     |     0.131 |
 |     ReceiverWrapper_0   |     0.008 |
 |       inst              |     0.008 |

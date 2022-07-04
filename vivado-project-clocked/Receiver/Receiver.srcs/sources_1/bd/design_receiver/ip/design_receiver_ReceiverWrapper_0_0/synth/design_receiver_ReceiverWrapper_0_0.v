@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:ReceiverWrapper:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "ReceiverWrapper,Vivado 2018.3" *)
+(* X_CORE_INFO = "ReceiverWrapper,Vivado 2019.2_AR72614" *)
 (* CHECK_LICENSE_TYPE = "design_receiver_ReceiverWrapper_0_0,ReceiverWrapper,{}" *)
-(* CORE_GENERATION_INFO = "design_receiver_ReceiverWrapper_0_0,ReceiverWrapper,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ReceiverWrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "design_receiver_ReceiverWrapper_0_0,ReceiverWrapper,{x_ipProduct=Vivado 2019.2_AR72614,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ReceiverWrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_receiver_ReceiverWrapper_0_0 (

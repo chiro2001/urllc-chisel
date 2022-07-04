@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2018.3
+set scripts_vivado_version 2019.2
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -164,10 +164,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set clock_in [ create_bd_port -dir I -type clk clock_in ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {50000000} \
- ] $clock_in
+  set clock_in [ create_bd_port -dir I -type clk -freq_hz 50000000 clock_in ]
   set resetN [ create_bd_port -dir I -type rst resetN ]
   set sender_ad [ create_bd_port -dir I -from 7 -to 0 -type data sender_ad ]
   set sender_ad_clk [ create_bd_port -dir O sender_ad_clk ]
@@ -190,10 +187,13 @@ proc create_root_design { parentCell } {
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [ list \
+   CONFIG.CLKIN1_JITTER_PS {200.0} \
    CONFIG.CLKOUT1_JITTER {156.886} \
    CONFIG.CLKOUT1_PHASE_ERROR {160.484} \
    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {120.000} \
    CONFIG.MMCM_CLKFBOUT_MULT_F {19.500} \
+   CONFIG.MMCM_CLKIN1_PERIOD {20.000} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
    CONFIG.MMCM_CLKOUT0_DIVIDE_F {8.125} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.RESET_PORT {resetn} \

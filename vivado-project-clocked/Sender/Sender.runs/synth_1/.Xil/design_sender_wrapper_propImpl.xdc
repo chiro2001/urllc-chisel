@@ -1,5 +1,5 @@
-set_property SRC_FILE_INFO {cfile:D:/Programs/urllc-chisel/xdc/generic/generic.xdc rfile:../../../../../xdc/generic/generic.xdc id:1} [current_design]
-set_property SRC_FILE_INFO {cfile:D:/Programs/urllc-chisel/xdc/generic/urllc.xdc rfile:../../../../../xdc/generic/urllc.xdc id:2} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/chiro/programs/urllc-chisel/xdc/generic/generic.xdc rfile:../../../../../xdc/generic/generic.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/chiro/programs/urllc-chisel/xdc/generic/urllc.xdc rfile:../../../../../xdc/generic/urllc.xdc id:2} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN K17 [get_ports {clock_in}]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]

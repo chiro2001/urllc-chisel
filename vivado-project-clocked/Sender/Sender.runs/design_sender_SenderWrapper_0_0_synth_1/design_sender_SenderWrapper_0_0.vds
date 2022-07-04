@@ -1,36 +1,39 @@
 #-----------------------------------------------------------
-# Vivado v2018.3 (64-bit)
-# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
-# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Thu Jun  9 20:47:14 2022
-# Process ID: 7768
-# Current directory: D:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1
-# Command line: vivado.exe -log design_sender_SenderWrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_sender_SenderWrapper_0_0.tcl
-# Log file: D:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.vds
-# Journal file: D:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1\vivado.jou
+# Vivado v2019.2_AR72614 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Mon Jul  4 14:54:44 2022
+# Process ID: 6170
+# Current directory: /home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1
+# Command line: vivado -log design_sender_SenderWrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_sender_SenderWrapper_0_0.tcl -jvm -patch-module=java.desktop=/home/chiro/Software/Xilinx/Vivado/2019.2/lib/classes/AR72614/AR72614.jar
+# Log file: /home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.vds
+# Journal file: /home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/vivado.jou
 #-----------------------------------------------------------
 source design_sender_SenderWrapper_0_0.tcl -notrace
 Command: synth_design -top design_sender_SenderWrapper_0_0 -part xc7z020clg400-2 -mode out_of_context
 Starting synth_design
+WARNING: [IP_Flow 19-3571] IP 'design_sender_SenderWrapper_0_0' is restricted:
+* Module reference is stale and needs refreshing.
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 17308 
+INFO: Helper process launched with PID 6312 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 466.016 ; gain = 102.637
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1844.691 ; gain = 202.719 ; free physical = 24422 ; free virtual = 31190
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'design_sender_SenderWrapper_0_0' [d:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_SenderWrapper_0_0/synth/design_sender_SenderWrapper_0_0.v:58]
-INFO: [Synth 8-6157] synthesizing module 'SenderWrapper' [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:402]
-INFO: [Synth 8-6157] synthesizing module 'Sender' [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:190]
-INFO: [Synth 8-6157] synthesizing module 'DUC' [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'DUC' (1#1) [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:1]
-INFO: [Synth 8-6157] synthesizing module 'ADCRead' [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:108]
-INFO: [Synth 8-6155] done synthesizing module 'ADCRead' (2#1) [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:108]
-INFO: [Synth 8-6155] done synthesizing module 'Sender' (3#1) [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:190]
-INFO: [Synth 8-6155] done synthesizing module 'SenderWrapper' (4#1) [D:/Programs/urllc-chisel/generated/Sender/SenderWrapper.v:402]
-INFO: [Synth 8-6155] done synthesizing module 'design_sender_SenderWrapper_0_0' (5#1) [d:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_SenderWrapper_0_0/synth/design_sender_SenderWrapper_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'design_sender_SenderWrapper_0_0' [/home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_SenderWrapper_0_0/synth/design_sender_SenderWrapper_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'SenderWrapper' [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:402]
+INFO: [Synth 8-6157] synthesizing module 'Sender' [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:190]
+INFO: [Synth 8-6157] synthesizing module 'DUC' [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'DUC' (1#1) [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ADCRead' [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:108]
+INFO: [Synth 8-6155] done synthesizing module 'ADCRead' (2#1) [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:108]
+INFO: [Synth 8-6155] done synthesizing module 'Sender' (3#1) [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:190]
+INFO: [Synth 8-6155] done synthesizing module 'SenderWrapper' (4#1) [/home/chiro/programs/urllc-chisel/generated/Sender/SenderWrapper.v:402]
+INFO: [Synth 8-6155] done synthesizing module 'design_sender_SenderWrapper_0_0' (5#1) [/home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_SenderWrapper_0_0/synth/design_sender_SenderWrapper_0_0.v:58]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 523.031 ; gain = 159.652
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1907.441 ; gain = 265.469 ; free physical = 24498 ; free virtual = 31242
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -43,46 +46,43 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 523.031 ; gain = 159.652
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1907.441 ; gain = 265.469 ; free physical = 24497 ; free virtual = 31242
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 523.031 ; gain = 159.652
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1907.441 ; gain = 265.469 ; free physical = 24497 ; free virtual = 31242
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7z020clg400-2
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1907.441 ; gain = 0.000 ; free physical = 24492 ; free virtual = 31237
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 867.734 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2074.223 ; gain = 0.000 ; free physical = 24384 ; free virtual = 31136
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 867.734 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 870.684 ; gain = 2.949
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.12 . Memory (MB): peak = 2074.223 ; gain = 0.000 ; free physical = 24387 ; free virtual = 31138
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 870.684 ; gain = 507.305
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 24256 ; free virtual = 31014
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 870.684 ; gain = 507.305
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 24256 ; free virtual = 31014
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 870.684 ; gain = 507.305
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 24255 ; free virtual = 31012
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5544] ROM "data" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "jump" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 870.684 ; gain = 507.305
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 24232 ; free virtual = 30989
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -110,7 +110,7 @@ Detailed RTL Component Info :
 	   7 Input      8 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 12    
+	   2 Input      1 Bit        Muxes := 11    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 6     
 +---Muxes : 
 	   2 Input      8 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 8     
+	   2 Input      1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -169,10 +169,8 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5544] ROM "inst/sender/adcRead/data" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "inst/sender/jump" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 870.684 ; gain = 507.305
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 24183 ; free virtual = 30942
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -184,13 +182,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 871.832 ; gain = 508.453
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23884 ; free virtual = 30642
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 872.055 ; gain = 508.676
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23884 ; free virtual = 30642
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -202,7 +200,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23880 ; free virtual = 30638
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -226,8 +224,20 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
@@ -236,40 +246,28 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Start Renaming Generated Instances
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
----------------------------------------------------------------------------------
-
-Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
----------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -287,11 +285,11 @@ Report Cell Usage:
 +------+-------+------+
 |1     |CARRY4 |     2|
 |2     |LUT1   |     3|
-|3     |LUT2   |    14|
-|4     |LUT3   |    21|
-|5     |LUT4   |    21|
-|6     |LUT5   |    32|
-|7     |LUT6   |    31|
+|3     |LUT2   |    12|
+|4     |LUT3   |    23|
+|5     |LUT4   |    20|
+|6     |LUT5   |    35|
+|7     |LUT6   |    28|
 |8     |FDRE   |    58|
 +------+-------+------+
 
@@ -299,39 +297,41 @@ Report Instance Areas:
 +------+--------------+--------------+------+
 |      |Instance      |Module        |Cells |
 +------+--------------+--------------+------+
-|1     |top           |              |   182|
-|2     |  inst        |SenderWrapper |   182|
-|3     |    sender    |Sender        |   182|
-|4     |      adcRead |ADCRead       |    32|
-|5     |      duc     |DUC           |    70|
+|1     |top           |              |   181|
+|2     |  inst        |SenderWrapper |   181|
+|3     |    sender    |Sender        |   181|
+|4     |      adcRead |ADCRead       |    30|
+|5     |      duc     |DUC           |    72|
 +------+--------------+--------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 896.656 ; gain = 533.277
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23882 ; free virtual = 30640
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 896.656 ; gain = 185.625
-Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 896.656 ; gain = 533.277
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 2074.223 ; gain = 265.469 ; free physical = 23942 ; free virtual = 30699
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2074.223 ; gain = 432.250 ; free physical = 23942 ; free virtual = 30699
 INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2074.223 ; gain = 0.000 ; free physical = 24028 ; free virtual = 30786
 INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.656 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2074.223 ; gain = 0.000 ; free physical = 23968 ; free virtual = 30725
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-25 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+21 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 896.656 ; gain = 546.051
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.656 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 2074.223 ; gain = 633.562 ; free physical = 24098 ; free virtual = 30855
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2074.223 ; gain = 0.000 ; free physical = 24098 ; free virtual = 30855
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint 'D:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
 INFO: [Coretcl 2-1174] Renamed 4 cell refs.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.656 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2098.234 ; gain = 0.000 ; free physical = 24098 ; free virtual = 30856
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint 'D:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.runs/design_sender_SenderWrapper_0_0_synth_1/design_sender_SenderWrapper_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_sender_SenderWrapper_0_0_utilization_synth.rpt -pb design_sender_SenderWrapper_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jun  9 20:47:39 2022...
+INFO: [Common 17-206] Exiting Vivado at Mon Jul  4 14:55:30 2022...

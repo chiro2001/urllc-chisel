@@ -1,10 +1,10 @@
-// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Sun Jun  5 15:18:58 2022
-// Host        : Chiro running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+// Date        : Mon Jul  4 14:51:06 2022
+// Host        : chiro-pc running 64-bit unknown
 // Command     : write_verilog -force -mode synth_stub
-//               d:/Programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_clk_wiz_0_0/design_sender_clk_wiz_0_0_stub.v
+//               /home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_clk_wiz_0_0/design_sender_clk_wiz_0_0_stub.v
 // Design      : design_sender_clk_wiz_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-2

@@ -14,7 +14,8 @@ def build_one(module: str, root_dir: str, create_only: bool = True):
     [copyfile(os.path.join("../../tcl", filename), filename)
      for filename in os.listdir("../../tcl") if filename.endswith(".tcl")]
     time_start = time.time()
-    os.system(f"..\\..\\tcl\\{executable} {module}")
+    split = '\\' if os.name == 'nt' else '/'
+    os.system(f"..{split}..{split}tcl{split}{executable} {module}")
     time_end = time.time()
     print(f"\t=============== module {module} finished in {(time_end - time_start):.3f}s ===============")
 

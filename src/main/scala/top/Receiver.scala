@@ -48,7 +48,7 @@ class Receiver(div: Int = 45) extends Module {
     calibrating := true.B
   }
 
-  val offsetOffset = 0
+  val offsetOffset = 2
 
   val calibrateIndex = RegInit(0.U(4.W))
   val calibrateResult = RegInit("b1111".U(4.W))
@@ -117,7 +117,10 @@ class Receiver(div: Int = 45) extends Module {
     io.out.data := dacWrite.io.data
   }
 
-  val threshold = (0.05 * 0x7f).toInt.U
+  // unit: Voltage
+  // val threshold = (0.05 * 0x7f).toInt.U
+  // unit: mV
+  val threshold = (70.0 / 1000 * 0x7f).toInt.U
 
   val lastStarted = RegNext(started)
   when(started && !lastStarted) {

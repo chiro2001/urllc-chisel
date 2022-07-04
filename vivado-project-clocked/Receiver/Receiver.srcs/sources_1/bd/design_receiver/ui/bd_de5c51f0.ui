@@ -1,32 +1,33 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-639,-304",
+   "Default View_TopLeft":"-529,-333",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port clock_in -pg 1 -lvl 0 -x -10 -y 80 -defaultsOSRD
-preplace port resetN -pg 1 -lvl 0 -x -10 -y 50 -defaultsOSRD
-preplace port receiver_sync_in -pg 1 -lvl 0 -x -10 -y 160 -defaultsOSRD
-preplace port receiver_sync_out -pg 1 -lvl 3 -x 590 -y 100 -defaultsOSRD
-preplace port receiver_ad_clk -pg 1 -lvl 3 -x 590 -y 130 -defaultsOSRD
-preplace port receiver_da_clk -pg 1 -lvl 3 -x 590 -y 160 -defaultsOSRD
-preplace portBus receiver_ad -pg 1 -lvl 0 -x -10 -y 130 -defaultsOSRD
-preplace portBus receiver_da -pg 1 -lvl 3 -x 590 -y 70 -defaultsOSRD
-preplace inst ReceiverWrapper_0 -pg 1 -lvl 2 -x 390 -y 130 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 70 -defaultsOSRD
-preplace netloc resetN_1 1 0 1 10J 50n
-preplace netloc clock_in_1 1 0 1 NJ 80
-preplace netloc clk_wiz_0_clk_out1 1 1 1 210 60n
-preplace netloc clk_wiz_0_locked 1 1 1 200 80n
-preplace netloc receiver_ad_1 1 0 2 10J 140 NJ
-preplace netloc receiver_sync_in_1 1 0 2 NJ 160 NJ
-preplace netloc ReceiverWrapper_0_receiver_da 1 2 1 550J 70n
-preplace netloc ReceiverWrapper_0_receiver_sync_out 1 2 1 560J 100n
-preplace netloc ReceiverWrapper_0_receiver_ad_clk 1 2 1 550J 130n
-preplace netloc ReceiverWrapper_0_receiver_da_clk 1 2 1 NJ 160
-levelinfo -pg 1 -10 110 390 590
-pagesize -pg 1 -db -bbox -sgen -170 -20 760 220
+preplace port clock_in -pg 1 -lvl 0 -x 0 -y 190 -defaultsOSRD
+preplace port resetN -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace port receiver_sync_in -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace port receiver_sync_out -pg 1 -lvl 4 -x 790 -y 300 -defaultsOSRD
+preplace port receiver_ad_clk -pg 1 -lvl 4 -x 790 -y 270 -defaultsOSRD
+preplace port receiver_da_clk -pg 1 -lvl 4 -x 790 -y 330 -defaultsOSRD
+preplace portBus receiver_ad -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus receiver_da -pg 1 -lvl 4 -x 790 -y 240 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 180 -defaultsOSRD
+preplace inst ReceiverWrapper_0 -pg 1 -lvl 2 -x 380 -y 200 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 3 -x 670 -y 120 -defaultsOSRD
+preplace netloc resetN_1 1 0 1 20J 160n
+preplace netloc clock_in_1 1 0 1 NJ 190
+preplace netloc clk_wiz_0_clk_out1 1 1 2 200 60 N
+preplace netloc clk_wiz_0_locked 1 1 1 N 190
+preplace netloc receiver_ad_1 1 0 3 NJ 80 210 100 NJ
+preplace netloc receiver_sync_in_1 1 0 3 NJ 110 220 80 NJ
+preplace netloc ReceiverWrapper_0_receiver_da 1 2 2 560 240 NJ
+preplace netloc ReceiverWrapper_0_receiver_sync_out 1 2 2 540 300 NJ
+preplace netloc ReceiverWrapper_0_receiver_ad_clk 1 2 2 550 270 NJ
+preplace netloc ReceiverWrapper_0_receiver_da_clk 1 2 2 570 260 770J
+levelinfo -pg 1 0 110 380 670 790
+pagesize -pg 1 -db -bbox -sgen -160 0 960 350
 "
 }
 0

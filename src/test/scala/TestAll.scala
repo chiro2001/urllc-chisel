@@ -239,4 +239,15 @@ class TestAll
       c.clock.step(720 * 4)
     }
   }
+
+  it should "test exported data" in {
+    test(new Receiver).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>
+      c.io.in.sync.poke(true.B)
+      utils.Utils.readDataFromCSV("data/ila_data_receiver.csv").map(_(4)).foreach(dataString => {
+        val data = Integer.parseInt(dataString)
+        c.io.in.data.poke(data.U)
+        c.clock.step()
+      })
+    }
+  }
 }

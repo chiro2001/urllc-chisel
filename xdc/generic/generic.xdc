@@ -19,6 +19,9 @@ set_property IOSTANDARD LVCMOS33 [get_ports clock]
 
 set_property PACKAGE_PIN U15 [get_ports {sender_sync_in}]
 set_property IOSTANDARD LVCMOS33 [get_ports {sender_sync_in}]
+## PULLDOWN
+set_property PULLDOWN true [get_ports {sender_sync_in}]
+
 set_property PACKAGE_PIN P15 [get_ports {sender_sync_out}]
 set_property IOSTANDARD LVCMOS33 [get_ports {sender_sync_out}]
 

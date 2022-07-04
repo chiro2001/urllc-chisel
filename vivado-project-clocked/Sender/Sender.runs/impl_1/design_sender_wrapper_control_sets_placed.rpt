@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-| Date         : Mon Jul  4 14:57:24 2022
+| Date         : Mon Jul  4 19:38:11 2022
 | Host         : chiro-pc running 64-bit unknown
 | Command      : report_control_sets -verbose -file design_sender_wrapper_control_sets_placed.rpt
 | Design       : design_sender_wrapper
@@ -76,9 +76,9 @@ Table of Contents
 |  design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[6] |                                                                       |                                                                 |                1 |              3 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        |                                                                       |                                                                 |                2 |              5 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        |                                                                       | design_sender_i/SenderWrapper_0/inst/sender/cnt[6]_i_1_n_0      |                3 |              7 |
-|  design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[6] | design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_0            | design_sender_i/SenderWrapper_0/inst/sender/slowerReset         |                2 |              8 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        |                                                                       | design_sender_i/SenderWrapper_0/inst/sender/duc/cnt[7]_i_1_n_0  |                4 |              8 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        | design_sender_i/SenderWrapper_0/inst/sender/duc/duc_calibrationEnable | design_sender_i/SenderWrapper_0/inst/sender/duc/cnt2[7]_i_1_n_0 |                4 |              8 |
+|  design_sender_i/SenderWrapper_0/inst/sender/adcRead/cnt_reg[6] | design_sender_i/SenderWrapper_0/inst/sender/adcRead/data_0            | design_sender_i/SenderWrapper_0/inst/sender/slowerReset         |                2 |              8 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        | design_sender_i/SenderWrapper_0/inst/sender/jumpFirstByte0            | design_sender_i/SenderWrapper_0/inst/sender/started             |                3 |              9 |
 |  design_sender_i/clk_wiz_0/inst/clk_out1                        | design_sender_i/SenderWrapper_0/inst/sender/exiting                   | design_sender_i/SenderWrapper_0/inst/sender/sender_reset        |                3 |             10 |
 +-----------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------+------------------+----------------+

@@ -16,4 +16,7 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_receiver
 # IP: bd/design_receiver/ip/design_receiver_ReceiverWrapper_0_0/design_receiver_ReceiverWrapper_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_receiver_ReceiverWrapper_0_0 || ORIG_REF_NAME==design_receiver_ReceiverWrapper_0_0} -quiet] -quiet
 
+# IP: bd/design_receiver/ip/design_receiver_ila_0_0/design_receiver_ila_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_receiver_ila_0_0 || ORIG_REF_NAME==design_receiver_ila_0_0} -quiet] -quiet
+
 # XDC: bd/design_receiver/design_receiver_ooc.xdc

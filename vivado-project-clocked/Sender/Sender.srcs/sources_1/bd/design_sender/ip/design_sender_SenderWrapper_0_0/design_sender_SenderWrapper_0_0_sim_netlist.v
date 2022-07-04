@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-// Date        : Mon Jul  4 14:55:30 2022
+// Date        : Mon Jul  4 19:36:17 2022
 // Host        : chiro-pc running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
 //               /home/chiro/programs/urllc-chisel/vivado-project-clocked/Sender/Sender.srcs/sources_1/bd/design_sender/ip/design_sender_SenderWrapper_0_0/design_sender_SenderWrapper_0_0_sim_netlist.v
@@ -13,7 +13,7 @@
 `timescale 1 ps / 1 ps
 
 (* CHECK_LICENSE_TYPE = "design_sender_SenderWrapper_0_0,SenderWrapper,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
-(* X_CORE_INFO = "SenderWrapper,Vivado 2018.3" *) 
+(* X_CORE_INFO = "SenderWrapper,Vivado 2019.2_AR72614" *) 
 (* NotValidForBitStream *)
 module design_sender_SenderWrapper_0_0
    (clock,

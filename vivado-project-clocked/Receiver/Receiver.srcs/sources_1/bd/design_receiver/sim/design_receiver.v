@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.2_AR72614 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
-//Date        : Mon Jul  4 14:54:02 2022
+//Date        : Mon Jul  4 20:34:08 2022
 //Host        : chiro-pc running 64-bit unknown
 //Command     : generate_target design_receiver.bd
 //Design      : design_receiver
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_receiver,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_receiver,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_receiver.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_receiver,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_receiver,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=3,numReposBlks=3,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_receiver.hwdef" *) 
 module design_receiver
    (clock_in,
     receiver_ad,
@@ -61,4 +61,12 @@ module design_receiver
         .clk_out1(clk_wiz_0_clk_out1),
         .locked(clk_wiz_0_locked),
         .resetn(resetN_1));
+  design_receiver_ila_0_0 ila_0
+       (.clk(clk_wiz_0_clk_out1),
+        .probe0(receiver_sync_in_1),
+        .probe1(receiver_ad_1),
+        .probe2(ReceiverWrapper_0_receiver_sync_out),
+        .probe3(ReceiverWrapper_0_receiver_da),
+        .probe4(ReceiverWrapper_0_receiver_ad_clk),
+        .probe5(ReceiverWrapper_0_receiver_da_clk));
 endmodule

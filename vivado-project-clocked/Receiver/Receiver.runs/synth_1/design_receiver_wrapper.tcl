@@ -18,6 +18,8 @@ proc create_report { reportName command } {
   }
 }
 set_param chipscope.maxJobs 5
+set_param xicom.use_bs_reader 1
+set_msg_config -id {HDL-1065} -limit 10000
 create_project -in_memory -part xc7z020clg400-2
 
 set_param project.singleFileAddWarning.threshold 0
@@ -26,7 +28,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/wt [current_project]
 set_property parent.project_path /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.cache/ip [current_project]
@@ -36,6 +38,10 @@ add_files /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Rece
 set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_clk_wiz_0_0/design_receiver_clk_wiz_0_0_ooc.xdc]
+set_property used_in_synthesis false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ila_0_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/ip/design_receiver_ila_0_0/design_receiver_ila_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/chiro/programs/urllc-chisel/vivado-project-clocked/Receiver/Receiver.srcs/sources_1/bd/design_receiver/design_receiver_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being

@@ -9,8 +9,9 @@
       "validated": "true"
     },
     "design_tree": {
+      "clk_wiz_0": "",
       "ReceiverWrapper_0": "",
-      "clk_wiz_0": ""
+      "ila_0": ""
     },
     "ports": {
       "clock_in": {
@@ -114,6 +115,45 @@
       }
     },
     "components": {
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_receiver_clk_wiz_0_0",
+        "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "200.0"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "180.523"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "162.874"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "60.000"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "20.250"
+          },
+          "MMCM_CLKIN1_PERIOD": {
+            "value": "20.000"
+          },
+          "MMCM_CLKIN2_PERIOD": {
+            "value": "10.0"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "16.875"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      },
       "ReceiverWrapper_0": {
         "vlnv": "xilinx.com:module_ref:ReceiverWrapper:1.0",
         "xci_name": "design_receiver_ReceiverWrapper_0_0",
@@ -183,42 +223,27 @@
           }
         }
       },
-      "clk_wiz_0": {
-        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "xci_name": "design_receiver_clk_wiz_0_0",
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_receiver_ila_0_0",
         "parameters": {
-          "CLKIN1_JITTER_PS": {
-            "value": "200.0"
+          "C_DATA_DEPTH": {
+            "value": "8192"
           },
-          "CLKOUT1_JITTER": {
-            "value": "180.523"
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
           },
-          "CLKOUT1_PHASE_ERROR": {
-            "value": "162.874"
+          "C_MONITOR_TYPE": {
+            "value": "Native"
           },
-          "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "60.000"
+          "C_NUM_OF_PROBES": {
+            "value": "6"
           },
-          "MMCM_CLKFBOUT_MULT_F": {
-            "value": "20.250"
+          "C_PROBE1_WIDTH": {
+            "value": "8"
           },
-          "MMCM_CLKIN1_PERIOD": {
-            "value": "20.000"
-          },
-          "MMCM_CLKIN2_PERIOD": {
-            "value": "10.0"
-          },
-          "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "16.875"
-          },
-          "MMCM_DIVCLK_DIVIDE": {
-            "value": "1"
-          },
-          "RESET_PORT": {
-            "value": "resetn"
-          },
-          "RESET_TYPE": {
-            "value": "ACTIVE_LOW"
+          "C_PROBE3_WIDTH": {
+            "value": "8"
           }
         }
       }
@@ -239,7 +264,8 @@
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "ReceiverWrapper_0/clock"
+          "ReceiverWrapper_0/clock",
+          "ila_0/clk"
         ]
       },
       "clk_wiz_0_locked": {
@@ -251,37 +277,43 @@
       "receiver_ad_1": {
         "ports": [
           "receiver_ad",
-          "ReceiverWrapper_0/receiver_ad"
+          "ReceiverWrapper_0/receiver_ad",
+          "ila_0/probe1"
         ]
       },
       "receiver_sync_in_1": {
         "ports": [
           "receiver_sync_in",
-          "ReceiverWrapper_0/receiver_sync_in"
+          "ReceiverWrapper_0/receiver_sync_in",
+          "ila_0/probe0"
         ]
       },
       "ReceiverWrapper_0_receiver_da": {
         "ports": [
           "ReceiverWrapper_0/receiver_da",
-          "receiver_da"
+          "receiver_da",
+          "ila_0/probe3"
         ]
       },
       "ReceiverWrapper_0_receiver_sync_out": {
         "ports": [
           "ReceiverWrapper_0/receiver_sync_out",
-          "receiver_sync_out"
+          "receiver_sync_out",
+          "ila_0/probe2"
         ]
       },
       "ReceiverWrapper_0_receiver_ad_clk": {
         "ports": [
           "ReceiverWrapper_0/receiver_ad_clk",
-          "receiver_ad_clk"
+          "receiver_ad_clk",
+          "ila_0/probe4"
         ]
       },
       "ReceiverWrapper_0_receiver_da_clk": {
         "ports": [
           "ReceiverWrapper_0/receiver_da_clk",
-          "receiver_da_clk"
+          "receiver_da_clk",
+          "ila_0/probe5"
         ]
       }
     }

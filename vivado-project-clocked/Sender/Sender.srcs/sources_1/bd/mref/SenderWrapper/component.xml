@@ -241,7 +241,7 @@
       <spirit:file>
         <spirit:name>xgui/SenderWrapper_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f64a5dae</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_f92e9879</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -268,10 +268,10 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-06-09T12:44:56Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-07-04T09:09:13Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2019.2_AR72614</xilinx:xilinxVersion>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

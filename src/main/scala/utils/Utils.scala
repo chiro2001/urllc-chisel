@@ -3,6 +3,7 @@ package utils
 import chisel3._
 import modules.DDCMode.{DDC_200M, DDC_60M}
 
+import scala.io.Source
 import scala.math.{Pi, sin}
 
 object Utils {
@@ -59,6 +60,10 @@ object Utils {
       }
     }
     result
+  }
+
+  def readDataFromCSV(filename: String, dropTitle: Int = 2): Seq[Seq[String]] = {
+    Source.fromFile(filename).getLines().drop(dropTitle).map(i => i.split(",").map(j => j.trim).toSeq).toSeq
   }
 }
 

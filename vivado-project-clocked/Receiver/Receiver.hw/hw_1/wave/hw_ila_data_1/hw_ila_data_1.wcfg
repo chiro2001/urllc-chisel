@@ -9,9 +9,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2760fs"></ZoomStartTime>
-      <ZoomEndTime time="11286fs"></ZoomEndTime>
-      <Cursor1Time time="5515fs"></Cursor1Time>
+      <ZoomStartTime time="36fs"></ZoomStartTime>
+      <ZoomEndTime time="8562fs"></ZoomEndTime>
+      <Cursor1Time time="5536fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="347"></NameColumnWidth>
@@ -55,7 +55,7 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">design_receiver_i/ReceiverWrapper_0_receiver_da[7:0]</obj_property>
       <obj_property name="ObjectShortName">ReceiverWrapper_0_receiver_da[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
       <obj_property name="CellHeight">100</obj_property>

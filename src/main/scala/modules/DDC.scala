@@ -32,9 +32,9 @@ class DDC(mode: Int = DDC_60M) extends Module {
   val sampleCount = sampleCountMapDDC(mode)
   // 一个 bit 数据被多少个波表示
   val waveCount = waveCountMapDDC(mode)
-  // val xListRefer = Seq.range(0, sampleCount)
-  // val yListData = xListRefer.map(x => waveGenerate(x, sampleCount).S)
-  val yListData = Seq(0x7e, 0x86, 0x75).map(_.S)
+  val xListRefer = Seq.range(0, sampleCount)
+  val yListData = xListRefer.map(x => waveGenerate(x, sampleCount).S)
+  // val yListData = Seq(0x7e, 0x86, 0x75).map(_.S)
   val yListRefer = VecInit(yListData)
   println(s"yListRefer: $yListData")
 

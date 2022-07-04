@@ -18,6 +18,10 @@ object ChiselPlayground extends SbtModule { m =>
   )
   override def ivyDeps = Agg(
     ivy"edu.berkeley.cs::chisel3:3.5.2",
+    // expert println debugging
+    ivy"com.lihaoyi::sourcecode:0.2.8",
+    // for color print
+    ivy"com.lihaoyi::fansi:0.3.1"
   )
   override def scalacPluginIvyDeps = Agg(
     ivy"edu.berkeley.cs:::chisel3-plugin:3.5.2"

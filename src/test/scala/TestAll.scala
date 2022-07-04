@@ -12,12 +12,12 @@ class TestAll
   extends AnyFlatSpec
     with ChiselScalatestTester
     with should.Matchers {
-  it should "pass ALL generate test" in {
-    Targets.targets.foreach(item => {
-      println(s"start generate: ${item._1}")
-      test(item._2())
-    })
-  }
+  // it should "pass ALL generate test" in {
+  //   Targets.targets.foreach(item => {
+  //     println(s"start generate: ${item._1}")
+  //     test(item._2())
+  //   })
+  // }
 
   it should "test ADCRead" in {
     test(new ADCRead(width = 8)).withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { c =>

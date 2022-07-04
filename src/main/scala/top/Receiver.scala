@@ -13,7 +13,9 @@ class Receiver(div: Int = 45) extends Module {
   val refData = IO(Output(SInt(8.W)))
   val sampleCount = sampleCountMapDDC(DDC_60M)
   // 暂时给两个波的时间
-  val dataBuffer = RegInit(VecInit(Seq.fill(sampleCount * 2)(0.U(8.W))))
+  val dataBufferSize = sampleCount * 2
+  // val dataBufferSize = 1
+  val dataBuffer = RegInit(VecInit(Seq.fill(dataBufferSize)(0.U(8.W))))
   val dataBufferIndex = RegInit(0.U(4.W))
   dataBufferIndex := Mux(dataBufferIndex === 11.U, 0.U, dataBufferIndex + 1.U)
   val dataBufferNow = dataBuffer(dataBufferIndex)

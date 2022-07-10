@@ -17,6 +17,11 @@ set_property STEPS.PHYS_OPT_DESIGN.IS_ENABLED true [get_runs impl_1]
 # set_property STEPS.PHYS_OPT_DESIGN.TCL.POST $tcl_tmp/post_phys_opt_design.tcl [get_runs impl_1]
 # set_property STEPS.ROUTE_DESIGN.TCL.POST $tcl_tmp/post_route_design.tcl [get_runs impl_1]
 
+launch_runs impl_1 -to_step route_design -jobs $jobs
+wait_on_run impl_1
+
+set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
+
 launch_runs impl_1 -to_step write_bitstream -jobs $jobs
 wait_on_run impl_1
 

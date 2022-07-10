@@ -349,3 +349,4 @@ generated/
 *.log
 
 vivado-project/
+vivado/

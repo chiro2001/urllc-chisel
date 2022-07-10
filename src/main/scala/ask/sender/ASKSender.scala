@@ -1,4 +1,4 @@
-package ask
+package ask.sender
 
 class ASKSender {
 

@@ -7,11 +7,11 @@ import utils.Utils
 
 class ASKSender(useWave: Boolean = true) extends Module {
   val sender = IO(new ASKSenderIO(useWave = useWave))
-  val clockCnt = RegInit(0.U(log2Ceil(config.generic.clockPerBit)))
-  val bitCnt = RegInit(0.U(log2Ceil(config.sender.adcSourceWidth)))
+  val clockCnt = RegInit(0.U(log2Ceil(config.generic.clockPerBit).W))
+  val bitCnt = RegInit(0.U(log2Ceil(config.sender.adcSourceWidth).W))
   Utils.counter(clockCnt, config.generic.clockPerBit)
   val dataReg = RegInit(sender.adcSource)
-  sender.mask := dataReg
+  sender.mask := dataReg(0)
   when(clockCnt === (config.generic.clockPerBit - 1).U) {
     Utils.counter(bitCnt, config.sender.adcSourceWidth)
     dataReg := dataReg >> 1.U

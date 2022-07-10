@@ -1,8 +1,8 @@
-package top
+package bpsk.top
 
+import bpsk.modules.{ADCRead, DUC}
 import chisel3._
 import chisel3.util._
-import modules.{ADCRead, DUC}
 import utils.DataWithSyncWrapper
 
 class Sender(div: Int = 90) extends Module {

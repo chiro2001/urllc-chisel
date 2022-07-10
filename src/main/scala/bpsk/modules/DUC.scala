@@ -1,4 +1,4 @@
-package modules
+package bpsk.modules
 
 import chisel3._
 import utils.{DataWithSyncWrapper, Utils}
@@ -10,7 +10,7 @@ object DUCMode {
   val DUC_125M = 1
 }
 
-import modules.DUCMode._
+import DUCMode._
 
 class DUC(mode: Int = DUC_60M) extends Module {
   val io = IO(new DataWithSyncWrapper(widthIn = 1))

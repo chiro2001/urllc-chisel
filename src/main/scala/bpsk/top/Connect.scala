@@ -1,4 +1,4 @@
-package top
+package bpsk.top
 
 import chisel3._
 import utils.{DataWithSyncWrapper, Utils}

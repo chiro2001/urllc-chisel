@@ -1,14 +1,16 @@
+package bpsk
+
+import bpsk.modules._
+import bpsk.top.{Connect, Receiver, Sender}
 import chisel3._
 import chisel3.stage.PrintFullStackTraceAnnotation
 import chiseltest._
-import modules.{ADCRead, DACWrite, DDC, DDCMode, DUC}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import top.{Connect, Receiver, Sender}
 
 import java.util.Random
 
-class TestAll
+class BPSKTestAll
   extends AnyFlatSpec
     with ChiselScalatestTester
     with should.Matchers {

@@ -1,7 +1,7 @@
-package wrapper
+package bpsk.wrapper
 
+import bpsk.top.{Connect, Receiver}
 import chisel3._
-import top.{Connect, Receiver}
 
 //noinspection DuplicatedCode
 class ReceiverWrapper extends RawModule {

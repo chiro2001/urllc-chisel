@@ -1,7 +1,7 @@
-package wrapper
+package bpsk.wrapper
 
+import bpsk.top.Connect
 import chisel3._
-import top.Connect
 import utils.DataWithSyncWrapper
 
 class ConnectWrapper extends RawModule {

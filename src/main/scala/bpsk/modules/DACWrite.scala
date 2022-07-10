@@ -1,4 +1,4 @@
-package modules
+package bpsk.modules
 
 import chisel3._
 import chisel3.util.log2Ceil

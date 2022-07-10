@@ -1,7 +1,7 @@
-package wrapper
+package bpsk.wrapper
 
+import bpsk.top.Sender
 import chisel3._
-import top.Sender
 
 //noinspection DuplicatedCode
 class SenderWrapper extends RawModule {

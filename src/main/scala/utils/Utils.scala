@@ -1,7 +1,7 @@
 package utils
 
 import chisel3._
-import modules.DDCMode.{DDC_200M, DDC_60M}
+import bpsk.modules.DDCMode.{DDC_200M, DDC_60M}
 
 import scala.io.Source
 import scala.math.{Pi, sin}

@@ -1,9 +1,11 @@
-import modules.DDCMode.DDC_60M
-import modules.DUCMode.DUC_60M
-import modules.{DDC, DUC}
-import top.{Connect, FreqTestModule, Receiver, Sender}
+package bpsk
+
+import bpsk.modules.DDCMode.DDC_60M
+import bpsk.modules.DUCMode.DUC_60M
+import bpsk.modules.{DDC, DUC}
+import bpsk.top.{Connect, FreqTestModule, Receiver, Sender}
+import bpsk.wrapper.{ConnectWrapper, ReceiverWrapper, SenderWrapper}
 import utils.NegativeResetWrapper
-import wrapper.{ConnectWrapper, ReceiverWrapper, SenderWrapper}
 
 object Targets {
   val targets = Map(
@@ -17,6 +19,6 @@ object Targets {
   val targetWrappers = Map(
     "Connect" -> (() => new ConnectWrapper),
     "Sender" -> (() => new SenderWrapper),
-    "Receiver" -> (() => new ReceiverWrapper),
+    "Receiver" -> (() => new ReceiverWrapper)
   )
 }

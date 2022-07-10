@@ -1,4 +1,4 @@
-package modules
+package bpsk.modules
 
 import chisel3._
 import utils.Utils
@@ -9,7 +9,7 @@ object DDCMode {
   val DDC_200M = 1
 }
 
-import modules.DDCMode._
+import DDCMode._
 
 class DDC(mode: Int = DDC_60M) extends Module {
   val io = IO(new Bundle {

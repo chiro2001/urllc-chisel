@@ -1,9 +1,9 @@
-package top
+package bpsk.top
 
+import bpsk.modules.{DACWrite, DDC}
 import chisel3._
 import chisel3.util.log2Ceil
-import modules.DDCMode.DDC_60M
-import modules.{DACWrite, DDC}
+import bpsk.modules.DDCMode.DDC_60M
 import utils.Utils.{fakeMul, sampleCountMapDDC, waveGenerate}
 import utils.{DataWithSyncWrapper, Utils}
 

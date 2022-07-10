@@ -6,21 +6,21 @@ import chisel3.util._
 import utils.Utils
 
 class ASKSender(useWave: Boolean = true) extends Module {
-  val io = IO(new ASKSenderIO(useWave = useWave))
+  val sender = IO(new ASKSenderIO(useWave = useWave))
   val clockCnt = RegInit(0.U(log2Ceil(config.generic.clockPerBit)))
   val bitCnt = RegInit(0.U(log2Ceil(config.sender.adcSourceWidth)))
   Utils.counter(clockCnt, config.generic.clockPerBit)
-  val dataReg = RegInit(io.adcSource)
-  io.mask := dataReg
+  val dataReg = RegInit(sender.adcSource)
+  sender.mask := dataReg
   when(clockCnt === (config.generic.clockPerBit - 1).U) {
     Utils.counter(bitCnt, config.sender.adcSourceWidth)
     dataReg := dataReg >> 1.U
     when (bitCnt === (config.sender.adcSourceWidth - 1).U) {
-      dataReg := io.adcSource
+      dataReg := sender.adcSource
     }
   }
   if (useWave) {
-    io.dacOut.get := 0.U
+    sender.dacOut.get := 0.U
   }
 }
 

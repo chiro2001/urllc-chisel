@@ -9,6 +9,7 @@ class ASKSender(useWave: Boolean = true) extends Module {
   val sender = IO(new ASKSenderIO(useWave = useWave))
   val clockCnt = RegInit(0.U(log2Ceil(config.generic.clockPerBit).W))
   val bitCnt = RegInit(0.U(log2Ceil(config.sender.adcSourceWidth).W))
+  val preCnt = RegInit(0.U(log2Ceil(config.generic.preCodeData.getWidth).W))
   Utils.counter(clockCnt, config.generic.clockPerBit)
   val dataReg = RegInit(sender.adcSource)
   sender.mask := dataReg(0)

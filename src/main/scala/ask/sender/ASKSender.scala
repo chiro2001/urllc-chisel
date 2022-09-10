@@ -1,34 +1,30 @@
 package ask.sender
 
-import ask.config
+import ask.{DataPackage, config}
 import chisel3._
 import chisel3.util._
 import utils.Utils
 
-class ASKSender(useWave: Boolean = true) extends Module {
+class ASKSender(useWave: Boolean = true, dataBytes: Int = 1) extends Module {
+  val pack = RegInit(0.U.asTypeOf(new DataPackage(dataBytes)))
   val io = IO(new ASKSenderIO(useWave = useWave))
-  val dataCnt = RegInit(0.U(log2Ceil(config.generic.dataBitSize).W))
+  val packCnt = RegInit(0.U(log2Ceil(pack.packBits).W))
   val preCnt = RegInit(0.U(log2Ceil(config.generic.preCodeData.U.getWidth).W))
-  val hammingCnt = RegInit(0.U(log2Ceil(config.generic.hammingBits).W))
-  val states = Enum(4)
-  val stateIdle :: statePreCode :: stateData :: stateHamming :: Nil = states
+  val states = Enum(3)
+  val stateIdle :: statePreCode :: statePackage :: Nil = states
   val state = RegInit(stateIdle)
   val stateMatrix = Seq(
     stateIdle -> Mux(io.start, statePreCode, stateIdle),
-    statePreCode -> Mux(preCnt === (config.generic.preCodeWidth - 1).U, stateData, statePreCode),
-    stateData -> Mux(dataCnt === (config.generic.dataBitSize - 1).U, stateHamming, stateData),
-    // continues if start is 1
-    stateHamming -> Mux(hammingCnt === (config.generic.hammingBits - 1).U,
-      stateHamming,
-      Mux(io.start, statePreCode, stateIdle)),
+    statePreCode -> Mux(preCnt === (config.generic.preCodeWidth - 1).U, statePackage, statePreCode),
+    statePackage -> Mux(packCnt === (pack.packBits - 1).U,
+      Mux(io.start, statePreCode, stateIdle),
+      statePackage),
   )
   val stateNext = WireInit(stateIdle)
   stateNext := MuxLookup(state, stateIdle, stateMatrix)
   state := stateNext
-  val hammingReg = RegInit(0.U(config.generic.hammingBits.W))
 
   io.bitOut := false.B
-  val dataReg = RegInit(0.U(8.W))
 
   switch(state) {
     is(stateIdle) {
@@ -36,21 +32,18 @@ class ASKSender(useWave: Boolean = true) extends Module {
     is(statePreCode) {
       io.bitOut := (config.generic.preCodeData.U >> preCnt).asUInt(0)
       Utils.counter(preCnt, config.generic.preCodeData.U.getWidth)
-      when(stateNext === stateData) {
-        dataReg := io.adcSource
+      when(stateNext === statePackage) {
+        pack.data := Utils.updateVec(pack.data, 0.U, io.adcSource)
       }
     }
-    is(stateData) {
-      val dataIndex = dataCnt & 7.U
-      io.bitOut := (dataReg >> dataIndex).asUInt(0)
-      Utils.counter(dataCnt, config.generic.dataBitSize)
-      when(dataIndex === 7.U) {
-        dataReg := io.adcSource
+    is(statePackage) {
+      val dataIndex = (packCnt >> 3.U).asUInt
+      val dataOffset = (packCnt & 7.U).asUInt
+      io.bitOut := (VecInit(Utils.sliceUIntToBytes(pack.asUInt))(dataIndex) >> dataOffset).asUInt(0)
+      Utils.counter(packCnt, pack.packBits)
+      when(dataOffset === 7.U) {
+        pack.data := Utils.updateVec(pack.data, dataIndex + 1.U, io.adcSource)
       }
-    }
-    is(stateHamming) {
-      io.bitOut := (hammingReg >> hammingCnt).asUInt(0)
-      Utils.counter(hammingCnt, config.generic.hammingBits)
     }
   }
 

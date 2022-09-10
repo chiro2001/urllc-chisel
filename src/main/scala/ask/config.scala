@@ -6,14 +6,7 @@ object config {
   object generic {
     val clockPerBit = 50
     val preCodeData = "b11010101"
-    val dataPackByteSize = 8
     val hammingBits = 8
-
-    def packageBitSize = dataBitSize + hammingBits
-
-    def packageBitTotal = packageBitSize + preCodeWidth
-
-    def dataBitSize = dataPackByteSize * 8
 
     def preCodeWidth = preCodeData.U.getWidth
   }

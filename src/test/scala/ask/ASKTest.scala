@@ -17,13 +17,14 @@ class ASKTest extends AnyFlatSpec with ChiselScalatestTester with should.Matcher
     )
   }
 
-  it should "test data" in {
+  it should "test send data" in {
     test(new ASKSender(useWave = true))
       .withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { d =>
         d.clock.setTimeout(0)
+        d.io.start.poke(true.B)
         (0 until 10).foreach(i => {
-          d.sender.adcSource.poke(i.U)
-          d.clock.step(config.sender.adcSourceWidth * config.generic.clockPerBit)
+          d.io.adcSource.poke(i.U)
+          d.clock.step(config.sender.adcSourceWidth)
         })
       }
   }

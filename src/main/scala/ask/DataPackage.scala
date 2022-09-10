@@ -3,8 +3,8 @@ package ask
 import chisel3._
 
 class DataPackage(dataBytes: Int) extends Bundle {
-  val hamming = UInt(config.generic.hammingBits.W)
   val data = Vec(dataBytes, UInt(8.W))
+  val hamming = UInt(config.generic.hammingBits.W)
   val length = UInt(config.generic.lengthBits.W)
 
   def dataBits = dataBytes * 8

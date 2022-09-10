@@ -23,5 +23,10 @@ object config {
 
   object receiver {
     val adcSourceWidth = 8
+    val dacWidth = 8
+
+    // mapping adc: [0, 255] => [-max U, max U]
+    // use threshold: [0 | (127+255)/2 | 255] = 191
+    val adcThreshold = 191.U
   }
 }

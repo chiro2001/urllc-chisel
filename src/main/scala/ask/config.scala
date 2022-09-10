@@ -7,6 +7,7 @@ object config {
     val clockPerBit = 50
     val preCodeData = "b11010101"
     val hammingBits = 8
+    val lengthBits = 8
 
     def preCodeWidth = preCodeData.U.getWidth
   }

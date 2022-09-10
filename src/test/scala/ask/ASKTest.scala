@@ -13,12 +13,12 @@ class ASKTest extends AnyFlatSpec with ChiselScalatestTester with should.Matcher
   behavior of "ASKSender"
   it should "generate RTL" in {
     generate.generateVerilog(
-      Map("ASKSender" -> (() => new ASKSender(useWave = true)))
+      Map("ASKSender" -> (() => new ASKSender))
     )
   }
 
   it should "test send data" in {
-    test(new ASKSender(useWave = true))
+    test(new ASKSender)
       .withAnnotations(Seq(PrintFullStackTraceAnnotation, WriteVcdAnnotation)) { d =>
         d.clock.setTimeout(0)
         d.io.start.poke(true.B)

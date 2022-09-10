@@ -1,4 +1,4 @@
 package ask.reciever
 
-class ASKReceiver {
+class ASKReceiver(useWave: Boolean = false) {
 }

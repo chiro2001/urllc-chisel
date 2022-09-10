@@ -5,9 +5,9 @@ import chisel3._
 import chisel3.util._
 import utils.Utils
 
-class ASKSender(useWave: Boolean = true, dataBytes: Int = 1) extends Module {
+class ASKSender(dataBytes: Int = 1) extends Module {
   val pack = RegInit(0.U.asTypeOf(new DataPackage(dataBytes)))
-  val io = IO(new ASKSenderIO(useWave = useWave))
+  val io = IO(new ASKSenderIO)
   val packCnt = RegInit(0.U(log2Ceil(pack.packBits).W))
   val preCnt = RegInit(0.U(log2Ceil(config.generic.preCodeData.U.getWidth).W))
   val states = Enum(3)
@@ -28,6 +28,7 @@ class ASKSender(useWave: Boolean = true, dataBytes: Int = 1) extends Module {
 
   switch(state) {
     is(stateIdle) {
+      pack.initPackage()
     }
     is(statePreCode) {
       io.bitOut := (config.generic.preCodeData.U >> preCnt).asUInt(0)
@@ -47,15 +48,12 @@ class ASKSender(useWave: Boolean = true, dataBytes: Int = 1) extends Module {
     }
   }
 
-  if (io.dacOut.nonEmpty) {
-    io.dacOut.get := Mux(io.bitOut, config.sender.dacValue1, config.sender.dacValue0)
-  }
+  io.dacOut := Mux(io.bitOut, config.sender.dacValue1, config.sender.dacValue0)
 }
 
 class ASKSenderIO(useWave: Boolean = true) extends Bundle {
   val start = Input(Bool())
   val adcSource = Input(UInt(config.sender.dacWidth.W))
-  val dacOut =
-    if (useWave) Some(Output(UInt(config.sender.adcSourceWidth.W))) else None
+  val dacOut = Output(UInt(config.sender.adcSourceWidth.W))
   val bitOut = Output(Bool())
 }

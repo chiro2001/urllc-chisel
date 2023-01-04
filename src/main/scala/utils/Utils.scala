@@ -1,18 +1,19 @@
 package utils
 
 import chisel3._
-import modules.DDCMode.{DDC_200M, DDC_60M}
+import bpsk.modules.DDCMode.{DDC_200M, DDC_60M}
 
 import scala.io.Source
 import scala.math.{Pi, sin}
 
 object Utils {
-  def counter(cnt: UInt, div: Int) = {
+  def counter(cnt: UInt, div: Int): Bool = {
     when(cnt === (div - 1).U) {
       cnt := 0.U
     }.otherwise {
       cnt := cnt + 1.U
     }
+    cnt === (div - 1).U
   }
 
   val sampleCountMapDDC = Map(
@@ -50,7 +51,7 @@ object Utils {
     bBiggerThan0 := b > 0.S
     absSInt(a, absA)
     absSInt(b, absB)
-    when (a === 0.S || b === 0.S) {
+    when(a === 0.S || b === 0.S) {
       result := 0.S
     }.otherwise {
       when((aBiggerThan0 && bBiggerThan0) || (!aBiggerThan0 && !bBiggerThan0)) {
@@ -64,6 +65,21 @@ object Utils {
 
   def readDataFromCSV(filename: String, dropTitle: Int = 2): Seq[Seq[String]] = {
     Source.fromFile(filename).getLines().drop(dropTitle).map(i => i.split(",").map(j => j.trim).toSeq).toSeq
+  }
+
+  def sliceUIntToBytes(data: UInt): Seq[UInt] = {
+    assert(data.getWidth >= 8, "sliceUIntToBytes needs an UInt which width >= 8")
+    logger.debug(s"sliceUIntToBytes(${data.getWidth})")
+    for (i <- 0 until data.getWidth / 8) yield {
+      logger.debug(s"\t data(${i * 8 + 8}, ${i * 8})")
+      data(i * 8 + 7, i * 8)
+    }
+  }
+
+  def updateVec(source: Vec[UInt], index: UInt, value: UInt): Vec[UInt] = {
+    val newVec = WireInit(source)
+    newVec(index) := value
+    newVec
   }
 }
 

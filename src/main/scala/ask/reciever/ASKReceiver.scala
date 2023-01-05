@@ -37,7 +37,7 @@ class ASKReceiver(useWave: Boolean = false, maxDataBytes: Int = 32)
   }
 }
 
-class ASKReceiverIO {
+class ASKReceiverIO extends Bundle {
   val bitIn = Input(Bool())
   val adc = Input(UInt(config.receiver.adcSourceWidth.W))
   val dacOut = Input(UInt(config.receiver.adcSourceWidth.W))

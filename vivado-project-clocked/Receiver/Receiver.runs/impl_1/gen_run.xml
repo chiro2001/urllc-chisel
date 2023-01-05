@@ -1,80 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7z020clg400-2" LaunchTime="1656943942">
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="BITSTR-SYSDEF" Name="design_receiver_wrapper.sysdef"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="design_receiver_wrapper.ltx"/>
-  <File Type="BG-BGN" Name="design_receiver_wrapper.bgn"/>
-  <File Type="RBD_FILE" Name="design_receiver_wrapper.rbd"/>
-  <File Type="BG-DRC" Name="design_receiver_wrapper.drc"/>
-  <File Type="NPI_FILE" Name="design_receiver_wrapper.npi"/>
-  <File Type="RNPI_FILE" Name="design_receiver_wrapper.rnpi"/>
-  <File Type="CFI_FILE" Name="design_receiver_wrapper.cfi"/>
-  <File Type="PDI-FILE" Name="design_receiver_wrapper.pdi"/>
-  <File Type="BITSTR-MMI" Name="design_receiver_wrapper.mmi"/>
-  <File Type="BITSTR-BMM" Name="design_receiver_wrapper_bd.bmm"/>
-  <File Type="BITSTR-NKY" Name="design_receiver_wrapper.nky"/>
-  <File Type="BITSTR-RBT" Name="design_receiver_wrapper.rbt"/>
-  <File Type="BITSTR-MSK" Name="design_receiver_wrapper.msk"/>
+  <File Type="PA-TCL" Name="design_receiver_wrapper.tcl"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="design_receiver_wrapper_bus_skew_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="design_receiver_wrapper_reports.tcl"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="design_receiver_wrapper_bus_skew_routed.rpx"/>
+  <File Type="OPT-DCP" Name="design_receiver_wrapper_opt.dcp"/>
+  <File Type="OPT-DRC" Name="design_receiver_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="design_receiver_wrapper.hwdef"/>
+  <File Type="PWROPT-DCP" Name="design_receiver_wrapper_pwropt.dcp"/>
+  <File Type="PLACE-DCP" Name="design_receiver_wrapper_placed.dcp"/>
+  <File Type="PLACE-IO" Name="design_receiver_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="design_receiver_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="design_receiver_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="design_receiver_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="design_receiver_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="design_receiver_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="design_receiver_wrapper_physopt.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="design_receiver_wrapper_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="design_receiver_wrapper_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="design_receiver_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="design_receiver_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="design_receiver_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="design_receiver_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="design_receiver_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="design_receiver_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="design_receiver_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="design_receiver_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="design_receiver_wrapper_power_summary_routed.pb"/>
   <File Type="BG-BIN" Name="design_receiver_wrapper.bin"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="design_receiver_wrapper_timing_summary_routed.rpt"/>
+  <File Type="BITSTR-MSK" Name="design_receiver_wrapper.msk"/>
+  <File Type="CFI_FILE" Name="design_receiver_wrapper.cfi"/>
+  <File Type="ROUTE-TIMING-PB" Name="design_receiver_wrapper_timing_summary_routed.pb"/>
+  <File Type="BITSTR-RBT" Name="design_receiver_wrapper.rbt"/>
+  <File Type="RNPI_FILE" Name="design_receiver_wrapper.rnpi"/>
+  <File Type="ROUTE-TIMING-RPX" Name="design_receiver_wrapper_timing_summary_routed.rpx"/>
+  <File Type="BITSTR-NKY" Name="design_receiver_wrapper.nky"/>
+  <File Type="BITSTR-BMM" Name="design_receiver_wrapper_bd.bmm"/>
+  <File Type="ROUTE-CLK" Name="design_receiver_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="BITSTR-MMI" Name="design_receiver_wrapper.mmi"/>
+  <File Type="ROUTE-BUS-SKEW" Name="design_receiver_wrapper_bus_skew_routed.rpt"/>
+  <File Type="PDI-FILE" Name="design_receiver_wrapper.pdi"/>
+  <File Type="RBD_FILE" Name="design_receiver_wrapper.rbd"/>
+  <File Type="BG-BGN" Name="design_receiver_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="design_receiver_wrapper.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="BITSTR-LTX" Name="design_receiver_wrapper.ltx"/>
+  <File Type="NPI_FILE" Name="design_receiver_wrapper.npi"/>
+  <File Type="BG-DRC" Name="design_receiver_wrapper.drc"/>
   <File Type="RCFI_FILE" Name="design_receiver_wrapper.rcfi"/>
   <File Type="BG-BIT" Name="design_receiver_wrapper.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="design_receiver_wrapper_bus_skew_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="design_receiver_wrapper_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="design_receiver_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="design_receiver_wrapper_route_status.pb"/>
   <File Type="RDI-RDI" Name="design_receiver_wrapper.vdi"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="design_receiver_wrapper_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="design_receiver_wrapper_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="design_receiver_wrapper_timing_summary_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="design_receiver_wrapper_postroute_physopt_bb.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="design_receiver_wrapper_postroute_physopt.dcp"/>
-  <File Type="ROUTE-BUS-SKEW" Name="design_receiver_wrapper_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="design_receiver_wrapper_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-SIMILARITY" Name="design_receiver_wrapper_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="design_receiver_wrapper_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-TIMING-PB" Name="design_receiver_wrapper_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="design_receiver_wrapper_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="design_receiver_wrapper_route_status.pb"/>
   <File Type="ROUTE-STATUS" Name="design_receiver_wrapper_route_status.rpt"/>
   <File Type="ROUTE-PWR-RPX" Name="design_receiver_wrapper_power_routed.rpx"/>
-  <File Type="ROUTE-PWR-SUM" Name="design_receiver_wrapper_power_summary_routed.pb"/>
-  <File Type="ROUTE-PWR" Name="design_receiver_wrapper_power_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="design_receiver_wrapper_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="design_receiver_wrapper_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="design_receiver_wrapper_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-RPX" Name="design_receiver_wrapper_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-PB" Name="design_receiver_wrapper_drc_routed.pb"/>
-  <File Type="ROUTE-DRC" Name="design_receiver_wrapper_drc_routed.rpt"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="design_receiver_wrapper_routed_bb.dcp"/>
-  <File Type="ROUTE-DCP" Name="design_receiver_wrapper_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="design_receiver_wrapper_routed_error.dcp"/>
-  <File Type="PHYSOPT-TIMING" Name="design_receiver_wrapper_timing_summary_physopted.rpt"/>
-  <File Type="PHYSOPT-DRC" Name="design_receiver_wrapper_drc_physopted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="design_receiver_wrapper_physopt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="design_receiver_wrapper_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="design_receiver_wrapper_postplace_pwropt.dcp"/>
-  <File Type="PLACE-TIMING" Name="design_receiver_wrapper_timing_summary_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="design_receiver_wrapper_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="design_receiver_wrapper_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-CTRL" Name="design_receiver_wrapper_control_sets_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="design_receiver_wrapper_utilization_placed.pb"/>
-  <File Type="PLACE-UTIL" Name="design_receiver_wrapper_utilization_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="design_receiver_wrapper_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-IO" Name="design_receiver_wrapper_io_placed.rpt"/>
-  <File Type="PLACE-DCP" Name="design_receiver_wrapper_placed.dcp"/>
-  <File Type="PWROPT-TIMING" Name="design_receiver_wrapper_timing_summary_pwropted.rpt"/>
-  <File Type="PWROPT-DRC" Name="design_receiver_wrapper_drc_pwropted.rpt"/>
-  <File Type="PWROPT-DCP" Name="design_receiver_wrapper_pwropt.dcp"/>
-  <File Type="OPT-TIMING" Name="design_receiver_wrapper_timing_summary_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="design_receiver_wrapper.hwdef"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="design_receiver_wrapper_methodology_drc_opted.rpt"/>
-  <File Type="OPT-DRC" Name="design_receiver_wrapper_drc_opted.rpt"/>
-  <File Type="OPT-DCP" Name="design_receiver_wrapper_opt.dcp"/>
-  <File Type="INIT-TIMING" Name="design_receiver_wrapper_timing_summary_init.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="design_receiver_wrapper_bus_skew_routed.rpx"/>
-  <File Type="REPORTS-TCL" Name="design_receiver_wrapper_reports.tcl"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="design_receiver_wrapper_bus_skew_routed.pb"/>
-  <File Type="PA-TCL" Name="design_receiver_wrapper.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../generated/Receiver/ReceiverWrapper.v">
@@ -144,8 +125,9 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="design_receiver_clk_wiz_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_receiver_ReceiverWrapper_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_receiver_ila_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_receiver_clk_wiz_0_0"/>
 </GenRun>

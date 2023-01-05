@@ -33,9 +33,9 @@
 
    5. `test exported data` 读取实际从 Vivado 调试 ILA 抓取的数据并进行测试
 
-2. `sbt "runMain Generate"`：生成所有Verilog
+2. `sbt "runMain ask.Generate"`：生成所有Verilog
 
-3. `python build.py`：自动生成 Vivado 项目并综合
+3. `make`：自动生成 Vivado 项目并综合
 
 4. `vivado-project-clocked`：调整时钟后的 Vivado 项目
 
